@@ -2,6 +2,13 @@ package solvdlaba.hometask;
 
 import java.util.Arrays;
 
+/**
+ * Implementation of the quick sort algorithm
+ *
+ * @version 1.0 25 Oct 2023
+ * @author Lawrence Yim
+ */
+
 public class Main {
     public static void main(String[] args) {
         Integer[] array1 = {5, 400, 33, -2, 100, 0};
@@ -13,13 +20,16 @@ public class Main {
         System.out.println(Arrays.toString(array2));
     }
 
+    // Method overloading to reduce the amount of arguments needed
     public static <T extends Comparable<T>> void quickSort(T[] array) {
         quickSort(array, 0, array.length - 1);
     }
 
     public static <T extends Comparable<T>> void quickSort(T[] array, int minIndex, int maxIndex) {
         // Base case for recursion
-        if (minIndex >= maxIndex) return;
+        if (minIndex >= maxIndex) {
+            return;
+        }
 
         T pivot = array[maxIndex];
         int minPtr = minIndex;
