@@ -1,5 +1,10 @@
 package com.solvd.teamgamematch.game;
 
+/**
+ * @version 1.0 27 Oct 2023
+ * @author Lawrence Yim
+ */
+
 public class Champion {
     private String championName;
     private String mainRole;         // Primary role of the champion
