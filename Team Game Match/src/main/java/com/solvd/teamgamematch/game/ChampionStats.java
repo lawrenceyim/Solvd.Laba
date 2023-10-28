@@ -63,7 +63,12 @@ public class ChampionStats {
         System.out.printf("%-30s %-15s %-15s %-25s%n", "Champion Name", "Games Played", "Games Won", "Champion Win Rate %");
         for (String playerName : names) {
             Pair<Integer, Integer> stat = gamesWonByChampion.getOrDefault(playerName, new Pair<>(0, 0));
-            int winRate = (int) ((double) stat.getSecond() / stat.getFirst() * 100);
+            int winRate;
+            if (stat.getFirst() == 0) {
+                winRate = 0;
+            } else {
+                winRate = (int) ((double) stat.getSecond() / stat.getFirst() * 100);
+            }
             System.out.printf("%-30s %-15d %-15d %-25s%n", playerName, stat.getFirst(), stat.getSecond(), winRate);
         }
     }
