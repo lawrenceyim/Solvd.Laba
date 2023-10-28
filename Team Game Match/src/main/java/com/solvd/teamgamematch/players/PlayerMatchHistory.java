@@ -5,6 +5,14 @@ import com.solvd.teamgamematch.utility.Pair;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Stores the match history of every player
+ *
+ * @version 1.0 27 Oct 2023
+ * @author Lawrence Yim
+ */
+
+
 public class PlayerMatchHistory {
     /*
         The first string is the player's name

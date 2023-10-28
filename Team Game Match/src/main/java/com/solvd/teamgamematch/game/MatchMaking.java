@@ -11,8 +11,7 @@ import java.util.HashSet;
 import java.util.Random;
 
 /**
- * Implementation of the match making algorithm to randomly generate
- * two teams of five players and determine the outcome
+ * Implementation of the match making algorithm to randomly generate two teams of five players and determine the outcome
  *
  * @version 1.0 25 Oct 2023
  * @author Lawrence Yim

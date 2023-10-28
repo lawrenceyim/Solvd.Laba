@@ -1,7 +1,11 @@
 package com.solvd.teamgamematch.players;
 
-import com.solvd.teamgamematch.game.Champion;
-import com.solvd.teamgamematch.game.Champions;
+/**
+ * Instantiate and stores all Player objects
+ *
+ * @version 1.0 27 Oct 2023
+ * @author Lawrence Yim
+ */
 
 import java.util.ArrayList;
 

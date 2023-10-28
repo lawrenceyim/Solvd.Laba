@@ -1,5 +1,10 @@
 package com.solvd.teamgamematch.game;
 
+/**
+ * @version 1.0 25 Oct 2023
+ * @author Lawrence Yim
+ */
+
 public class Item {
     private String itemName;
     private String[] statNames;

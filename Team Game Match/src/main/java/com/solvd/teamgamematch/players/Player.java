@@ -6,6 +6,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
+/**
+ * @version 1.0 27 Oct 2023
+ * @author Lawrence Yim
+ */
+
 public class Player {
     private String playerName;
     private HashMap<String, Integer> championMastery;  // Player's skill level for each champion (1 to 10)

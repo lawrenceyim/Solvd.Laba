@@ -7,6 +7,13 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Stores the stats for every player
+ *
+ * @version 1.0 27 Oct 2023
+ * @author Lawrence Yim
+ */
+
 public class PlayerStats {
     private static PlayerStats instance;
     /*

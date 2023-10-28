@@ -1,8 +1,13 @@
 package com.solvd.teamgamematch.game;
 
-import com.solvd.teamgamematch.players.Player;
-
 import java.util.ArrayList;
+
+/**
+ * Instantiate and store all the Champion objects
+ *
+ * @version 1.0 27 Oct 2023
+ * @author Lawrence Yim
+ */
 
 public class Champions {
     private static Champions instance;

@@ -1,5 +1,11 @@
 package com.solvd.teamgamematch.utility;
 
+/**
+ * Pair data structure
+ *
+ * @version 1.0 27 Oct 2023
+ * @author Lawrence Yim
+ */
 public class Pair<A, B> {
     private A first;
     private B second;

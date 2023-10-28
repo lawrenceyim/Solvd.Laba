@@ -4,6 +4,13 @@ import com.solvd.teamgamematch.utility.Pair;
 
 import java.util.*;
 
+/**
+ * Stores the stats of every champion
+ *
+ * @version 1.0 27 Oct 2023
+ * @author Lawrence Yim
+ */
+
 public class ChampionStats {
     private static ChampionStats instance;
 
