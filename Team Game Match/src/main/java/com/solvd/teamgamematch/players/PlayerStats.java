@@ -2,20 +2,36 @@ package com.solvd.teamgamematch.players;
 
 import com.solvd.teamgamematch.utility.Pair;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 public class PlayerStats {
+    private static PlayerStats instance;
     /*
         First int in the pair represents the total number of games played by the player
         Second int is the total number of games won by the player
      */
     HashMap<String, Pair<Integer, Integer>> totalGamesPlayed;
 
-    public PlayerStats() {
-        this.totalGamesPlayed = new HashMap<>();
+    static {
+        instance = new PlayerStats();
     }
 
-    public void addGame(String playerName, boolean gameWon) {
+    private PlayerStats() {
+        this.totalGamesPlayed = new HashMap<>();
+        ArrayList<Player> players = Players.getInstance().getPlayers();
+    }
+
+    public static PlayerStats getInstance() {
+        if (instance == null) {
+            instance = new PlayerStats();
+        }
+        return instance;
+    }
+
+    public void addNewGame(String playerName, boolean gameWon) {
         Pair<Integer, Integer> stats = totalGamesPlayed.getOrDefault(playerName, new Pair<>(0, 0));
         stats.setFirst(stats.getFirst() + 1);
         if (gameWon) {
@@ -26,5 +42,20 @@ public class PlayerStats {
 
     public Pair<Integer, Integer> getPlayerStats(String playerName) {
         return totalGamesPlayed.getOrDefault(playerName, new Pair<>(0, 0));
+    }
+
+    public void displayPlayerStats() {
+        if (totalGamesPlayed.isEmpty()) {
+            System.out.println("No player stats available");
+            return;
+        }
+        List<String> names = new ArrayList<>(totalGamesPlayed.keySet());
+        Collections.sort(names);
+        System.out.printf("%-30s %-15s %-15s %-15s%n", "Player Name", "Games Played", "Games Won", "Win Rate %");
+        for (String playerName : names) {
+            Pair<Integer, Integer> stat = totalGamesPlayed.getOrDefault(playerName, new Pair<>(0, 0));
+            int winRate = (int) ((double) stat.getSecond() / stat.getFirst() * 100);
+            System.out.printf("%-30s %-15d %-15d %-15s%n", playerName, stat.getFirst(), stat.getSecond(), winRate);
+        }
     }
 }

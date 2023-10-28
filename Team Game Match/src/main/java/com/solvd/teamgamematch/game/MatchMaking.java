@@ -1,7 +1,10 @@
 package com.solvd.teamgamematch.game;
 
 import com.solvd.teamgamematch.players.Player;
+import com.solvd.teamgamematch.players.PlayerMatchHistory;
+import com.solvd.teamgamematch.players.PlayerStats;
 import com.solvd.teamgamematch.players.Players;
+import com.solvd.teamgamematch.utility.Sleep;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -23,7 +26,15 @@ public class MatchMaking {
             ArrayList<Player> players = generateRandomTeams();
             ArrayList<String> champions = randomlySelectChampions();
 
-            // Determine the winner and update the player and champion stats
+            printTeams(players, champions);
+
+            fakeWaiting();
+
+            boolean teamOneWon = determineResult(players, champions);
+
+            printResults(teamOneWon);
+
+            updateStats(players, champions, teamOneWon);
         } catch (RuntimeException e) {
             return;
         }
@@ -69,7 +80,7 @@ public class MatchMaking {
         return selectedChampions;
     }
 
-    private static void determineResult(ArrayList<Player> players, ArrayList<String> champions) {
+    private static boolean determineResult(ArrayList<Player> players, ArrayList<String> champions) {
         int teamOneScore = 0;
         int teamTwoScore = 0;
 
@@ -80,8 +91,56 @@ public class MatchMaking {
             teamTwoScore += players.get(i).getChampionMastery(champions.get(i));
         }
 
-        boolean teamOneWon = teamOneScore >= teamOneScore;  // Team one wins if the scores are equal
-
+        return teamOneScore >= teamTwoScore;  // Team one wins if the scores are equal
     }
 
+    private static void printTeams(ArrayList<Player> players, ArrayList<String> champions) {
+        System.out.println("Team One:");
+        for (int i = 0; i < 5; i++) {
+            System.out.println(players.get(i).getPlayerName() + " is playing " + champions.get(i) +
+                    ". Champion Mastery Level: " + players.get(i).getChampionMastery(champions.get(i)) + "/10");
+        }
+        System.out.println("Team Two:");
+        for (int i = 5; i < 10; i++) {
+            System.out.println(players.get(i).getPlayerName() + " is playing " + champions.get(i) +
+                    ". Champion Mastery Level: " + players.get(i).getChampionMastery(champions.get(i)) + "/10");
+        }
+    }
+
+    private static void printResults(boolean teamOneWon) {
+        if (teamOneWon) {
+            System.out.println("Team One wins!");
+        } else {
+            System.out.println("Team Two wins!");
+        }
+    }
+
+    private static void updateStats(ArrayList<Player> players, ArrayList<String> champions, boolean teamOneWon) {
+        System.out.println("Updating stats");
+        PlayerMatchHistory matchHistory = PlayerMatchHistory.getInstance();
+        ChampionStats championStats = ChampionStats.getInstance();
+        PlayerStats playerStats = PlayerStats.getInstance();
+
+        for (int i = 0; i < 5; i++) {
+            matchHistory.addPlayerMatch(players.get(i).getPlayerName(), champions.get(i), teamOneWon);
+            championStats.addNewGame(champions.get(i), teamOneWon);
+            playerStats.addNewGame(players.get(i).getPlayerName(), teamOneWon);
+        }
+        for (int i = 5; i < 10; i++) {
+            matchHistory.addPlayerMatch(players.get(i).getPlayerName(), champions.get(i), !teamOneWon);
+            championStats.addNewGame(champions.get(i), !teamOneWon);
+            playerStats.addNewGame(players.get(i).getPlayerName(), !teamOneWon);
+        }
+    }
+
+    private static void fakeWaiting() {
+        System.out.println("Match in progress.");
+        Sleep.sleepForOneSecond();
+
+        System.out.println("Match in progress..");
+        Sleep.sleepForOneSecond();
+
+        System.out.println("Match in progress...");
+        Sleep.sleepForOneSecond();
+    }
 }

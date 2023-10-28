@@ -9,6 +9,10 @@ public class Players {
     private static Players instance;
     ArrayList<Player> players;
 
+    static {
+        instance = new Players();
+    }
+
     private Players() {
         players = new ArrayList<>();
         populatePlayerBase(100);
@@ -26,7 +30,7 @@ public class Players {
             count = 10;  // Minimum number of players needed to create two teams of 5
         }
         for (int i = 0; i < count; i++) {
-            players.add(new Player("Player " + String.valueOf(count)));
+            players.add(new Player("Player " + String.valueOf(i)));
         }
     }
 

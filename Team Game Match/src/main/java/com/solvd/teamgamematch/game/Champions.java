@@ -8,6 +8,10 @@ public class Champions {
     private static Champions instance;
     public static ArrayList<Champion> champions;
 
+    static {
+        instance = new Champions();
+    }
+
     private Champions() {
         champions = new ArrayList<>();
         createChampions();
