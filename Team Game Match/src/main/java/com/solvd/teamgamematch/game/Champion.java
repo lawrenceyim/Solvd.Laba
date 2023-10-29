@@ -1,6 +1,8 @@
 package com.solvd.teamgamematch.game;
 
 /**
+ * Champion class that contains the champion name, role, and stats
+ *
  * @version 1.0 27 Oct 2023
  * @author Lawrence Yim
  */

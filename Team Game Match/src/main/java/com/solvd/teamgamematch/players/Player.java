@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.Random;
 
 /**
+ * Player class that contains the player's name and mastery level for every champion
+ *
  * @version 1.0 27 Oct 2023
  * @author Lawrence Yim
  */

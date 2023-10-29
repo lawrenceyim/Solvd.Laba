@@ -3,9 +3,7 @@ package com.solvd.teamgamematch;
 import com.solvd.teamgamematch.game.ChampionStats;
 import com.solvd.teamgamematch.game.MatchMaking;
 import com.solvd.teamgamematch.players.PlayerStats;
-import com.solvd.teamgamematch.players.Players;
 
-import java.io.IOError;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 

@@ -1,6 +1,8 @@
 package com.solvd.teamgamematch.game;
 
 /**
+ * Item class that contains the item name and stats
+ *
  * @version 1.0 25 Oct 2023
  * @author Lawrence Yim
  */
