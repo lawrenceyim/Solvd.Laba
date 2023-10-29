@@ -39,10 +39,29 @@ public class PlayerMatchHistory {
     }
 
     public void addPlayerMatch(String playerName, String championName, boolean gameWon) {
-        playerMatchHistory.getOrDefault(playerName, new ArrayList<>()).add(new Pair<>(championName, gameWon));
+        var temp = playerMatchHistory.getOrDefault(playerName, new ArrayList<>());
+        temp.add(new Pair<>(championName, gameWon));
+        playerMatchHistory.put(playerName, temp);
     }
 
     public ArrayList<Pair<String, Boolean>> getPlayerMatchHistory(String playerName) {
         return playerMatchHistory.getOrDefault(playerName, new ArrayList<>());
+    }
+
+    public void displayPlayerMatchHistory(String playerName) {
+        ArrayList<Pair<String, Boolean>> history = playerMatchHistory.getOrDefault(playerName, new ArrayList<>());
+        if (history.isEmpty()) {
+            System.out.println("Player has no matches");
+            return;
+        }
+        System.out.println(playerName + "'s match history:");
+        System.out.printf("%-30s %-15s%n", "Champion Name", "Result");
+        for (Pair<String, Boolean> match: history) {
+            if (match.getSecond()) {
+                System.out.printf("%-30s %-15s%n", match.getFirst(), "Victory");
+            } else {
+                System.out.printf("%-30s %-15s%n", match.getFirst(), "Defeat");
+            }
+        }
     }
 }

@@ -2,7 +2,10 @@ package com.solvd.teamgamematch;
 
 import com.solvd.teamgamematch.game.ChampionStats;
 import com.solvd.teamgamematch.game.MatchMaking;
+import com.solvd.teamgamematch.players.Player;
+import com.solvd.teamgamematch.players.PlayerMatchHistory;
 import com.solvd.teamgamematch.players.PlayerStats;
+import com.solvd.teamgamematch.players.Players;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -41,6 +44,9 @@ public class Main {
                 case 3:
                     ChampionStats.getInstance().displayChampionStats();
                     break;
+                case 4:
+                    getPlayerName(input);
+                    break;
                 default:
                     System.out.println("Exiting");
                     System.exit(0);
@@ -53,10 +59,18 @@ public class Main {
         System.out.println("1. New Match");
         System.out.println("2. View Players Stats");
         System.out.println("3. View Champion Winrates");
-        System.out.println("4. Exit Program");
+        System.out.println("4. View Player Match History");
+        System.out.println("5. Exit Program");
     }
 
     private static boolean isValidChoice(int choice) {
-        return (choice >= 1 && choice <= 4);
+        return (choice >= 1 && choice <= 5);
+    }
+
+    private static void getPlayerName(Scanner input) {
+        System.out.println("Enter the player's name:");
+        input.nextLine(); // eliminate the \n from previous user input
+        String name = input.nextLine().replace("\n", "").trim();
+        PlayerMatchHistory.getInstance().displayPlayerMatchHistory(name);
     }
 }
