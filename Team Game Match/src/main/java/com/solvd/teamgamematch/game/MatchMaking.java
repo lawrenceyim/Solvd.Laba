@@ -4,6 +4,7 @@ import com.solvd.teamgamematch.players.Player;
 import com.solvd.teamgamematch.players.PlayerMatchHistory;
 import com.solvd.teamgamematch.players.PlayerStats;
 import com.solvd.teamgamematch.players.Players;
+import com.solvd.teamgamematch.regions.Region;
 import com.solvd.teamgamematch.utility.Sleep;
 
 import java.util.ArrayList;
@@ -18,11 +19,11 @@ import java.util.Random;
  */
 
 public class MatchMaking {
-    public static void matchMake() {
+    public static void matchMake(Region region) {
         try {
             // Players and champions will be randomly selected and paired based on their arraylist index
             // Indices 0-4 will be team one and 5-9 will be team two
-            ArrayList<Player> players = generateRandomTeams();
+            ArrayList<Player> players = generateRandomTeams(region);
             ArrayList<String> champions = randomlySelectChampions();
 
             printTeams(players, champions);
@@ -33,14 +34,15 @@ public class MatchMaking {
 
             printResults(teamOneWon);
 
-            updateStats(players, champions, teamOneWon);
+            updateStats(players, champions, teamOneWon, region);
         } catch (RuntimeException e) {
+            System.out.println("Returning to main menu");
             return;
         }
     }
 
-    private static ArrayList<Player> generateRandomTeams() {
-        ArrayList<Player> players = Players.getInstance().getPlayers();
+    private static ArrayList<Player> generateRandomTeams(Region region) {
+        ArrayList<Player> players = region.getPlayers().getPlayers();
 
         if (players.size() < 10) {
             throw new RuntimeException("Insufficient number of players to start matchmaking");
@@ -114,11 +116,12 @@ public class MatchMaking {
         }
     }
 
-    private static void updateStats(ArrayList<Player> players, ArrayList<String> champions, boolean teamOneWon) {
+    private static void updateStats(ArrayList<Player> players, ArrayList<String> champions, boolean teamOneWon,
+                                    Region region) {
         System.out.println("Updating stats");
-        PlayerMatchHistory matchHistory = PlayerMatchHistory.getInstance();
-        ChampionStats championStats = ChampionStats.getInstance();
-        PlayerStats playerStats = PlayerStats.getInstance();
+        PlayerMatchHistory matchHistory = region.getPlayerMatchHistory();
+        ChampionStats championStats = region.getChampionStats();
+        PlayerStats playerStats = region.getPlayerStats();
 
         for (int i = 0; i < 5; i++) {
             matchHistory.addPlayerMatch(players.get(i).getPlayerName(), champions.get(i), teamOneWon);

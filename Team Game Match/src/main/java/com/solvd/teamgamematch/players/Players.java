@@ -10,23 +10,15 @@ package com.solvd.teamgamematch.players;
 import java.util.ArrayList;
 
 public class Players {
-    private static Players instance;
     ArrayList<Player> players;
 
-    static {
-        instance = new Players();
-    }
-
-    private Players() {
+    public Players() {
         players = new ArrayList<>();
         populatePlayerBase(100);
     }
 
-    public static Players getInstance() {
-        if (instance == null) {
-            instance = new Players();
-        }
-        return instance;
+    public Players getInstance() {
+        return this;
     }
 
     public void populatePlayerBase(int count) {

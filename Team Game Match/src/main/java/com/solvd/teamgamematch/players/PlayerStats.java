@@ -15,27 +15,14 @@ import java.util.List;
  */
 
 public class PlayerStats {
-    private static PlayerStats instance;
     /*
         First int in the pair represents the total number of games played by the player
         Second int is the total number of games won by the player
      */
     HashMap<String, Pair<Integer, Integer>> totalGamesPlayed;
 
-    static {
-        instance = new PlayerStats();
-    }
-
-    private PlayerStats() {
+    public PlayerStats() {
         this.totalGamesPlayed = new HashMap<>();
-        ArrayList<Player> players = Players.getInstance().getPlayers();
-    }
-
-    public static PlayerStats getInstance() {
-        if (instance == null) {
-            instance = new PlayerStats();
-        }
-        return instance;
     }
 
     public void addNewGame(String playerName, boolean gameWon) {

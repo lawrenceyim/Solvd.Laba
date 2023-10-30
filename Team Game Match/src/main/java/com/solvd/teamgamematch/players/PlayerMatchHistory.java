@@ -19,23 +19,10 @@ public class PlayerMatchHistory {
         The string in the pair is the champion name
         The boolean is true if the player won the game
      */
-    private static PlayerMatchHistory instance;
-
     private HashMap<String, ArrayList<Pair<String, Boolean>>> playerMatchHistory;
 
-    static {
-        instance = new PlayerMatchHistory();
-    }
-
-    private PlayerMatchHistory() {
+    public PlayerMatchHistory() {
         this.playerMatchHistory = new HashMap<>();
-    }
-
-    public static PlayerMatchHistory getInstance() {
-        if (instance == null) {
-            instance = new PlayerMatchHistory();
-        }
-        return instance;
     }
 
     public void addPlayerMatch(String playerName, String championName, boolean gameWon) {

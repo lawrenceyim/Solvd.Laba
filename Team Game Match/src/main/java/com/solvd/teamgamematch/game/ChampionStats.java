@@ -12,8 +12,6 @@ import java.util.*;
  */
 
 public class ChampionStats {
-    private static ChampionStats instance;
-
     /*
         The string is the champion's name
         The first int in the pair is the total number of games played by the champion
@@ -21,23 +19,12 @@ public class ChampionStats {
      */
     private HashMap<String, Pair<Integer, Integer>> gamesWonByChampion;
 
-    static {
-        instance = new ChampionStats();
-    }
-
-    private ChampionStats() {
+    public ChampionStats() {
         gamesWonByChampion = new HashMap<>();
         ArrayList<String> championNames = Champions.getInstance().getChampionNames();
         for (String championName : championNames) {
             gamesWonByChampion.put(championName, new Pair<>(0, 0));
         }
-    }
-
-    public static ChampionStats getInstance() {
-        if (instance == null) {
-            instance = new ChampionStats();
-        }
-        return instance;
     }
 
     public void addNewGame(String championName, boolean wonGame) {
