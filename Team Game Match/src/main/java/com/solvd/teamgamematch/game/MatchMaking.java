@@ -98,12 +98,12 @@ public class MatchMaking {
     private static void printTeams(ArrayList<Player> players, ArrayList<String> champions) {
         System.out.println("Team One:");
         for (int i = 0; i < 5; i++) {
-            System.out.println(players.get(i).getPlayerName() + " is playing " + champions.get(i) +
+            System.out.println(players.get(i).getUserName() + " is playing " + champions.get(i) +
                     ". Champion Mastery Level: " + players.get(i).getChampionMastery(champions.get(i)) + "/10");
         }
         System.out.println("Team Two:");
         for (int i = 5; i < 10; i++) {
-            System.out.println(players.get(i).getPlayerName() + " is playing " + champions.get(i) +
+            System.out.println(players.get(i).getUserName() + " is playing " + champions.get(i) +
                     ". Champion Mastery Level: " + players.get(i).getChampionMastery(champions.get(i)) + "/10");
         }
     }
@@ -124,14 +124,14 @@ public class MatchMaking {
         PlayerStats playerStats = region.getPlayerStats();
 
         for (int i = 0; i < 5; i++) {
-            matchHistory.addPlayerMatch(players.get(i).getPlayerName(), champions.get(i), teamOneWon);
+            matchHistory.addPlayerMatch(players.get(i).getUserName(), champions.get(i), teamOneWon);
             championStats.addNewGame(champions.get(i), teamOneWon);
-            playerStats.addNewGame(players.get(i).getPlayerName(), teamOneWon);
+            playerStats.addNewGame(players.get(i).getUserName(), teamOneWon);
         }
         for (int i = 5; i < 10; i++) {
-            matchHistory.addPlayerMatch(players.get(i).getPlayerName(), champions.get(i), !teamOneWon);
+            matchHistory.addPlayerMatch(players.get(i).getUserName(), champions.get(i), !teamOneWon);
             championStats.addNewGame(champions.get(i), !teamOneWon);
-            playerStats.addNewGame(players.get(i).getPlayerName(), !teamOneWon);
+            playerStats.addNewGame(players.get(i).getUserName(), !teamOneWon);
         }
     }
 

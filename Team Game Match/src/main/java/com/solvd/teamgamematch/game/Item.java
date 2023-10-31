@@ -1,5 +1,10 @@
 package com.solvd.teamgamematch.game;
 
+import com.solvd.teamgamematch.utility.Pair;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 /**
  * Item class that contains the item name and stats
  *
@@ -9,13 +14,23 @@ package com.solvd.teamgamematch.game;
 
 public class Item {
     private String itemName;
-    private String[] statNames;
-    private int[] statValues;
+    // String represents the stat name, Integer represents the stat value
+    // e.g. new Pair<String, Integer> (Health Points, 50)
+    private ArrayList<Pair<String, Integer>> stats;
 
-    public Item(String itemName, String[] statNames, int[] statValues) {
+    public Item(String itemName, ArrayList<Pair<String, Integer>> stats) {
         this.itemName = itemName;
-        this.statNames = statNames;
-        this.statValues = statValues;
+        this.stats = stats;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Item Name: " + itemName);
+        for (Pair<String, Integer> stat : stats) {
+            sb.append(stat.getFirst() + ": " + stat.getSecond());
+        }
+        return sb.toString();
     }
 
     public String getItemName() {
@@ -26,19 +41,11 @@ public class Item {
         this.itemName = itemName;
     }
 
-    public String[] getStatNames() {
-        return statNames;
+    public ArrayList<Pair<String, Integer>> getStats() {
+        return stats;
     }
 
-    public void setStatNames(String[] statNames) {
-        this.statNames = statNames;
-    }
-
-    public int[] getStatValues() {
-        return statValues;
-    }
-
-    public void setStatValues(int[] statValues) {
-        this.statValues = statValues;
+    public void setStats(ArrayList<Pair<String, Integer>> stats) {
+        this.stats = stats;
     }
 }

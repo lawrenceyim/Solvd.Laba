@@ -1,6 +1,7 @@
 package com.solvd.teamgamematch.players;
 
 import com.solvd.teamgamematch.game.Champions;
+import com.solvd.teamgamematch.person.Person;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,21 +14,22 @@ import java.util.Random;
  * @author Lawrence Yim
  */
 
-public class Player {
-    private String playerName;
+public class Player extends Person {
+    private String userName;
     private HashMap<String, Integer> championMastery;  // Player's skill level for each champion (1 to 10)
 
-    public Player(String playerName) {
-        this.playerName = playerName;
+    public Player(String name, String idNumber, String userName) {
+        super(name, idNumber);
+        this.userName = userName;
         this.championMastery = generateChampionMastery();
     }
 
-    public String getPlayerName() {
-        return playerName;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public int getChampionMastery(String championName) {
@@ -49,4 +51,8 @@ public class Player {
     }
 
 
+    @Override
+    public void personDetail() {
+        System.out.println(getName() + " is a player");
+    }
 }

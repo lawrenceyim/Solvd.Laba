@@ -29,6 +29,12 @@ public class Champion {
         this.baseMagicResist = baseMagicResist;
     }
 
+    @Override
+    public String toString() {
+        return "Champion Name: " + championName +
+                "\nChampion Role: " + mainRole;
+    }
+
     public String getChampionName() {
         return championName;
     }
