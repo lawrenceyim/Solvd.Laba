@@ -11,6 +11,6 @@ public class HowlingGale extends Ability {
 
     @Override
     public void castAbility() {
-
+        System.out.println(getAbilityName() + " used " + getAbilityName());
     }
 }
