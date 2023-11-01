@@ -1,6 +1,6 @@
 package com.solvd.teamgamematch.players;
 
-import com.solvd.teamgamematch.game.Champions;
+import com.solvd.teamgamematch.game.ChampionManager;
 import com.solvd.teamgamematch.person.Person;
 
 import java.util.ArrayList;
@@ -43,13 +43,12 @@ public class Player extends Person {
     private HashMap<String, Integer> generateChampionMastery() {
         HashMap<String, Integer> championMastery = new HashMap<>();
         Random random = new Random();
-        ArrayList<String> championNames = Champions.getInstance().getChampionNames();
+        ArrayList<String> championNames = ChampionManager.getInstance().getChampionNames();
         for (String championName : championNames) {
             championMastery.put(championName, random.nextInt(10) + 1); // Random number between 1-10
         }
         return championMastery;
     }
-
 
     @Override
     public void personDetail() {

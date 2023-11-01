@@ -3,7 +3,6 @@ package com.solvd.teamgamematch.game;
 import com.solvd.teamgamematch.players.Player;
 import com.solvd.teamgamematch.players.PlayerMatchHistory;
 import com.solvd.teamgamematch.players.PlayerStats;
-import com.solvd.teamgamematch.players.Players;
 import com.solvd.teamgamematch.regions.Region;
 import com.solvd.teamgamematch.utility.Sleep;
 
@@ -65,7 +64,7 @@ public class MatchMaking {
     }
 
     private static ArrayList<String> randomlySelectChampions() {
-        ArrayList<String> championNames = Champions.getInstance().getChampionNames();
+        ArrayList<String> championNames = ChampionManager.getInstance().getChampionNames();
         HashSet<Integer> randomChampions = new HashSet<>();
         Random random = new Random();
 

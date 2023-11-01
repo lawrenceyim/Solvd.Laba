@@ -1,5 +1,6 @@
 package com.solvd.teamgamematch.employees;
 
+import com.solvd.teamgamematch.employees.roles.Role;
 import com.solvd.teamgamematch.person.Person;
 
 import java.math.BigDecimal;

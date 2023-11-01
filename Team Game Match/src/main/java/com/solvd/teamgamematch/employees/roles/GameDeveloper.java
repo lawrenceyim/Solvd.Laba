@@ -1,4 +1,4 @@
-package com.solvd.teamgamematch.employees;
+package com.solvd.teamgamematch.employees.roles;
 
 public class GameDeveloper extends Role {
     public GameDeveloper() {

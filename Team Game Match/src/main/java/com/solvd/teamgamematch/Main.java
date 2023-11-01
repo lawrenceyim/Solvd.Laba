@@ -1,9 +1,6 @@
 package com.solvd.teamgamematch;
 
-import com.solvd.teamgamematch.game.ChampionStats;
 import com.solvd.teamgamematch.game.MatchMaking;
-import com.solvd.teamgamematch.players.PlayerMatchHistory;
-import com.solvd.teamgamematch.players.PlayerStats;
 import com.solvd.teamgamematch.regions.Region;
 import com.solvd.teamgamematch.regions.Regions;
 
@@ -67,7 +64,7 @@ public class Main {
         System.out.println("Current region: " + regionName);
         System.out.println("1. New Match");
         System.out.println("2. View Players Stats");
-        System.out.println("3. View Champion Winrates");
+        System.out.println("3. View Champion Win Rates");
         System.out.println("4. View Player Match History");
         System.out.println("5. Switch Region");
         System.out.println("6. Exit Program");

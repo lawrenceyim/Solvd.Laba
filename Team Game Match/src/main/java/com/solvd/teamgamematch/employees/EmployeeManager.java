@@ -2,10 +2,10 @@ package com.solvd.teamgamematch.employees;
 
 import java.util.ArrayList;
 
-public class Employees {
+public class EmployeeManager {
     private ArrayList<Employee> employees;
 
-    public Employees() {
+    public EmployeeManager() {
         this.employees = new ArrayList<>();
     }
 

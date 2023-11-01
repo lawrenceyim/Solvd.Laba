@@ -9,22 +9,22 @@ import java.util.ArrayList;
  * @author Lawrence Yim
  */
 
-public class Champions {
-    private static Champions instance;
+public class ChampionManager {
+    private static ChampionManager instance;
     public static ArrayList<Champion> champions;
 
     static {
-        instance = new Champions();
+        instance = new ChampionManager();
     }
 
-    private Champions() {
+    private ChampionManager() {
         champions = new ArrayList<>();
         createChampions();
     }
 
-    public static Champions getInstance() {
+    public static ChampionManager getInstance() {
         if (instance == null) {
-            instance = new Champions();
+            instance = new ChampionManager();
         }
         return instance;
     }

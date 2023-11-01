@@ -3,18 +3,18 @@ package com.solvd.teamgamematch.regions;
 import com.solvd.teamgamematch.game.ChampionStats;
 import com.solvd.teamgamematch.players.PlayerMatchHistory;
 import com.solvd.teamgamematch.players.PlayerStats;
-import com.solvd.teamgamematch.players.Players;
+import com.solvd.teamgamematch.players.PlayerManager;
 
 public class Region {
     private String regionName;
-    private Players players;
+    private PlayerManager players;
     private PlayerMatchHistory playerMatchHistory;
     private PlayerStats playerStats;
     private ChampionStats championStats;
 
     public Region(String regionName) {
         this.regionName = regionName;
-        players = new Players();
+        players = new PlayerManager();
         playerMatchHistory = new PlayerMatchHistory();
         playerStats = new PlayerStats();
         championStats = new ChampionStats();
@@ -28,11 +28,11 @@ public class Region {
         this.regionName = regionName;
     }
 
-    public Players getPlayers() {
+    public PlayerManager getPlayers() {
         return players;
     }
 
-    public void setPlayers(Players players) {
+    public void setPlayers(PlayerManager players) {
         this.players = players;
     }
 

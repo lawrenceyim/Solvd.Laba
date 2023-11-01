@@ -21,7 +21,7 @@ public class ChampionStats {
 
     public ChampionStats() {
         gamesWonByChampion = new HashMap<>();
-        ArrayList<String> championNames = Champions.getInstance().getChampionNames();
+        ArrayList<String> championNames = ChampionManager.getInstance().getChampionNames();
         for (String championName : championNames) {
             gamesWonByChampion.put(championName, new Pair<>(0, 0));
         }

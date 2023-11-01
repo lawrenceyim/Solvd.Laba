@@ -11,15 +11,15 @@ import com.solvd.teamgamematch.person.IdNumberManager;
 
 import java.util.ArrayList;
 
-public class Players {
+public class PlayerManager {
     ArrayList<Player> players;
 
-    public Players() {
+    public PlayerManager() {
         players = new ArrayList<>();
         populatePlayerBase(100);
     }
 
-    public Players getInstance() {
+    public PlayerManager getInstance() {
         return this;
     }
 

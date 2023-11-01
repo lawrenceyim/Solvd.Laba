@@ -1,4 +1,4 @@
-package com.solvd.teamgamematch.employees;
+package com.solvd.teamgamematch.employees.roles;
 
 /**
  * Abstract class that defines the name and responsibilities of different employee roles
