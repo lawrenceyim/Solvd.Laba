@@ -16,7 +16,7 @@ public class PlayerManager {
 
     public PlayerManager() {
         players = new ArrayList<>();
-        populatePlayerBase(100);
+        populatePlayerBase(15);
     }
 
     public PlayerManager getInstance() {
