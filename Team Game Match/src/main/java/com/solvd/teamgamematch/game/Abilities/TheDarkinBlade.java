@@ -1,5 +1,12 @@
 package com.solvd.teamgamematch.game.Abilities;
 
+/**
+ * Q ability for Aatrox
+ *
+ * @version 1.0 1 Nov 2023
+ * @author Lawrence Yim
+ */
+
 public class TheDarkinBlade extends Ability {
     public TheDarkinBlade() {
         super("The Darkin Blade", 14,

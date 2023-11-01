@@ -1,5 +1,12 @@
 package com.solvd.teamgamematch.game.Abilities;
 
+/**
+ * Q ability for Caitlyn
+ *
+ * @version 1.0 1 Nov 2023
+ * @author Lawrence Yim
+ */
+
 public class PiltoverPeacemaker extends Ability {
     public PiltoverPeacemaker() {
         super("Piltover Peacemaker", 10,

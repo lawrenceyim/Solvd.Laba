@@ -1,5 +1,12 @@
 package com.solvd.teamgamematch.game.Abilities;
 
+/**
+ * Q ability for Zoe
+ *
+ * @version 1.0 1 Nov 2023
+ * @author Lawrence Yim
+ */
+
 public class PaddleStar extends Ability {
     public PaddleStar() {
         super("Paddle Star", 8.5,

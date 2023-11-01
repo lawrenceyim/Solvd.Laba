@@ -1,5 +1,12 @@
 package com.solvd.teamgamematch.game.Abilities;
 
+/**
+ * Abstract class to contain data and methods for champion abilities
+ *
+ * @version 1.0 1 Nov 2023
+ * @author Lawrence Yim
+ */
+
 public abstract class Ability {
     private String abilityName;
     private String abilityDescription;

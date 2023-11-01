@@ -1,5 +1,12 @@
 package com.solvd.teamgamematch.employees.roles;
 
+/**
+ * Game Tester role
+ *
+ * @version 1.0 31 Oct 2023
+ * @author Lawrence Yim
+ */
+
 public class GameTester extends Role {
     public GameTester() {
         super("Game Tester", "Thoroughly testing game features and functionality\n" +

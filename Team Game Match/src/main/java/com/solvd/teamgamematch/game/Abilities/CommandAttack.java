@@ -1,5 +1,12 @@
 package com.solvd.teamgamematch.game.Abilities;
 
+/**
+ * Q ability for Oriana
+ *
+ * @version 1.0 1 Nov 2023
+ * @author Lawrence Yim
+ */
+
 public class CommandAttack extends Ability {
     public CommandAttack() {
         super("Command: Attack", 6,

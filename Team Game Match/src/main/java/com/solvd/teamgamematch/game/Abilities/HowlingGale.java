@@ -1,5 +1,12 @@
 package com.solvd.teamgamematch.game.Abilities;
 
+/**
+ * Q ability for Janna
+ *
+ * @version 1.0 1 Nov 2023
+ * @author Lawrence Yim
+ */
+
 public class HowlingGale extends Ability {
     public HowlingGale() {
         super("Howling Gale", 12,

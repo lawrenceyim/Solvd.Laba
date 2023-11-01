@@ -1,7 +1,13 @@
 package com.solvd.teamgamematch.game.Abilities;
 
-public class SonicWaveResonatingStrike extends Ability {
+/**
+ * Q ability for Lee Sin
+ *
+ * @version 1.0 1 Nov 2023
+ * @author Lawrence Yim
+ */
 
+public class SonicWaveResonatingStrike extends Ability {
     public SonicWaveResonatingStrike() {
         super("Sonic Wave/Resonating Strike", 10,
                 "Sonic Wave: Lee Sin projects a discordant wave of sound to locate his enemies, dealing " +

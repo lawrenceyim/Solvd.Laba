@@ -1,5 +1,12 @@
 package com.solvd.teamgamematch.employees.roles;
 
+/**
+ * Game Developer role
+ *
+ * @version 1.0 31 Oct 2023
+ * @author Lawrence Yim
+ */
+
 public class GameDeveloper extends Role {
     public GameDeveloper() {
         super("Game Developer", "Understand the game requirement.\n" +

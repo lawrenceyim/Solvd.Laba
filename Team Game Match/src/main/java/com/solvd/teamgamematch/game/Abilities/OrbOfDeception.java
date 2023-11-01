@@ -1,5 +1,12 @@
 package com.solvd.teamgamematch.game.Abilities;
 
+/**
+ * Q ability for Ahri
+ *
+ * @version 1.0 1 Nov 2023
+ * @author Lawrence Yim
+ */
+
 public class OrbOfDeception extends Ability {
     public OrbOfDeception() {
         super("Orb of Deception", 7,
