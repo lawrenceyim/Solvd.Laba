@@ -19,6 +19,6 @@ public class SonicWaveResonatingStrike extends Ability {
 
     @Override
     public void castAbility() {
-        System.out.println(getAbilityName() + " used " + getAbilityName());
+        System.out.println("Lee Sin used " + getAbilityName());
     }
 }

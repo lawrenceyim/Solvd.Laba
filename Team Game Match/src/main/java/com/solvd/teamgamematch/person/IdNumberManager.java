@@ -33,5 +33,4 @@ public class IdNumberManager {
     public String generateIdNumber() {
         return String.valueOf(idNumbers.size() + 1);
     }
-
 }

@@ -20,6 +20,12 @@ public class Region {
         championStats = new ChampionStats();
     }
 
+    @Override
+    public String toString() {
+        return "Region Name: " + regionName +
+                "\nPlayer Count: " + players.getPlayers().size();
+    }
+
     public String getRegionName() {
         return regionName;
     }

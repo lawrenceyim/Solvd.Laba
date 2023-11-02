@@ -1,7 +1,7 @@
 package com.solvd.teamgamematch.game.Abilities;
 
 /**
- * Q ability for LuLu
+ * Q ability for Lulu
  *
  * @version 1.0 1 Nov 2023
  * @author Lawrence Yim
@@ -17,6 +17,6 @@ public class Glitterlance extends Ability {
 
     @Override
     public void castAbility() {
-        System.out.println(getAbilityName() + " used " + getAbilityName());
+        System.out.println("Lulu used " + getAbilityName());
     }
 }

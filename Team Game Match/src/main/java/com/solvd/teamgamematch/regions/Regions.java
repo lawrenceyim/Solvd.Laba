@@ -30,6 +30,10 @@ public class Regions {
         regions.put("OCE", new Region("OCE"));
     }
 
+    @Override
+    public String toString() {
+        return "Current number of server regions: " + regions.size();
+    }
 
     public void AddRegion(String regionName) {
         regions.put(regionName, new Region(regionName));
@@ -42,6 +46,4 @@ public class Regions {
     public Region getRegion(String regionName) {
         return regions.get(regionName);
     }
-
-
 }

@@ -17,6 +17,6 @@ public class MysticShot extends Ability {
 
     @Override
     public void castAbility() {
-        System.out.println(getAbilityName() + " used " + getAbilityName());
+        System.out.println("Ezreal used " + getAbilityName());
     }
 }

@@ -16,7 +16,7 @@ public class TheDarkinBlade extends Ability {
 
     @Override
     public void castAbility() {
-        System.out.println(getAbilityName() + " used " + getAbilityName());
+        System.out.println("Aatrox used " + getAbilityName());
     }
 
 }

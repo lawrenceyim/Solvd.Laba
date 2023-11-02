@@ -24,6 +24,17 @@ public class Player extends Person {
         this.championMastery = generateChampionMastery();
     }
 
+    @Override
+    public String toString() {
+        return "Player Username: " + userName +
+                "\nID Number: " + getIdNumber();
+    }
+
+    @Override
+    public void personDetail() {
+        System.out.println(getName() + " is a player");
+    }
+
     public String getUserName() {
         return userName;
     }
@@ -48,10 +59,5 @@ public class Player extends Person {
             championMastery.put(championName, random.nextInt(10) + 1); // Random number between 1-10
         }
         return championMastery;
-    }
-
-    @Override
-    public void personDetail() {
-        System.out.println(getName() + " is a player");
     }
 }
