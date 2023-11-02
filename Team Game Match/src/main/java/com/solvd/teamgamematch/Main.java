@@ -17,7 +17,7 @@ import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
-        Regions regions = Regions.getInstance();
+        Regions regions = new Regions();
         Region currentRegion = regions.getRegion("NA");
 
         int userChoice;

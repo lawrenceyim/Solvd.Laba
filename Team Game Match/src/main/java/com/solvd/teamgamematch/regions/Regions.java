@@ -3,19 +3,7 @@ package com.solvd.teamgamematch.regions;
 import java.util.HashMap;
 
 public class Regions {
-    private static Regions instance;
     HashMap<String, Region> regions;
-
-    static {
-        instance = new Regions();
-    }
-
-    public static Regions getInstance() {
-        if (instance == null) {
-            instance = new Regions();
-        }
-        return instance;
-    }
 
     public Regions() {
         regions = new HashMap<>();
