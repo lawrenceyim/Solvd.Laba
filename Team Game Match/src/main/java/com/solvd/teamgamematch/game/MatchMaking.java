@@ -42,6 +42,16 @@ public class MatchMaking {
         }
     }
 
+    // Used to populate the statistics with matches on application startup
+    public static void matchMakeWithNoOutput(Region region) {
+        try {
+            ArrayList<Player> players = generateRandomTeams(region);
+            ArrayList<String> champions = randomlySelectChampions();
+            boolean teamOneWon = determineResult(players, champions);
+            updateStats(players, champions, teamOneWon, region);
+        } catch (RuntimeException e) {}
+    }
+
     private static ArrayList<Player> generateRandomTeams(Region region) {
         ArrayList<Player> players = region.getPlayers().getPlayers();
 

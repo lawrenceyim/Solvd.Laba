@@ -16,33 +16,42 @@ import java.util.HashMap;
 
 public class PlayerMatchHistory {
     /*
-        The first string is the player's name
+        The first string is the player's username
         The string in the pair is the champion name
         The boolean is true if the player won the game
      */
     private HashMap<String, ArrayList<Pair<String, Boolean>>> playerMatchHistory;
 
-    public PlayerMatchHistory() {
-        this.playerMatchHistory = new HashMap<>();
+    public PlayerMatchHistory(PlayerManager playerManager) {
+        playerMatchHistory = new HashMap<>();
+        ArrayList<Player> players = playerManager.getPlayers();
+        for (Player player : players) {
+            playerMatchHistory.put(player.getUserName(), new ArrayList<>());
+        }
     }
 
-    public void addPlayerMatch(String playerName, String championName, boolean gameWon) {
-        var temp = playerMatchHistory.getOrDefault(playerName, new ArrayList<>());
+    public void addPlayerMatch(String userName, String championName, boolean gameWon) {
+        var temp = playerMatchHistory.getOrDefault(userName, new ArrayList<>());
         temp.add(new Pair<>(championName, gameWon));
-        playerMatchHistory.put(playerName, temp);
+        playerMatchHistory.put(userName, temp);
     }
 
-    public ArrayList<Pair<String, Boolean>> getPlayerMatchHistory(String playerName) {
-        return playerMatchHistory.getOrDefault(playerName, new ArrayList<>());
+    public ArrayList<Pair<String, Boolean>> getPlayerMatchHistory(String userName) {
+        return playerMatchHistory.getOrDefault(userName, new ArrayList<>());
     }
 
-    public void displayPlayerMatchHistory(String playerName) {
-        ArrayList<Pair<String, Boolean>> history = playerMatchHistory.getOrDefault(playerName, new ArrayList<>());
+    public void displayPlayerMatchHistory(String userName) {
+        if (!playerMatchHistory.containsKey(userName)) {
+            System.out.println("Player does not exist");
+        }
+
+        ArrayList<Pair<String, Boolean>> history = playerMatchHistory.get(userName);
         if (history.isEmpty()) {
             System.out.println("Player has no matches");
             return;
         }
-        System.out.println(playerName + "'s match history:");
+
+        System.out.println(userName + "'s match history:");
         System.out.printf("%-30s %-15s%n", "Champion Name", "Result");
         for (Pair<String, Boolean> match: history) {
             if (match.getSecond()) {

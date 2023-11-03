@@ -26,17 +26,17 @@ public class PlayerStats {
         this.totalGamesPlayed = new HashMap<>();
     }
 
-    public void addNewGame(String playerName, boolean gameWon) {
-        Pair<Integer, Integer> stats = totalGamesPlayed.getOrDefault(playerName, new Pair<>(0, 0));
+    public void addNewGame(String userName, boolean gameWon) {
+        Pair<Integer, Integer> stats = totalGamesPlayed.getOrDefault(userName, new Pair<>(0, 0));
         stats.setFirst(stats.getFirst() + 1);
         if (gameWon) {
             stats.setSecond(stats.getSecond() + 1);
         }
-        totalGamesPlayed.put(playerName, stats);
+        totalGamesPlayed.put(userName, stats);
     }
 
-    public Pair<Integer, Integer> getPlayerStats(String playerName) {
-        return totalGamesPlayed.getOrDefault(playerName, new Pair<>(0, 0));
+    public Pair<Integer, Integer> getPlayerStats(String userName) {
+        return totalGamesPlayed.getOrDefault(userName, new Pair<>(0, 0));
     }
 
     public void displayPlayerStats() {
@@ -47,15 +47,15 @@ public class PlayerStats {
         List<String> names = new ArrayList<>(totalGamesPlayed.keySet());
         Collections.sort(names);
         System.out.printf("%-30s %-15s %-15s %-15s%n", "Player Name", "Games Played", "Games Won", "Win Rate %");
-        for (String playerName : names) {
-            Pair<Integer, Integer> stat = totalGamesPlayed.getOrDefault(playerName, new Pair<>(0, 0));
+        for (String userName : names) {
+            Pair<Integer, Integer> stat = totalGamesPlayed.getOrDefault(userName, new Pair<>(0, 0));
             int winRate;
             if (stat.getFirst() == 0) {
                 winRate = 0;
             } else {
                 winRate = (int) ((double) stat.getSecond() / stat.getFirst() * 100);
             }
-            System.out.printf("%-30s %-15d %-15d %-15s%n", playerName, stat.getFirst(), stat.getSecond(), winRate);
+            System.out.printf("%-30s %-15d %-15d %-15s%n", userName, stat.getFirst(), stat.getSecond(), winRate);
         }
         WaitForInput.waitForAnyUserInput();
     }

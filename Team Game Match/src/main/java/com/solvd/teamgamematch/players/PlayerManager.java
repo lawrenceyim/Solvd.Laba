@@ -19,10 +19,6 @@ public class PlayerManager {
         populatePlayerBase(15);
     }
 
-    public PlayerManager getInstance() {
-        return this;
-    }
-
     public void populatePlayerBase(int count) {
         IdNumberManager idNumberManager = IdNumberManager.getInstance();
         if (count < 10) {
