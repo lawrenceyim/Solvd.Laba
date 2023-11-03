@@ -1,6 +1,7 @@
 package com.solvd.teamgamematch.game;
 
 import com.solvd.teamgamematch.utility.Pair;
+import com.solvd.teamgamematch.utility.WaitForInput;
 
 import java.util.*;
 
@@ -58,5 +59,6 @@ public class ChampionStats {
             }
             System.out.printf("%-30s %-15d %-15d %-25s%n", playerName, stat.getFirst(), stat.getSecond(), winRate);
         }
+        WaitForInput.waitForAnyUserInput();
     }
 }

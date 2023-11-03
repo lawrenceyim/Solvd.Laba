@@ -5,6 +5,7 @@ import com.solvd.teamgamematch.players.PlayerMatchHistory;
 import com.solvd.teamgamematch.players.PlayerStats;
 import com.solvd.teamgamematch.regions.Region;
 import com.solvd.teamgamematch.utility.Sleep;
+import com.solvd.teamgamematch.utility.WaitForInput;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -34,9 +35,10 @@ public class MatchMaking {
             printResults(teamOneWon);
 
             updateStats(players, champions, teamOneWon, region);
+
+            WaitForInput.waitForAnyUserInput();
         } catch (RuntimeException e) {
             System.out.println("Returning to main menu");
-            return;
         }
     }
 
@@ -117,7 +119,6 @@ public class MatchMaking {
 
     private static void updateStats(ArrayList<Player> players, ArrayList<String> champions, boolean teamOneWon,
                                     Region region) {
-        System.out.println("Updating stats");
         PlayerMatchHistory matchHistory = region.getPlayerMatchHistory();
         ChampionStats championStats = region.getChampionStats();
         PlayerStats playerStats = region.getPlayerStats();

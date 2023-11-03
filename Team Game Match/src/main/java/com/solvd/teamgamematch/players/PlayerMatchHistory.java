@@ -1,6 +1,7 @@
 package com.solvd.teamgamematch.players;
 
 import com.solvd.teamgamematch.utility.Pair;
+import com.solvd.teamgamematch.utility.WaitForInput;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,5 +51,6 @@ public class PlayerMatchHistory {
                 System.out.printf("%-30s %-15s%n", match.getFirst(), "Defeat");
             }
         }
+        WaitForInput.waitForAnyUserInput();
     }
 }

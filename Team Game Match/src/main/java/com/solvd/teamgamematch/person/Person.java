@@ -7,7 +7,6 @@ package com.solvd.teamgamematch.person;
  * @author Lawrence Yim
  */
 
-
 public abstract class Person {
     private String name;
     private String idNumber;
