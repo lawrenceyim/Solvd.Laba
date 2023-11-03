@@ -22,8 +22,7 @@ public class Main {
 
         int userChoice;
         Scanner input = new Scanner(System.in);
-        boolean running = true;
-        while (running) {
+        while (true) {
             displayMenu(currentRegion.getRegionName());
             try {
                 userChoice = input.nextInt();
