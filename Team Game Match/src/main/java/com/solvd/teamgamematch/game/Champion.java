@@ -1,6 +1,6 @@
 package com.solvd.teamgamematch.game;
 
-import com.solvd.teamgamematch.game.Abilities.Ability;
+import com.solvd.teamgamematch.game.abilities.Ability;
 
 /**
  * Champion class that contains the champion name, role, and stats

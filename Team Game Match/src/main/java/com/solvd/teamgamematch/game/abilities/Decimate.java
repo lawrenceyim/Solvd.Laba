@@ -1,4 +1,4 @@
-package com.solvd.teamgamematch.game.Abilities;
+package com.solvd.teamgamematch.game.abilities;
 
 /**
  * Q ability for Darius
