@@ -27,7 +27,7 @@ public class Main {
             displayMenu(currentRegion.getRegionName());
             try {
                 userChoice = input.nextInt();
-            } catch (InputMismatchException e) {
+            } catch (Exception e) {
                 input.nextLine(); // clear input
                 System.out.println("Invalid input");
                 continue;
@@ -54,6 +54,7 @@ public class Main {
                     break;
                 default:
                     System.out.println("Exiting");
+                    input.close();
                     System.exit(0);
             }
         }

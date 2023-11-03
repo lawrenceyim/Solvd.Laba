@@ -43,6 +43,7 @@ public class PlayerMatchHistory {
     public void displayPlayerMatchHistory(String userName) {
         if (!playerMatchHistory.containsKey(userName)) {
             System.out.println("Player does not exist");
+            return;
         }
 
         ArrayList<Pair<String, Boolean>> history = playerMatchHistory.get(userName);

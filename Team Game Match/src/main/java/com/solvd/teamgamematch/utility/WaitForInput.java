@@ -12,6 +12,7 @@ import java.util.Scanner;
 public class WaitForInput {
     public static void waitForAnyUserInput() {
         System.out.println("Press enter to continue...");
-        new Scanner(System.in).nextLine();
+        Scanner input = new Scanner(System.in);
+        input.nextLine();
     }
 }
