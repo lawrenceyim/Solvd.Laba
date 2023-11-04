@@ -9,11 +9,9 @@ package com.solvd.teamgamematch.person;
 
 public abstract class Person {
     private String name;
-    private String idNumber;
 
-    public Person(String name, String idNumber) {
+    public Person(String name) {
         this.name = name;
-        this.idNumber = idNumber;
     }
 
     public abstract void personDetail();
@@ -24,13 +22,5 @@ public abstract class Person {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getIdNumber() {
-        return idNumber;
-    }
-
-    public void setIdNumber(String idNumber) {
-        this.idNumber = idNumber;
     }
 }

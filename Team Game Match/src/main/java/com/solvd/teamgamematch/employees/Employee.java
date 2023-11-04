@@ -17,8 +17,8 @@ public class Employee extends Person {
     BigDecimal salary;
     Role role;
 
-    public Employee(String name, String idNumber, BigDecimal salary, Role role) {
-        super(name, idNumber);
+    public Employee(String name, BigDecimal salary, Role role) {
+        super(name);
         this.salary = salary;
         this.role = role;
     }
@@ -42,7 +42,6 @@ public class Employee extends Person {
     @Override
     public String toString() {
         return "Employee Name: " + getName() +
-                "\nID Number: " + getIdNumber() +
                 "\nSalary: $" + salary +
                 role.toString();
     }

@@ -19,16 +19,15 @@ public class Player extends Person {
     private String userName;
     private HashMap<String, Integer> championMastery;  // Player's skill level for each champion (1 to 10)
 
-    public Player(String name, String idNumber, String userName) {
-        super(name, idNumber);
+    public Player(String name, String userName) {
+        super(name);
         this.userName = userName;
         this.championMastery = generateChampionMastery();
     }
 
     @Override
     public String toString() {
-        return "Player Username: " + userName +
-                "\nID Number: " + getIdNumber();
+        return "Player Username: " + userName;
     }
 
     @Override
