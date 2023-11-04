@@ -16,11 +16,26 @@ import java.math.BigDecimal;
 public class Employee extends Person {
     BigDecimal salary;
     Role role;
+    String employeeId;
 
-    public Employee(String name, BigDecimal salary, Role role) {
+    public Employee(String name, BigDecimal salary, Role role, String employeeId) {
         super(name);
         this.salary = salary;
         this.role = role;
+        this.employeeId = employeeId;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee Name: " + getName() +
+                "\nEmployee ID: " + employeeId +
+                "\nSalary: $" + salary +
+                role.toString();
+    }
+
+    @Override
+    public void personDetail() {
+        Main.getOutput().displayOutput(getName() + " is an employee");
     }
 
     public BigDecimal getSalary() {
@@ -39,15 +54,11 @@ public class Employee extends Person {
         this.role = role;
     }
 
-    @Override
-    public String toString() {
-        return "Employee Name: " + getName() +
-                "\nSalary: $" + salary +
-                role.toString();
+    public String getEmployeeId() {
+        return employeeId;
     }
 
-    @Override
-    public void personDetail() {
-        Main.getOutput().displayOutput(getName() + " is an employee");
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
     }
 }
