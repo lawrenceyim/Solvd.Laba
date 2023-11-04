@@ -9,6 +9,14 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Set;
 
+/**
+ * Main menu for the program when displaying output to a command prompt or terminal
+ *
+ * @version 1.0 4 Nov 2023
+ * @author Lawrence Yim
+ */
+
+
 public class CommandPromptMenu implements IMenu {
     @Override
     public void menuLoop() {

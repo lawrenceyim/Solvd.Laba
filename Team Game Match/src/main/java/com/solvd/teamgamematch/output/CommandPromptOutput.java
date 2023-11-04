@@ -2,6 +2,7 @@ package com.solvd.teamgamematch.output;
 
 /**
  * Display output to the command prompt or terminal
+ * All terminal output should use displayOutput() instead of System.out.println()
  *
  * @version 1.0 3 Nov 2023
  * @author Lawrence Yim
