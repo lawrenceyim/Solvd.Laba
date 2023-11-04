@@ -108,16 +108,19 @@ public class MatchMaking {
     }
 
     private static void printTeams(ArrayList<Player> players, ArrayList<String> champions) {
-        Main.getOutput().displayOutput("Team One:");
+        StringBuilder sb = new StringBuilder();
+        sb.append("Team One:\n");
         for (int i = 0; i < 5; i++) {
-            Main.getOutput().displayOutput(players.get(i).getUserName() + " is playing " + champions.get(i) +
-                    ". Champion Mastery Level: " + players.get(i).getChampionMastery(champions.get(i)) + "/10");
+
+            sb.append(players.get(i).getUserName() + " is playing " + champions.get(i) +
+                    ". Champion Mastery Level: " + players.get(i).getChampionMastery(champions.get(i)) + "/10\n");
         }
-        Main.getOutput().displayOutput("Team Two:");
+        sb.append("Team Two:\n");
         for (int i = 5; i < 10; i++) {
-            Main.getOutput().displayOutput(players.get(i).getUserName() + " is playing " + champions.get(i) +
-                    ". Champion Mastery Level: " + players.get(i).getChampionMastery(champions.get(i)) + "/10");
+            sb.append(players.get(i).getUserName() + " is playing " + champions.get(i) +
+                    ". Champion Mastery Level: " + players.get(i).getChampionMastery(champions.get(i)) + "/10\n");
         }
+        Main.getOutput().displayOutput(sb.toString());
     }
 
     private static void printResults(boolean teamOneWon) {
