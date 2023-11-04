@@ -1,5 +1,7 @@
 package com.solvd.teamgamematch.game.abilities;
 
+import com.solvd.teamgamematch.Main;
+
 /**
  * Q ability for Jarvan 4
  *
@@ -18,6 +20,6 @@ public class DragonStrike extends Ability {
 
     @Override
     public void castAbility() {
-        System.out.println("Jarvan IV used " + getAbilityName());
+        Main.getOutput().displayOutput("Jarvan IV used " + getAbilityName());
     }
 }

@@ -1,5 +1,6 @@
 package com.solvd.teamgamematch.game;
 
+import com.solvd.teamgamematch.Main;
 import com.solvd.teamgamematch.players.Player;
 import com.solvd.teamgamematch.players.PlayerMatchHistory;
 import com.solvd.teamgamematch.players.PlayerStats;
@@ -38,7 +39,7 @@ public class MatchMaking {
 
             WaitForInput.waitForAnyUserInput();
         } catch (RuntimeException e) {
-            System.out.println("Returning to main menu");
+            Main.getOutput().displayOutput("Returning to main menu");
         }
     }
 
@@ -107,23 +108,23 @@ public class MatchMaking {
     }
 
     private static void printTeams(ArrayList<Player> players, ArrayList<String> champions) {
-        System.out.println("Team One:");
+        Main.getOutput().displayOutput("Team One:");
         for (int i = 0; i < 5; i++) {
-            System.out.println(players.get(i).getUserName() + " is playing " + champions.get(i) +
+            Main.getOutput().displayOutput(players.get(i).getUserName() + " is playing " + champions.get(i) +
                     ". Champion Mastery Level: " + players.get(i).getChampionMastery(champions.get(i)) + "/10");
         }
-        System.out.println("Team Two:");
+        Main.getOutput().displayOutput("Team Two:");
         for (int i = 5; i < 10; i++) {
-            System.out.println(players.get(i).getUserName() + " is playing " + champions.get(i) +
+            Main.getOutput().displayOutput(players.get(i).getUserName() + " is playing " + champions.get(i) +
                     ". Champion Mastery Level: " + players.get(i).getChampionMastery(champions.get(i)) + "/10");
         }
     }
 
     private static void printResults(boolean teamOneWon) {
         if (teamOneWon) {
-            System.out.println("Team One wins!");
+            Main.getOutput().displayOutput("Team One wins!");
         } else {
-            System.out.println("Team Two wins!");
+            Main.getOutput().displayOutput("Team Two wins!");
         }
     }
 
@@ -146,13 +147,13 @@ public class MatchMaking {
     }
 
     private static void fakeWaiting() {
-        System.out.println("Match in progress.");
+        Main.getOutput().displayOutput("Match in progress.");
         Sleep.sleepForOneSecond();
 
-        System.out.println("Match in progress..");
+        Main.getOutput().displayOutput("Match in progress..");
         Sleep.sleepForOneSecond();
 
-        System.out.println("Match in progress...");
+        Main.getOutput().displayOutput("Match in progress...");
         Sleep.sleepForOneSecond();
     }
 }

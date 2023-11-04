@@ -1,5 +1,7 @@
 package com.solvd.teamgamematch.game.abilities;
 
+import com.solvd.teamgamematch.Main;
+
 /**
  * Q ability for Ahri
  *
@@ -16,6 +18,6 @@ public class OrbOfDeception extends Ability {
 
     @Override
     public void castAbility() {
-        System.out.println("Ahri used " + getAbilityName());
+        Main.getOutput().displayOutput("Ahri used " + getAbilityName());
     }
 }

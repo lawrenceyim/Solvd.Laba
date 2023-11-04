@@ -1,5 +1,7 @@
 package com.solvd.teamgamematch.game.abilities;
 
+import com.solvd.teamgamematch.Main;
+
 /**
  * Q ability for Oriana
  *
@@ -17,6 +19,6 @@ public class CommandAttack extends Ability {
 
     @Override
     public void castAbility() {
-        System.out.println("Orianna used " + getAbilityName());
+        Main.getOutput().displayOutput("Orianna used " + getAbilityName());
     }
 }

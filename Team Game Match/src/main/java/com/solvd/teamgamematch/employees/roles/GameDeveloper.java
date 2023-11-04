@@ -1,5 +1,7 @@
 package com.solvd.teamgamematch.employees.roles;
 
+import com.solvd.teamgamematch.Main;
+
 /**
  * Game Developer role
  *
@@ -20,6 +22,6 @@ public class GameDeveloper extends Role {
 
     @Override
     public void doWork(String employeeName) {
-        System.out.println(employeeName + " implemented a new feature.");
+        Main.getOutput().displayOutput(employeeName + " implemented a new feature.");
     }
 }

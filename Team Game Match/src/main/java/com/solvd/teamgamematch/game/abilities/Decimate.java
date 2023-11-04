@@ -1,5 +1,7 @@
 package com.solvd.teamgamematch.game.abilities;
 
+import com.solvd.teamgamematch.Main;
+
 /**
  * Q ability for Darius
  *
@@ -17,6 +19,6 @@ public class Decimate extends Ability {
 
     @Override
     public void castAbility() {
-        System.out.println("Darius used " + getAbilityName());
+        Main.getOutput().displayOutput("Darius used " + getAbilityName());
     }
 }

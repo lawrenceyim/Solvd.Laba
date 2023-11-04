@@ -1,5 +1,7 @@
 package com.solvd.teamgamematch.game.abilities;
 
+import com.solvd.teamgamematch.Main;
+
 /**
  * Q ability for Caitlyn
  *
@@ -16,6 +18,6 @@ public class PiltoverPeacemaker extends Ability {
 
     @Override
     public void castAbility() {
-        System.out.println("Caitlyn used " + getAbilityName());
+        Main.getOutput().displayOutput("Caitlyn used " + getAbilityName());
     }
 }

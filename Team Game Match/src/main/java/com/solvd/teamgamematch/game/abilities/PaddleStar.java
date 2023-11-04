@@ -1,5 +1,7 @@
 package com.solvd.teamgamematch.game.abilities;
 
+import com.solvd.teamgamematch.Main;
+
 /**
  * Q ability for Zoe
  *
@@ -16,6 +18,6 @@ public class PaddleStar extends Ability {
 
     @Override
     public void castAbility() {
-        System.out.println("Zoe used " + getAbilityName());
+        Main.getOutput().displayOutput("Zoe used " + getAbilityName());
     }
 }

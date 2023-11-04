@@ -1,5 +1,7 @@
 package com.solvd.teamgamematch.game.abilities;
 
+import com.solvd.teamgamematch.Main;
+
 /**
  * Q ability for Jinx
  *
@@ -18,6 +20,6 @@ public class Switcheroo extends Ability {
 
     @Override
     public void castAbility() {
-        System.out.println("Jinx used " + getAbilityName());
+        Main.getOutput().displayOutput("Jinx used " + getAbilityName());
     }
 }

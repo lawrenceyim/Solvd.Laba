@@ -1,5 +1,7 @@
 package com.solvd.teamgamematch.utility;
 
+import com.solvd.teamgamematch.Main;
+
 import java.util.Scanner;
 
 /**
@@ -20,7 +22,7 @@ public class WaitForInput {
         input = new Scanner(System.in);
     }
     public static void waitForAnyUserInput() {
-        System.out.println("Press enter to continue...");
+        Main.getOutput().displayOutput("Press enter to continue...");
         input.nextLine();
     }
 }

@@ -1,5 +1,6 @@
 package com.solvd.teamgamematch.players;
 
+import com.solvd.teamgamematch.Main;
 import com.solvd.teamgamematch.utility.Pair;
 import com.solvd.teamgamematch.utility.WaitForInput;
 
@@ -41,12 +42,13 @@ public class PlayerStats {
 
     public void displayPlayerStats() {
         if (totalGamesPlayed.isEmpty()) {
-            System.out.println("No player stats available");
+            Main.getOutput().displayOutput("No player stats available");
             return;
         }
         List<String> names = new ArrayList<>(totalGamesPlayed.keySet());
         Collections.sort(names);
-        System.out.printf("%-30s %-15s %-15s %-15s%n", "Player Name", "Games Played", "Games Won", "Win Rate %");
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("%-30s %-15s %-15s %-15s%n", "Player Name", "Games Played", "Games Won", "Win Rate %"));
         for (String userName : names) {
             Pair<Integer, Integer> stat = totalGamesPlayed.getOrDefault(userName, new Pair<>(0, 0));
             int winRate;
@@ -55,8 +57,9 @@ public class PlayerStats {
             } else {
                 winRate = (int) ((double) stat.getSecond() / stat.getFirst() * 100);
             }
-            System.out.printf("%-30s %-15d %-15d %-15s%n", userName, stat.getFirst(), stat.getSecond(), winRate);
+            sb.append(String.format("%-30s %-15d %-15d %-15s%n", userName, stat.getFirst(), stat.getSecond(), winRate));
         }
+        Main.getOutput().displayOutput(sb.toString());
         WaitForInput.waitForAnyUserInput();
     }
 }

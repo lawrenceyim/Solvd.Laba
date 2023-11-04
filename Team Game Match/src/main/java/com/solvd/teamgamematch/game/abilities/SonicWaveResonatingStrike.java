@@ -1,5 +1,7 @@
 package com.solvd.teamgamematch.game.abilities;
 
+import com.solvd.teamgamematch.Main;
+
 /**
  * Q ability for Lee Sin
  *
@@ -19,6 +21,6 @@ public class SonicWaveResonatingStrike extends Ability {
 
     @Override
     public void castAbility() {
-        System.out.println("Lee Sin used " + getAbilityName());
+        Main.getOutput().displayOutput("Lee Sin used " + getAbilityName());
     }
 }

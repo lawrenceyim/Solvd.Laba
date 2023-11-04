@@ -1,5 +1,6 @@
 package com.solvd.teamgamematch.players;
 
+import com.solvd.teamgamematch.Main;
 import com.solvd.teamgamematch.utility.Pair;
 import com.solvd.teamgamematch.utility.WaitForInput;
 
@@ -42,25 +43,26 @@ public class PlayerMatchHistory {
 
     public void displayPlayerMatchHistory(String userName) {
         if (!playerMatchHistory.containsKey(userName)) {
-            System.out.println("Player does not exist");
+            Main.getOutput().displayOutput("Player does not exist");
             return;
         }
 
         ArrayList<Pair<String, Boolean>> history = playerMatchHistory.get(userName);
         if (history.isEmpty()) {
-            System.out.println("Player has no matches");
+            Main.getOutput().displayOutput("Player has no matches");
             return;
         }
-
-        System.out.println(userName + "'s match history:");
-        System.out.printf("%-30s %-15s%n", "Champion Name", "Result");
+        StringBuilder sb = new StringBuilder();
+        sb.append(userName + "'s match history:");
+        sb.append(String.format("%-30s %-15s%n", "Champion Name", "Result"));
         for (Pair<String, Boolean> match: history) {
             if (match.getSecond()) {
-                System.out.printf("%-30s %-15s%n", match.getFirst(), "Victory");
+                sb.append(String.format("%-30s %-15s%n", match.getFirst(), "Victory"));
             } else {
-                System.out.printf("%-30s %-15s%n", match.getFirst(), "Defeat");
+                sb.append(String.format("%-30s %-15s%n", match.getFirst(), "Defeat"));
             }
         }
+        Main.getOutput().displayOutput(sb.toString());
         WaitForInput.waitForAnyUserInput();
     }
 }

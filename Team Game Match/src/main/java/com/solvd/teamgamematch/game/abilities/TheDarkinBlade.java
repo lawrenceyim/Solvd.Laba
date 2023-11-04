@@ -1,5 +1,7 @@
 package com.solvd.teamgamematch.game.abilities;
 
+import com.solvd.teamgamematch.Main;
+
 /**
  * Q ability for Aatrox
  *
@@ -16,7 +18,7 @@ public class TheDarkinBlade extends Ability {
 
     @Override
     public void castAbility() {
-        System.out.println("Aatrox used " + getAbilityName());
+        Main.getOutput().displayOutput("Aatrox used " + getAbilityName());
     }
 
 }

@@ -1,5 +1,6 @@
 package com.solvd.teamgamematch.players;
 
+import com.solvd.teamgamematch.Main;
 import com.solvd.teamgamematch.game.ChampionManager;
 import com.solvd.teamgamematch.person.Person;
 
@@ -32,7 +33,7 @@ public class Player extends Person {
 
     @Override
     public void personDetail() {
-        System.out.println(getName() + " is a player");
+        Main.getOutput().displayOutput(getName() + " is a player");
     }
 
     public String getUserName() {

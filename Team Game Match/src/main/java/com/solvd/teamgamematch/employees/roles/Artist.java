@@ -1,5 +1,7 @@
 package com.solvd.teamgamematch.employees.roles;
 
+import com.solvd.teamgamematch.Main;
+
 /**
  * Artist role
  *
@@ -17,6 +19,6 @@ public class Artist extends Role {
 
     @Override
     public void doWork(String employeeName) {
-        System.out.println(employeeName + " drew another concept model for a character.");
+        Main.getOutput().displayOutput(employeeName + " drew another concept model for a character.");
     }
 }

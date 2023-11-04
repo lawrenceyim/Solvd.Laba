@@ -1,5 +1,7 @@
 package com.solvd.teamgamematch.game.abilities;
 
+import com.solvd.teamgamematch.Main;
+
 /**
  * Q ability for Lulu
  *
@@ -17,6 +19,6 @@ public class Glitterlance extends Ability {
 
     @Override
     public void castAbility() {
-        System.out.println("Lulu used " + getAbilityName());
+        Main.getOutput().displayOutput("Lulu used " + getAbilityName());
     }
 }

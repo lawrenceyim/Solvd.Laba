@@ -1,5 +1,7 @@
 package com.solvd.teamgamematch.employees.roles;
 
+import com.solvd.teamgamematch.Main;
+
 /**
  * Game Tester role
  *
@@ -19,6 +21,6 @@ public class GameTester extends Role {
 
     @Override
     public void doWork(String employeeName) {
-        System.out.println(employeeName + " tested a new feature");
+        Main.getOutput().displayOutput(employeeName + " tested a new feature");
     }
 }

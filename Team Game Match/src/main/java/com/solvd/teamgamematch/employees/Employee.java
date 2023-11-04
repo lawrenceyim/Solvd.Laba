@@ -1,5 +1,6 @@
 package com.solvd.teamgamematch.employees;
 
+import com.solvd.teamgamematch.Main;
 import com.solvd.teamgamematch.employees.roles.Role;
 import com.solvd.teamgamematch.person.Person;
 
@@ -48,6 +49,6 @@ public class Employee extends Person {
 
     @Override
     public void personDetail() {
-        System.out.println(getName() + " is an employee");
+        Main.getOutput().displayOutput(getName() + " is an employee");
     }
 }

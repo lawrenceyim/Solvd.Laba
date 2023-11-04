@@ -1,5 +1,7 @@
 package com.solvd.teamgamematch.game.abilities;
 
+import com.solvd.teamgamematch.Main;
+
 /**
  * Q ability for Janna
  *
@@ -18,6 +20,6 @@ public class HowlingGale extends Ability {
 
     @Override
     public void castAbility() {
-        System.out.println("Janna used " + getAbilityName());
+        Main.getOutput().displayOutput("Janna used " + getAbilityName());
     }
 }
