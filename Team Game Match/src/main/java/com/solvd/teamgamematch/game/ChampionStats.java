@@ -50,7 +50,7 @@ public class ChampionStats {
         List<String> names = new ArrayList<>(gamesWonByChampion.keySet());
         Collections.sort(names);
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("%-30s %-15s %-15s %-25s%n", "Champion Name", "Games Played", "Games Won",
+        sb.append(String.format("%-30s %-15s %-15s %-25s%n\n", "Champion Name", "Games Played", "Games Won",
                 "Champion Win Rate %"));
         for (String userName : names) {
             Pair<Integer, Integer> stat = gamesWonByChampion.getOrDefault(userName, new Pair<>(0, 0));

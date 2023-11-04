@@ -18,53 +18,15 @@ import java.util.Set;
 
 
 public class CommandPromptMenu implements IMenu {
-    @Override
-    public void menuLoop() {
-        final Regions regions = new Regions();
-        Region currentRegion = regions.getRegion("NA");
+    private Scanner input;
 
-        int userChoice;
-        Scanner input = new Scanner(System.in);
-        while (true) {
-            printMenu(currentRegion.getRegionName());
-            try {
-                userChoice = input.nextInt();
-            } catch (Exception e) {
-                input.nextLine(); // clear input
-                Main.getOutput().displayOutput("Invalid input");
-                continue;
-            }
-            if (!isValidChoice(userChoice)) {
-                Main.getOutput().displayOutput("Invalid selection");
-                continue;
-            }
-            switch (userChoice) {
-                case 1:
-                    MatchMaking.matchMake(currentRegion);
-                    break;
-                case 2:
-                    currentRegion.getPlayerStats().displayPlayerStats();
-                    break;
-                case 3:
-                    currentRegion.getChampionStats().displayChampionStats();
-                    break;
-                case 4:
-                    getPlayerName(input, currentRegion);
-                    break;
-                case 5:
-                    currentRegion = regions.getRegion(switchRegion(regions, currentRegion.getRegionName(), input));
-                    break;
-                default:
-                    Main.getOutput().displayOutput("Exiting");
-                    input.close();
-                    System.exit(0);
-            }
-        }
+    public CommandPromptMenu() {
+        input = new Scanner(System.in);
     }
 
-    public void printMenu(String regionName) {
+    @Override
+    public void displayMenu() {
             Main.getOutput().displayOutput("League of Legends simulator");
-            Main.getOutput().displayOutput("Current region: " + regionName);
             Main.getOutput().displayOutput("1. New Match");
             Main.getOutput().displayOutput("2. View Players Stats");
             Main.getOutput().displayOutput("3. View Champion Win Rates");
@@ -73,34 +35,75 @@ public class CommandPromptMenu implements IMenu {
             Main.getOutput().displayOutput("6. Exit Program");
     }
 
-    private boolean isValidChoice(int choice) {
-        return (choice >= 1 && choice <= 6);
+    @Override
+    public int getUserChoice() {
+        try {
+            int userChoice = input.nextInt();
+            if (!isValidChoice(userChoice)) {
+                Main.getOutput().displayOutput("Invalid selection");
+                return -1;
+            }
+            return userChoice;
+        } catch (Exception e) {
+            input.nextLine(); // clear input
+            Main.getOutput().displayOutput("Invalid input");
+            return -1;
+        }
     }
 
-    private void getPlayerName(Scanner input, Region region) {
-        Main.getOutput().displayOutput("Enter the player's name:");
-        input.nextLine(); // eliminate the \n from previous user input
-        String name = input.nextLine().replace("\n", "").trim();
-        region.getPlayerMatchHistory().displayPlayerMatchHistory(name);
+    @Override
+    public void performUserChoice(int userChoice, Regions regions) {
+        switch (userChoice) {
+            case 1:
+                MatchMaking.matchMake(regions.getCurrentRegion());
+                break;
+            case 2:
+                regions.getCurrentRegion().getPlayerStats().displayPlayerStats();
+                break;
+            case 3:
+                regions.getCurrentRegion().getChampionStats().displayChampionStats();
+                break;
+            case 4:
+                getPlayerMatchHistory(regions.getCurrentRegion());
+                break;
+            case 5:
+                switchRegion(regions);
+                break;
+            default:
+                Main.getOutput().displayOutput("Exiting");
+                input.close();
+                System.exit(0);
+        }
     }
 
-    private String switchRegion(Regions r, String currentRegion, Scanner input) {
-        Set<String> set = r.getRegions().keySet();
-        String[] regions = set.toArray(new String[set.size()]);
+    @Override
+    public void switchRegion(Regions regions) {
+        Set<String> set = regions.getRegions().keySet();
+        String[] regionNames = set.toArray(new String[set.size()]);
         Main.getOutput().displayOutput("Regions:");
-        for (int i = 1; i <= regions.length; i++) {
-            Main.getOutput().displayOutput(i + ". " + regions[i - 1]);
+        for (int i = 1; i <= regionNames.length; i++) {
+            Main.getOutput().displayOutput(i + ". " + regionNames[i - 1]);
         }
         try {
             int choice = input.nextInt();
-            if (choice >= 1 && choice <= regions.length) {
-                Main.getOutput().displayOutput("Switching regions to " + regions[choice - 1]);
-                return regions[choice - 1];
+            if (choice >= 1 && choice <= regionNames.length) {
+                Main.getOutput().displayOutput("Switching regions to " + regionNames[choice - 1]);
+                regions.setCurrentRegion(regionNames[choice - 1]);
             }
         } catch(InputMismatchException e) {
             input.nextLine(); // clear input
         }
         Main.getOutput().displayOutput("Invalid region. Returning to main menu");
-        return currentRegion;
+    }
+
+    private boolean isValidChoice(int choice) {
+        return (choice >= 1 && choice <= 6);
+    }
+
+    private void getPlayerMatchHistory(Region region) {
+        Main.getOutput().displayOutput("Enter the player's name:");
+        input.nextLine(); // eliminate the \n from previous user input
+        String name = input.nextLine().replace("\n", "").trim();
+        region.getPlayerMatchHistory().displayPlayerMatchHistory(name);
     }
 }

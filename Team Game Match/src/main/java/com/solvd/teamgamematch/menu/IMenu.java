@@ -1,5 +1,8 @@
 package com.solvd.teamgamematch.menu;
 
+import com.solvd.teamgamematch.regions.Region;
+import com.solvd.teamgamematch.regions.Regions;
+
 /**
  * Interface for the main menu of the program
  *
@@ -8,5 +11,9 @@ package com.solvd.teamgamematch.menu;
  */
 
 public interface IMenu {
-    void menuLoop();
+    void displayMenu();
+    int getUserChoice();
+    void performUserChoice(int userChoice, Regions regions);
+    void switchRegion(Regions regions);
+
 }

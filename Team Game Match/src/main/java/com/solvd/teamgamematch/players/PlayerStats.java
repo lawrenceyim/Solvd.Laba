@@ -48,7 +48,7 @@ public class PlayerStats {
         List<String> names = new ArrayList<>(totalGamesPlayed.keySet());
         Collections.sort(names);
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("%-30s %-15s %-15s %-15s%n", "Player Name", "Games Played", "Games Won", "Win Rate %"));
+        sb.append(String.format("%-30s %-15s %-15s %-15s%n\n", "Player Name", "Games Played", "Games Won", "Win Rate %"));
         for (String userName : names) {
             Pair<Integer, Integer> stat = totalGamesPlayed.getOrDefault(userName, new Pair<>(0, 0));
             int winRate;

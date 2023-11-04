@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 public class Regions {
     HashMap<String, Region> regions;
+    Region currentRegion;
 
     public Regions() {
         regions = new HashMap<>();
@@ -16,6 +17,7 @@ public class Regions {
         regions.put("LAN", new Region("LAN"));
         regions.put("LAS", new Region("LAS"));
         regions.put("OCE", new Region("OCE"));
+        currentRegion = regions.get("NA");
     }
 
     @Override
@@ -33,5 +35,17 @@ public class Regions {
 
     public Region getRegion(String regionName) {
         return regions.get(regionName);
+    }
+
+    public Region getCurrentRegion() {
+        return currentRegion;
+    }
+
+    public void setCurrentRegion(Region currentRegion) {
+        this.currentRegion = currentRegion;
+    }
+
+    public void setCurrentRegion(String currentRegion) {
+        this.currentRegion = getRegion(currentRegion);
     }
 }

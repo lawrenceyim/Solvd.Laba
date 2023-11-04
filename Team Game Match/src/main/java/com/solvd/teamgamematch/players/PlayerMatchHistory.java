@@ -53,7 +53,7 @@ public class PlayerMatchHistory {
             return;
         }
         StringBuilder sb = new StringBuilder();
-        sb.append(userName + "'s match history:");
+        sb.append(userName + "'s match history:\n");
         sb.append(String.format("%-30s %-15s%n", "Champion Name", "Result"));
         for (Pair<String, Boolean> match: history) {
             if (match.getSecond()) {
