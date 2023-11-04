@@ -24,7 +24,6 @@ public class Main {
     public static void main(String[] args) {
         output = new CommandPromptOutput();
         final Regions regions = new Regions();
-        Scanner input = new Scanner(System.in);
         IMenu menu = new CommandPromptMenu();
         while(true) {
             menu.displayMenu();
