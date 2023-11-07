@@ -17,10 +17,8 @@ public class WaitForInput {
     static variable eliminates the need to create a new scanner every time, reducing the risks of memory leak.
     Replace with a better solution when found.
      */
-    private static Scanner input;
-    static {
-        input = new Scanner(System.in);
-    }
+    private static final Scanner input = new Scanner(System.in);
+
     public static void waitForAnyUserInput() {
         Main.getOutput().displayOutput("Press enter to continue...");
         input.nextLine();
