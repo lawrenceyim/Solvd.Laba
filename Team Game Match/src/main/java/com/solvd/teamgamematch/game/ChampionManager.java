@@ -12,14 +12,22 @@ import java.util.ArrayList;
  */
 
 public class ChampionManager {
-    private static final ChampionManager instance = new ChampionManager();;
-    private static final ArrayList<Champion> champions = new ArrayList<>();
+    private static ChampionManager instance;
+    public static ArrayList<Champion> champions;
+
+    static {
+        instance = new ChampionManager();
+    }
 
     private ChampionManager() {
+        champions = new ArrayList<>();
         createChampions();
     }
 
     public static ChampionManager getInstance() {
+        if (instance == null) {
+            instance = new ChampionManager();
+        }
         return instance;
     }
 
