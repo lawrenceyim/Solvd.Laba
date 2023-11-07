@@ -21,7 +21,7 @@ public class Champion {
     private Ability qAbility;        // Ability cast with the Q button
 
     public Champion(String championName, String mainRole, int baseHealthPoints, int baseManaPoints, int baseDamage,
-                    int baseMagic, int baseArmor, int baseMagicResist, Ability qAbility) {
+                    int baseMagic, int baseArmor, int baseMagicResist) {
         this.championName = championName;
         this.mainRole = mainRole;
         this.baseHealthPoints = baseHealthPoints;
@@ -30,7 +30,6 @@ public class Champion {
         this.baseMagic = baseMagic;
         this.baseArmor = baseArmor;
         this.baseMagicResist = baseMagicResist;
-        this.qAbility = qAbility;
     }
 
     @Override

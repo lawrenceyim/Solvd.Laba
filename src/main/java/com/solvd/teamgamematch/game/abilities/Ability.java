@@ -12,6 +12,8 @@ public abstract class Ability {
     private String abilityDescription;
     private double abilityCoolDown;
 
+
+    // Do not create subclasses with predefined values for the constructors. Those values can be store in files, etc.
     public Ability(String abilityName, double abilityCoolDown, String abilityDescription) {
         this.abilityName = abilityName;
         this.abilityCoolDown = abilityCoolDown;

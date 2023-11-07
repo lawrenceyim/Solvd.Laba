@@ -15,7 +15,8 @@ import java.math.BigDecimal;
 
 public class Employee extends Person {
     BigDecimal salary;
-    Role role;
+    Role role; // Do not create subclasses with predefined values for the constructors. Those values can be store in files, etc.
+
     String employeeId;
 
     public Employee(String name, BigDecimal salary, Role role, String employeeId) {

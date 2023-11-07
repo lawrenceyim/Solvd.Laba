@@ -11,6 +11,7 @@ public abstract class Role {
     private String roleName;
     private String roleResponsibilities;
 
+    // Do not create subclasses with predefined values for the constructors. Those values can be store in files, etc.
     public Role(String roleName, String roleResponsibilities) {
         this.roleName = roleName;
         this.roleResponsibilities = roleResponsibilities;
