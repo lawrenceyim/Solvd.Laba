@@ -18,11 +18,7 @@ import java.util.Set;
 
 
 public class CommandPromptMenu implements IMenu {
-    private Scanner input;
-
-    public CommandPromptMenu() {
-        input = new Scanner(System.in);
-    }
+    private static final Scanner input = new Scanner(System.in);
 
     @Override
     public void displayMenu() {
