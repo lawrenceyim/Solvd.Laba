@@ -10,5 +10,6 @@ package com.solvd.teamgamematch.output;
  */
 
 public interface IOutput {
+    void displayError(String errorMessagee);
     void displayOutput(String message);
 }
