@@ -85,11 +85,13 @@ public class CommandPromptMenu implements IMenu {
             if (choice >= 1 && choice <= regionNames.length) {
                 Main.getOutput().displayOutput("Switching regions to " + regionNames[choice - 1]);
                 regions.setCurrentRegion(regionNames[choice - 1]);
+            } else {
+                Main.getOutput().displayOutput("Invalid region. Returning to main menu");
             }
         } catch(InputMismatchException e) {
             input.nextLine(); // clear input
+            Main.getOutput().displayOutput("Invalid input. Returning to main menu");
         }
-        Main.getOutput().displayOutput("Invalid region. Returning to main menu");
     }
 
     private boolean isValidChoice(int choice) {

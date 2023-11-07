@@ -3,8 +3,8 @@ package com.solvd.teamgamematch.regions;
 import java.util.HashMap;
 
 public class Regions {
-    HashMap<String, Region> regions;
-    Region currentRegion;
+    private final HashMap<String, Region> regions;
+    private Region currentRegion;
 
     public Regions() {
         regions = new HashMap<>();
@@ -41,11 +41,11 @@ public class Regions {
         return currentRegion;
     }
 
-    public void setCurrentRegion(Region currentRegion) {
-        this.currentRegion = currentRegion;
+    public void setCurrentRegion(Region newRegion) {
+        this.currentRegion = newRegion;
     }
 
-    public void setCurrentRegion(String currentRegion) {
-        this.currentRegion = getRegion(currentRegion);
+    public void setCurrentRegion(String newRegion) {
+        this.currentRegion = getRegion(newRegion);
     }
 }
