@@ -3,6 +3,7 @@ package com.solvd.teamgamematch.players;
 import com.solvd.teamgamematch.Main;
 import com.solvd.teamgamematch.game.ChampionManager;
 import com.solvd.teamgamematch.person.Person;
+import com.solvd.teamgamematch.utility.GenerateChampionMastery;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,7 +23,7 @@ public class Player extends Person {
     public Player(String name, String userName) {
         super(name);
         this.userName = userName;
-        this.championMastery = generateChampionMastery();
+        this.championMastery = GenerateChampionMastery.generateChampionMastery();
     }
 
     @Override
@@ -51,13 +52,5 @@ public class Player extends Person {
         this.championMastery = championMastery;
     }
 
-    private HashMap<String, Integer> generateChampionMastery() {
-        HashMap<String, Integer> championMastery = new HashMap<>();
-        Random random = new Random();
-        ArrayList<String> championNames = ChampionManager.getInstance().getChampionNames();
-        for (String championName : championNames) {
-            championMastery.put(championName, random.nextInt(10) + 1); // Random number between 1-10
-        }
-        return championMastery;
-    }
+
 }
