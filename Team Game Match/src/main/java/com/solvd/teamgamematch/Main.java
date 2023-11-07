@@ -20,10 +20,10 @@ import java.util.Scanner;
 
 public class Main {
     private static IOutput output;
+    private static final Regions regions = new Regions();
 
     public static void main(String[] args) {
         output = new CommandPromptOutput();
-        final Regions regions = new Regions();
         IMenu menu = new CommandPromptMenu();
         while(true) {
             menu.displayMenu();
