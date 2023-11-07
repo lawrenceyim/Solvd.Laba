@@ -22,7 +22,7 @@ import java.util.Random;
 public class MatchMaking {
     public static void matchMake(Region region) {
         if (region.getPlayers().getPlayers().size() < 10) {
-            System.out.println("Insufficient number of players to start matchmaking");
+            Main.getOutput().displayOutput("Insufficient number of players to start matchmaking");
             return;
         }
 
