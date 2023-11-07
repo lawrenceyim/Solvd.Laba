@@ -7,6 +7,8 @@ import com.solvd.teamgamematch.output.CommandPromptOutput;
 import com.solvd.teamgamematch.output.IOutput;
 import com.solvd.teamgamematch.regions.Region;
 import com.solvd.teamgamematch.regions.Regions;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
 
 import java.awt.*;
 import java.util.Scanner;
@@ -19,6 +21,9 @@ import java.util.Scanner;
  */
 
 public class Main {
+    static {
+        System.setProperty("log4j.configurationFile", "log4j2.xml");
+    }
     private static IOutput output;
     private static final Regions regions = new Regions();
 

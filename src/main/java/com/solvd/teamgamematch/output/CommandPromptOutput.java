@@ -1,5 +1,9 @@
 package com.solvd.teamgamematch.output;
 
+import com.solvd.teamgamematch.Main;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
+
 /**
  * Display output to the command prompt or terminal
  * All terminal output should use displayOutput() instead of System.out.println()
@@ -10,9 +14,9 @@ package com.solvd.teamgamematch.output;
 
 
 public class CommandPromptOutput implements IOutput {
-
+    private static final org.apache.logging.log4j.core.Logger LOGGER = (Logger) LogManager.getLogger("Output");
     @Override
     public void displayOutput(String message) {
-        System.out.println(message);
+        LOGGER.trace(message);
     }
 }
