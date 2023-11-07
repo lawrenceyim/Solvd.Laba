@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 
 public class EmployeeManager {
-    private ArrayList<Employee> employees;
+    private final ArrayList<Employee> employees;
 
     public EmployeeManager() {
         this.employees = new ArrayList<>();
@@ -18,9 +18,5 @@ public class EmployeeManager {
 
     public ArrayList<Employee> getEmployees() {
         return employees;
-    }
-
-    public void setEmployees(ArrayList<Employee> employees) {
-        this.employees = employees;
     }
 }

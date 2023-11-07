@@ -19,7 +19,7 @@ public class ChampionStats {
         The first int in the pair is the total number of games played by the champion
         The second int is the total number of games won by the champion
      */
-    private HashMap<String, Pair<Integer, Integer>> gamesWonByChampion;
+    private final HashMap<String, Pair<Integer, Integer>> gamesWonByChampion;
 
     public ChampionStats() {
         gamesWonByChampion = new HashMap<>();
