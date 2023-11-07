@@ -21,44 +21,39 @@ import java.util.Random;
 
 public class MatchMaking {
     public static void matchMake(Region region) {
-        try {
-            // Players and champions will be randomly selected and paired based on their arraylist index
-            // Indices 0-4 will be team one and 5-9 will be team two
-            ArrayList<Player> players = generateRandomTeams(region);
-            ArrayList<String> champions = randomlySelectChampions();
-
-            printTeams(players, champions);
-
-            fakeWaiting();
-
-            boolean teamOneWon = determineResult(players, champions);
-
-            printResults(teamOneWon);
-
-            updateStats(players, champions, teamOneWon, region);
-
-            WaitForInput.waitForAnyUserInput();
-        } catch (RuntimeException e) {
-            Main.getOutput().displayOutput("Returning to main menu");
+        if ( region.getPlayers().getPlayers().size() < 10) {
+            Main.getOutput().displayOutput("Insufficient number of players to start matchmaking");
+            return;
         }
+
+        // Players and champions will be randomly selected and paired based on their arraylist index
+        // Indices 0-4 will be team one and 5-9 will be team two
+        ArrayList<Player> players = generateRandomTeams(region);
+        ArrayList<String> champions = randomlySelectChampions();
+
+        printTeams(players, champions);
+
+        fakeWaiting();
+
+        boolean teamOneWon = determineResult(players, champions);
+
+        printResults(teamOneWon);
+
+        updateStats(players, champions, teamOneWon, region);
+
+        WaitForInput.waitForAnyUserInput();
     }
 
     // Used to populate the statistics with matches on application startup
     public static void matchMakeWithNoOutput(Region region) {
-        try {
-            ArrayList<Player> players = generateRandomTeams(region);
-            ArrayList<String> champions = randomlySelectChampions();
-            boolean teamOneWon = determineResult(players, champions);
-            updateStats(players, champions, teamOneWon, region);
-        } catch (RuntimeException e) {}
+        ArrayList<Player> players = generateRandomTeams(region);
+        ArrayList<String> champions = randomlySelectChampions();
+        boolean teamOneWon = determineResult(players, champions);
+        updateStats(players, champions, teamOneWon, region);
     }
 
     private static ArrayList<Player> generateRandomTeams(Region region) {
         ArrayList<Player> players = region.getPlayers().getPlayers();
-
-        if (players.size() < 10) {
-            throw new RuntimeException("Insufficient number of players to start matchmaking");
-        }
 
         HashSet<Integer> randomPlayers = new HashSet<>();
         Random random = new Random();
