@@ -27,7 +27,7 @@ import java.util.Random;
 public class MatchMaking {
     public static void matchMake(Region region) throws InvalidRegionException {
         if (region == null) {
-            throw new InvalidRegionException("The region is null");
+            throw new InvalidRegionException("Matchmaking cannot start with a null region.");
         }
 
         try {
@@ -50,6 +50,7 @@ public class MatchMaking {
     }
 
     // Used to populate the statistics with matches on application startup
+    // The region object is guaranteed to exist because it is called inside the constructor for the region object
     public static void matchMakeWithNoOutput(Region region) {
         try {
             ArrayList<Player> players = generateRandomTeams(region);

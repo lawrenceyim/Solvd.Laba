@@ -41,7 +41,7 @@ public class CommandPromptMenu implements IMenu {
                 return -1;
             }
             return userChoice;
-        } catch (Exception e) {
+        } catch (InputMismatchException e) {
             input.nextLine(); // clear input
             Main.getOutput().displayOutput("Invalid input");
             return -1;
