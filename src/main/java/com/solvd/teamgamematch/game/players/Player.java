@@ -1,13 +1,10 @@
-package com.solvd.teamgamematch.players;
+package com.solvd.teamgamematch.game.players;
 
 import com.solvd.teamgamematch.Main;
-import com.solvd.teamgamematch.game.ChampionManager;
 import com.solvd.teamgamematch.person.Person;
 import com.solvd.teamgamematch.utility.GenerateChampionMastery;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
 
 /**
  * Player class that contains the player's name and mastery level for every champion

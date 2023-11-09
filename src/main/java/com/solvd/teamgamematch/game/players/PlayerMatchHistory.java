@@ -1,4 +1,4 @@
-package com.solvd.teamgamematch.players;
+package com.solvd.teamgamematch.game.players;
 
 import com.solvd.teamgamematch.Main;
 import com.solvd.teamgamematch.utility.Pair;

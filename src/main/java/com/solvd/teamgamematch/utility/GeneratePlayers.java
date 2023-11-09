@@ -1,6 +1,6 @@
 package com.solvd.teamgamematch.utility;
 
-import com.solvd.teamgamematch.players.Player;
+import com.solvd.teamgamematch.game.players.Player;
 
 import java.util.ArrayList;
 

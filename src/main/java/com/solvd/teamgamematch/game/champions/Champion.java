@@ -1,4 +1,4 @@
-package com.solvd.teamgamematch.game;
+package com.solvd.teamgamematch.game.champions;
 
 import com.solvd.teamgamematch.game.abilities.Ability;
 

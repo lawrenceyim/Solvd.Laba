@@ -1,4 +1,4 @@
-package com.solvd.teamgamematch.players;
+package com.solvd.teamgamematch.game.players;
 
 /**
  * Instantiate and stores all Player objects

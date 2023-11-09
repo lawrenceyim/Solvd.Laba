@@ -1,6 +1,7 @@
-package com.solvd.teamgamematch.players;
+package com.solvd.teamgamematch.game.players;
 
 import com.solvd.teamgamematch.Main;
+import com.solvd.teamgamematch.game.IDisplayStats;
 import com.solvd.teamgamematch.utility.Pair;
 import com.solvd.teamgamematch.utility.WaitForInput;
 
@@ -16,7 +17,7 @@ import java.util.List;
  * @author Lawrence Yim
  */
 
-public class PlayerStats {
+public class PlayerStats implements IDisplayStats {
     /*
         First int in the pair represents the total number of games played by the player
         Second int is the total number of games won by the player
@@ -40,7 +41,8 @@ public class PlayerStats {
         return totalGamesPlayed.getOrDefault(userName, new Pair<>(0, 0));
     }
 
-    public void displayPlayerStats() {
+    @Override
+    public void displayStats() {
         if (totalGamesPlayed.isEmpty()) {
             Main.getOutput().displayOutput("No player stats available");
             return;

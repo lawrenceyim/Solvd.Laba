@@ -56,10 +56,10 @@ public class CommandPromptMenu implements IMenu {
                     MatchMaking.matchMake(regions.getCurrentRegion());
                     break;
                 case 2:
-                    regions.getCurrentRegion().getPlayerStats().displayPlayerStats();
+                    regions.getCurrentRegion().getPlayerStats().displayStats();
                     break;
                 case 3:
-                    regions.getCurrentRegion().getChampionStats().displayChampionStats();
+                    regions.getCurrentRegion().getChampionStats().displayStats();
                     break;
                 case 4:
                     getPlayerMatchHistory(regions.getCurrentRegion());

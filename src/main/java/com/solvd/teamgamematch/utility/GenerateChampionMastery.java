@@ -1,6 +1,6 @@
 package com.solvd.teamgamematch.utility;
 
-import com.solvd.teamgamematch.game.ChampionManager;
+import com.solvd.teamgamematch.game.champions.ChampionManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
