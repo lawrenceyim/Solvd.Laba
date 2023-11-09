@@ -1,6 +1,7 @@
 package com.solvd.teamgamematch.menu;
 
 import com.solvd.teamgamematch.Main;
+import com.solvd.teamgamematch.exceptions.InvalidRegionException;
 import com.solvd.teamgamematch.game.MatchMaking;
 import com.solvd.teamgamematch.regions.Region;
 import com.solvd.teamgamematch.regions.Regions;
@@ -49,27 +50,32 @@ public class CommandPromptMenu implements IMenu {
 
     @Override
     public void performUserChoice(int userChoice, Regions regions) {
-        switch (userChoice) {
-            case 1:
-                MatchMaking.matchMake(regions.getCurrentRegion());
-                break;
-            case 2:
-                regions.getCurrentRegion().getPlayerStats().displayPlayerStats();
-                break;
-            case 3:
-                regions.getCurrentRegion().getChampionStats().displayChampionStats();
-                break;
-            case 4:
-                getPlayerMatchHistory(regions.getCurrentRegion());
-                break;
-            case 5:
-                switchRegion(regions);
-                break;
-            default:
-                Main.getOutput().displayOutput("Exiting");
-                input.close();
-                System.exit(0);
+        try {
+            switch (userChoice) {
+                case 1:
+                    MatchMaking.matchMake(regions.getCurrentRegion());
+                    break;
+                case 2:
+                    regions.getCurrentRegion().getPlayerStats().displayPlayerStats();
+                    break;
+                case 3:
+                    regions.getCurrentRegion().getChampionStats().displayChampionStats();
+                    break;
+                case 4:
+                    getPlayerMatchHistory(regions.getCurrentRegion());
+                    break;
+                case 5:
+                    switchRegion(regions);
+                    break;
+                default:
+                    Main.getOutput().displayOutput("Exiting");
+                    input.close();
+                    System.exit(0);
+            }
+        } catch (InvalidRegionException e) {
+            Main.getOutput().displayError(e.getMessage());
         }
+
     }
 
     @Override

@@ -1,6 +1,9 @@
 package com.solvd.teamgamematch.game;
 
 import com.solvd.teamgamematch.Main;
+import com.solvd.teamgamematch.exceptions.InsufficientChampionException;
+import com.solvd.teamgamematch.exceptions.InsufficientPlayerException;
+import com.solvd.teamgamematch.exceptions.InvalidRegionException;
 import com.solvd.teamgamematch.players.Player;
 import com.solvd.teamgamematch.players.PlayerMatchHistory;
 import com.solvd.teamgamematch.players.PlayerStats;
@@ -20,40 +23,49 @@ import java.util.Random;
  */
 
 public class MatchMaking {
-    public static void matchMake(Region region) {
-        if (region.getPlayers().getPlayers().size() < 10) {
-            Main.getOutput().displayOutput("Insufficient number of players to start matchmaking");
-            return;
+    public static void matchMake(Region region) throws InvalidRegionException {
+        if (region == null) {
+            throw new InvalidRegionException("The region is null");
         }
 
-        // Players and champions will be randomly selected and paired based on their arraylist index
-        // Indices 0-4 will be team one and 5-9 will be team two
-        ArrayList<Player> players = generateRandomTeams(region);
-        ArrayList<String> champions = randomlySelectChampions();
+        try {
+            // Players and champions will be randomly selected and paired based on their arraylist index
+            // Indices 0-4 will be team one and 5-9 will be team two
+            ArrayList<Player> players = generateRandomTeams(region);
+            ArrayList<String> champions = randomlySelectChampions();
 
-        printTeams(players, champions);
-
-        fakeWaiting();
-
-        boolean teamOneWon = determineResult(players, champions);
-
-        printResults(teamOneWon);
-
-        updateStats(players, champions, teamOneWon, region);
-
-        WaitForInput.waitForAnyUserInput();
+            printTeams(players, champions);
+            fakeWaiting();
+            boolean teamOneWon = determineResult(players, champions);
+            printResults(teamOneWon);
+            updateStats(players, champions, teamOneWon, region);
+            WaitForInput.waitForAnyUserInput();
+        } catch (InsufficientChampionException e) {
+            Main.getOutput().displayError(e.getMessage());
+        } catch (InsufficientPlayerException e) {
+            Main.getOutput().displayError(e.getMessage());
+        }
     }
 
     // Used to populate the statistics with matches on application startup
     public static void matchMakeWithNoOutput(Region region) {
-        ArrayList<Player> players = generateRandomTeams(region);
-        ArrayList<String> champions = randomlySelectChampions();
-        boolean teamOneWon = determineResult(players, champions);
-        updateStats(players, champions, teamOneWon, region);
+        try {
+            ArrayList<Player> players = generateRandomTeams(region);
+            ArrayList<String> champions = randomlySelectChampions();
+            boolean teamOneWon = determineResult(players, champions);
+            updateStats(players, champions, teamOneWon, region);
+        } catch (InsufficientChampionException e) {
+            Main.getOutput().displayError(e.getMessage());
+        } catch (InsufficientPlayerException e) {
+            Main.getOutput().displayError(e.getMessage());
+        }
     }
 
-    private static ArrayList<Player> generateRandomTeams(Region region) {
+    private static ArrayList<Player> generateRandomTeams(Region region) throws InsufficientPlayerException {
         ArrayList<Player> players = region.getPlayers().getPlayers();
+        if (players.size() < 10) {
+            throw new InsufficientPlayerException("Insufficient number of players to start matchmaking");
+        }
 
         HashSet<Integer> randomPlayers = new HashSet<>();
         Random random = new Random();
@@ -71,8 +83,12 @@ public class MatchMaking {
         return selectedPlayers;
     }
 
-    private static ArrayList<String> randomlySelectChampions() {
+    private static ArrayList<String> randomlySelectChampions() throws InsufficientChampionException {
         ArrayList<String> championNames = ChampionManager.getInstance().getChampionNames();
+        if (championNames.size() < 10) {
+            throw new InsufficientChampionException("Insufficient number of champion of players");
+        }
+
         HashSet<Integer> randomChampions = new HashSet<>();
         Random random = new Random();
 
@@ -85,6 +101,7 @@ public class MatchMaking {
         for (Integer championIndex : randomChampions) {
             selectedChampions.add(championNames.get(championIndex));
         }
+
         return selectedChampions;
     }
 

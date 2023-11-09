@@ -3,15 +3,14 @@ package com.solvd.teamgamematch.game.abilities;
 /**
  * Abstract class to contain data and methods for champion abilities
  *
- * @version 1.0 1 Nov 2023
  * @author Lawrence Yim
+ * @version 1.0 1 Nov 2023
  */
 
 public abstract class Ability {
     private String abilityName;
     private String abilityDescription;
     private double abilityCoolDown;
-
 
     // Do not create subclasses with predefined values for the constructors. Those values can be store in files, etc.
     public Ability(String abilityName, double abilityCoolDown, String abilityDescription) {
@@ -24,9 +23,7 @@ public abstract class Ability {
 
     @Override
     public String toString() {
-        return "Ability Name: " + getAbilityName() +
-                "\nAbility Cooldown: " + getAbilityCoolDown() +
-                "\nAbility Description: " + getAbilityDescription();
+        return "Ability Name: " + getAbilityName() + "\nAbility Cooldown: " + getAbilityCoolDown() + "\nAbility Description: " + getAbilityDescription();
     }
 
     public String getAbilityName() {
