@@ -6,6 +6,7 @@ package com.solvd.teamgamematch.utility;
  * @version 1.0 27 Oct 2023
  * @author Lawrence Yim
  */
+
 public class Pair<A, B> {
     private A first;
     private B second;
