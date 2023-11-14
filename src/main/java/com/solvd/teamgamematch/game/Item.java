@@ -7,8 +7,8 @@ import java.util.ArrayList;
 /**
  * Item class that contains the item name and stats
  *
- * @version 1.0 25 Oct 2023
  * @author Lawrence Yim
+ * @version 1.0 25 Oct 2023
  */
 
 public class Item {

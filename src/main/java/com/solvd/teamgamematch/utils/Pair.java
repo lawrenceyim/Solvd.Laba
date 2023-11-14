@@ -3,8 +3,8 @@ package com.solvd.teamgamematch.utils;
 /**
  * Pair data structure
  *
- * @version 1.0 27 Oct 2023
  * @author Lawrence Yim
+ * @version 1.0 27 Oct 2023
  */
 
 public class Pair<A, B> {

@@ -1,6 +1,5 @@
 package com.solvd.teamgamematch.menu;
 
-import com.solvd.teamgamematch.regions.Region;
 import com.solvd.teamgamematch.regions.Regions;
 
 /**

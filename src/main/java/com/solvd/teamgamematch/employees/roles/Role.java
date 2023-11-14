@@ -3,8 +3,8 @@ package com.solvd.teamgamematch.employees.roles;
 /**
  * Abstract class that defines the name and responsibilities of different employee roles
  *
- * @version 1.0 31 Oct 2023
  * @author Lawrence Yim
+ * @version 1.0 31 Oct 2023
  */
 
 public abstract class Role {

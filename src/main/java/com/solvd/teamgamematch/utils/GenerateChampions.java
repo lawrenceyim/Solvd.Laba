@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class GenerateChampions {
 
-    public static ArrayList<Champion> generateChampions () {
+    public static ArrayList<Champion> generateChampions() {
         ArrayList<Champion> champions = new ArrayList<>();
         champions.add(new Champion("Aatrox", "Top", 580, 100,
                 60, 0, 38, 32));

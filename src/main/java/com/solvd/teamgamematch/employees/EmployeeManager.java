@@ -5,8 +5,8 @@ import java.util.ArrayList;
 /**
  * Class to manage all the Employee objects
  *
- * @version 1.0 31 Oct 2023
  * @author Lawrence Yim
+ * @version 1.0 31 Oct 2023
  */
 
 public class EmployeeManager {

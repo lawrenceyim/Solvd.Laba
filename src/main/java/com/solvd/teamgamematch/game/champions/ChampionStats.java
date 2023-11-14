@@ -5,13 +5,16 @@ import com.solvd.teamgamematch.game.IDisplayStats;
 import com.solvd.teamgamematch.utils.Pair;
 import com.solvd.teamgamematch.utils.WaitForInput;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Stores the stats of every champion
  *
- * @version 1.0 27 Oct 2023
  * @author Lawrence Yim
+ * @version 1.0 27 Oct 2023
  */
 
 public class ChampionStats implements IDisplayStats {
@@ -36,7 +39,7 @@ public class ChampionStats implements IDisplayStats {
         if (wonGame) {
             stats.setSecond(stats.getSecond() + 1);
         }
-       gamesWonByChampion.put(championName, stats);
+        gamesWonByChampion.put(championName, stats);
     }
 
     public Pair<Integer, Integer> getChampionStats(String championName) {

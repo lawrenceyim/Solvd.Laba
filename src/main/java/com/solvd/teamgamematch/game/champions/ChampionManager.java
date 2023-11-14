@@ -7,8 +7,8 @@ import java.util.ArrayList;
 /**
  * Instantiate and store all the Champion objects
  *
- * @version 1.0 27 Oct 2023
  * @author Lawrence Yim
+ * @version 1.0 27 Oct 2023
  */
 
 public class ChampionManager {
@@ -35,7 +35,7 @@ public class ChampionManager {
     }
 
     public void setChampions(ArrayList<Champion> champions) {
-        this.champions = champions;
+        ChampionManager.champions = champions;
     }
 
     public ArrayList<String> getChampionNames() {

@@ -3,8 +3,8 @@ package com.solvd.teamgamematch.person;
 /**
  * Person class that is inherited by the Employee and Player class
  *
- * @version 1.0 27 Oct 2023
  * @author Lawrence Yim
+ * @version 1.0 27 Oct 2023
  */
 
 public abstract class Person {

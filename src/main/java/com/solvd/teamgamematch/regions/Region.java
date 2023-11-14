@@ -1,10 +1,10 @@
 package com.solvd.teamgamematch.regions;
 
-import com.solvd.teamgamematch.game.champions.ChampionStats;
 import com.solvd.teamgamematch.game.MatchMaking;
+import com.solvd.teamgamematch.game.champions.ChampionStats;
+import com.solvd.teamgamematch.game.players.PlayerManager;
 import com.solvd.teamgamematch.game.players.PlayerMatchHistory;
 import com.solvd.teamgamematch.game.players.PlayerStats;
-import com.solvd.teamgamematch.game.players.PlayerManager;
 
 public class Region {
     private String regionName;

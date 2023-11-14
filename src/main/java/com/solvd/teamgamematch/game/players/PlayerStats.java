@@ -13,8 +13,8 @@ import java.util.List;
 /**
  * Stores the stats for every player
  *
- * @version 1.0 27 Oct 2023
  * @author Lawrence Yim
+ * @version 1.0 27 Oct 2023
  */
 
 public class PlayerStats implements IDisplayStats {

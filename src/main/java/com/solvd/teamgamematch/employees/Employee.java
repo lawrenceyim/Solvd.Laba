@@ -9,8 +9,8 @@ import java.math.BigDecimal;
 /**
  * Contain information about employees in the company
  *
- * @version 1.0 31 Oct 2023
  * @author Lawrence Yim
+ * @version 1.0 31 Oct 2023
  */
 
 public class Employee extends Person {

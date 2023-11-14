@@ -10,8 +10,8 @@ import java.util.HashMap;
 /**
  * Stores the match history of every player
  *
- * @version 1.0 27 Oct 2023
  * @author Lawrence Yim
+ * @version 1.0 27 Oct 2023
  */
 
 
@@ -21,7 +21,7 @@ public class PlayerMatchHistory {
         The string in the pair is the champion name
         The boolean is true if the player won the game
      */
-    private HashMap<String, ArrayList<Pair<String, Boolean>>> playerMatchHistory;
+    private final HashMap<String, ArrayList<Pair<String, Boolean>>> playerMatchHistory;
 
     public PlayerMatchHistory(PlayerManager playerManager) {
         playerMatchHistory = new HashMap<>();
@@ -55,7 +55,7 @@ public class PlayerMatchHistory {
         StringBuilder sb = new StringBuilder();
         sb.append(userName + "'s match history:\n");
         sb.append(String.format("%-30s %-15s%n", "Champion Name", "Result"));
-        for (Pair<String, Boolean> match: history) {
+        for (Pair<String, Boolean> match : history) {
             if (match.getSecond()) {
                 sb.append(String.format("%-30s %-15s%n", match.getFirst(), "Victory"));
             } else {

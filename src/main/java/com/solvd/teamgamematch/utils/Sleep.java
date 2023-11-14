@@ -5,8 +5,8 @@ import com.solvd.teamgamematch.Main;
 /**
  * Utility class for putting the Java program to sleep
  *
- * @version 1.0 27 Oct 2023
  * @author Lawrence Yim
+ * @version 1.0 27 Oct 2023
  */
 public class Sleep {
     public static void sleepForOneSecond() {

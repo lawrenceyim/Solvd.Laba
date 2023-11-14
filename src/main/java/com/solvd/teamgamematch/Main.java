@@ -9,21 +9,22 @@ import com.solvd.teamgamematch.regions.Regions;
 /**
  * Main method for the League of Legends match predictor
  *
- * @version 1.0 27 Oct 2023
  * @author Lawrence Yim
+ * @version 1.0 27 Oct 2023
  */
 
 public class Main {
     static {
         System.setProperty("log4j.configurationFile", "log4j2.xml");
     }
+
     private static IOutput output;
     private static final Regions regions = new Regions();
 
     public static void main(String[] args) {
         output = new CommandPromptOutput();
         IMenu menu = new CommandPromptMenu();
-        while(true) {
+        while (true) {
             menu.displayMenu();
             int userChoice = menu.getUserChoice();
             menu.performUserChoice(userChoice, regions);

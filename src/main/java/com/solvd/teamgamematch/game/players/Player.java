@@ -9,8 +9,8 @@ import java.util.HashMap;
 /**
  * Player class that contains the player's name and mastery level for every champion
  *
- * @version 1.0 27 Oct 2023
  * @author Lawrence Yim
+ * @version 1.0 27 Oct 2023
  */
 
 public class Player extends Person {
