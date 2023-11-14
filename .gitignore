@@ -1,6 +1,5 @@
 .idea
 *.iml
 out
-pom.xml
 target/
 CodingAdvice.txt
