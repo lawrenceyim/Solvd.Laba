@@ -7,7 +7,7 @@ package com.solvd.teamgamematch.game.players;
  * @author Lawrence Yim
  */
 
-import com.solvd.teamgamematch.utils.GeneratePlayers;
+import com.solvd.teamgamematch.utils.Generator;
 
 import java.util.ArrayList;
 
@@ -15,7 +15,7 @@ public class PlayerManager {
     ArrayList<Player> players;
 
     public PlayerManager() {
-        players = GeneratePlayers.generatePlayers(15);
+        players = Generator.generatePlayers(15);
     }
 
     public ArrayList<Player> getPlayers() {

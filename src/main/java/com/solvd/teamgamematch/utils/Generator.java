@@ -1,11 +1,15 @@
 package com.solvd.teamgamematch.utils;
 
 import com.solvd.teamgamematch.game.champions.Champion;
+import com.solvd.teamgamematch.game.champions.ChampionManager;
+import com.solvd.teamgamematch.game.players.Player;
+import com.solvd.teamgamematch.regions.Regions;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Random;
 
-public class GenerateChampions {
-
+public class Generator {
     public static ArrayList<Champion> generateChampions() {
         ArrayList<Champion> champions = new ArrayList<>();
         champions.add(new Champion("Aatrox", "Top", 580, 100,
@@ -35,5 +39,35 @@ public class GenerateChampions {
         champions.add(new Champion("Janna", "Support", 500, 350,
                 45, 0, 16, 30));
         return champions;
+    }
+
+    public static HashMap<String, Integer> generateChampionMastery() {
+        HashMap<String, Integer> championMastery = new HashMap<>();
+        Random random = new Random();
+        ArrayList<String> championNames = ChampionManager.getInstance().getChampionNames();
+        for (String championName : championNames) {
+            championMastery.put(championName, random.nextInt(10) + 1); // Random number between 1-10
+        }
+        return championMastery;
+    }
+
+    public static ArrayList<Player> generatePlayers(int count) {
+        if (count < 10) {
+            count = 10;  // Minimum number of players needed to create two teams of 5
+        }
+        ArrayList<Player> players = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            players.add(new Player("RandomName" + i, "Player " + i));
+        }
+        return players;
+    }
+
+    public static void generateRegions(Regions regions) {
+        regions.addRegion("NA");
+        regions.addRegion("EUN");
+        regions.addRegion("EUW");
+        regions.addRegion("KR");
+        regions.addRegion("JP");
+        regions.setCurrentRegion("NA");
     }
 }

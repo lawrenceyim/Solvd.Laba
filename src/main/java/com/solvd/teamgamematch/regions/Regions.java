@@ -1,6 +1,6 @@
 package com.solvd.teamgamematch.regions;
 
-import com.solvd.teamgamematch.utils.GenerateRegions;
+import com.solvd.teamgamematch.utils.Generator;
 
 import java.util.HashMap;
 
@@ -10,7 +10,7 @@ public class Regions {
 
     public Regions() {
         regions = new HashMap<>();
-        GenerateRegions.generateRegions(this);
+        Generator.generateRegions(this);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.solvd.teamgamematch.game.champions;
 
-import com.solvd.teamgamematch.utils.GenerateChampions;
+import com.solvd.teamgamematch.utils.Generator;
 
 import java.util.ArrayList;
 
@@ -20,7 +20,7 @@ public class ChampionManager {
     }
 
     private ChampionManager() {
-        champions = GenerateChampions.generateChampions();
+        champions = Generator.generateChampions();
     }
 
     public static ChampionManager getInstance() {

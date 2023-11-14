@@ -2,7 +2,7 @@ package com.solvd.teamgamematch.game.players;
 
 import com.solvd.teamgamematch.Main;
 import com.solvd.teamgamematch.person.Person;
-import com.solvd.teamgamematch.utils.GenerateChampionMastery;
+import com.solvd.teamgamematch.utils.Generator;
 
 import java.util.HashMap;
 
@@ -20,7 +20,7 @@ public class Player extends Person {
     public Player(String name, String userName) {
         super(name);
         this.userName = userName;
-        this.championMastery = GenerateChampionMastery.generateChampionMastery();
+        this.championMastery = Generator.generateChampionMastery();
     }
 
     @Override
