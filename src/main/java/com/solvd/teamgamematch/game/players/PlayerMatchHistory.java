@@ -1,8 +1,8 @@
 package com.solvd.teamgamematch.game.players;
 
 import com.solvd.teamgamematch.Main;
-import com.solvd.teamgamematch.utility.Pair;
-import com.solvd.teamgamematch.utility.WaitForInput;
+import com.solvd.teamgamematch.utils.Pair;
+import com.solvd.teamgamematch.utils.WaitForInput;
 
 import java.util.ArrayList;
 import java.util.HashMap;

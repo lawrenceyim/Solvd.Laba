@@ -1,4 +1,4 @@
-package com.solvd.teamgamematch.utility;
+package com.solvd.teamgamematch.utils;
 
 /**
  * Pair data structure

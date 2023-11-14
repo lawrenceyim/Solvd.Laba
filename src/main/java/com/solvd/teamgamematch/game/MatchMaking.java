@@ -10,8 +10,8 @@ import com.solvd.teamgamematch.game.players.Player;
 import com.solvd.teamgamematch.game.players.PlayerMatchHistory;
 import com.solvd.teamgamematch.game.players.PlayerStats;
 import com.solvd.teamgamematch.regions.Region;
-import com.solvd.teamgamematch.utility.Sleep;
-import com.solvd.teamgamematch.utility.WaitForInput;
+import com.solvd.teamgamematch.utils.Sleep;
+import com.solvd.teamgamematch.utils.WaitForInput;
 
 import java.util.ArrayList;
 import java.util.HashSet;

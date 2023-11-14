@@ -7,7 +7,7 @@ package com.solvd.teamgamematch.game.players;
  * @author Lawrence Yim
  */
 
-import com.solvd.teamgamematch.utility.GeneratePlayers;
+import com.solvd.teamgamematch.utils.GeneratePlayers;
 
 import java.util.ArrayList;
 

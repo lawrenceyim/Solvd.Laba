@@ -2,8 +2,8 @@ package com.solvd.teamgamematch.game.champions;
 
 import com.solvd.teamgamematch.Main;
 import com.solvd.teamgamematch.game.IDisplayStats;
-import com.solvd.teamgamematch.utility.Pair;
-import com.solvd.teamgamematch.utility.WaitForInput;
+import com.solvd.teamgamematch.utils.Pair;
+import com.solvd.teamgamematch.utils.WaitForInput;
 
 import java.util.*;
 

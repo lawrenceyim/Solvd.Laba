@@ -2,7 +2,7 @@ package com.solvd.teamgamematch.game.players;
 
 import com.solvd.teamgamematch.Main;
 import com.solvd.teamgamematch.person.Person;
-import com.solvd.teamgamematch.utility.GenerateChampionMastery;
+import com.solvd.teamgamematch.utils.GenerateChampionMastery;
 
 import java.util.HashMap;
 
