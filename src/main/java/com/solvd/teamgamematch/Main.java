@@ -1,17 +1,10 @@
 package com.solvd.teamgamematch;
 
-import com.solvd.teamgamematch.game.MatchMaking;
 import com.solvd.teamgamematch.menu.CommandPromptMenu;
 import com.solvd.teamgamematch.menu.IMenu;
 import com.solvd.teamgamematch.output.CommandPromptOutput;
 import com.solvd.teamgamematch.output.IOutput;
-import com.solvd.teamgamematch.regions.Region;
 import com.solvd.teamgamematch.regions.Regions;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.core.Logger;
-
-import java.awt.*;
-import java.util.Scanner;
 
 /**
  * Main method for the League of Legends match predictor

@@ -1,6 +1,5 @@
 package com.solvd.teamgamematch.output;
 
-import com.solvd.teamgamematch.Main;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 

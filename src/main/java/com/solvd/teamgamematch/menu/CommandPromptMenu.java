@@ -13,23 +13,22 @@ import java.util.Set;
 /**
  * Main menu for the program when displaying output to a command prompt or terminal
  *
- * @version 1.0 4 Nov 2023
  * @author Lawrence Yim
+ * @version 1.0 4 Nov 2023
  */
-
 
 public class CommandPromptMenu implements IMenu {
     private static final Scanner input = new Scanner(System.in);
 
     @Override
     public void displayMenu() {
-            Main.getOutput().displayOutput("League of Legends simulator");
-            Main.getOutput().displayOutput("1. New Match");
-            Main.getOutput().displayOutput("2. View Players Stats");
-            Main.getOutput().displayOutput("3. View Champion Win Rates");
-            Main.getOutput().displayOutput("4. View Player Match History");
-            Main.getOutput().displayOutput("5. Switch Region");
-            Main.getOutput().displayOutput("6. Exit Program");
+        Main.getOutput().displayOutput("League of Legends simulator");
+        Main.getOutput().displayOutput("1. New Match");
+        Main.getOutput().displayOutput("2. View Players Stats");
+        Main.getOutput().displayOutput("3. View Champion Win Rates");
+        Main.getOutput().displayOutput("4. View Player Match History");
+        Main.getOutput().displayOutput("5. Switch Region");
+        Main.getOutput().displayOutput("6. Exit Program");
     }
 
     @Override
@@ -94,7 +93,7 @@ public class CommandPromptMenu implements IMenu {
             } else {
                 Main.getOutput().displayOutput("Invalid region. Returning to main menu");
             }
-        } catch(InputMismatchException e) {
+        } catch (InputMismatchException e) {
             input.nextLine(); // clear input
             Main.getOutput().displayOutput("Invalid input. Returning to main menu");
         }
