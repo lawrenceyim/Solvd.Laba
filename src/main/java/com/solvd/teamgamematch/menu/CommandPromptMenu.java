@@ -74,7 +74,6 @@ public class CommandPromptMenu implements IMenu {
         } catch (InvalidRegionException e) {
             Main.getOutput().displayError(e.getMessage());
         }
-
     }
 
     @Override

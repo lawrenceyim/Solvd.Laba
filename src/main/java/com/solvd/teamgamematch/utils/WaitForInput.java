@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class WaitForInput {
     public static void waitForAnyUserInput() {
         Scanner input = Main.getInputScanner();
+        input.nextLine(); // Clear user input
         Main.getOutput().displayOutput("Press enter to continue...");
         input.nextLine();
     }
