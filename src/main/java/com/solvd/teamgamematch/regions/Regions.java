@@ -1,5 +1,7 @@
 package com.solvd.teamgamematch.regions;
 
+import com.solvd.teamgamematch.utils.GenerateRegions;
+
 import java.util.HashMap;
 
 public class Regions {
@@ -8,16 +10,7 @@ public class Regions {
 
     public Regions() {
         regions = new HashMap<>();
-        regions.put("NA", new Region("NA"));
-        regions.put("EUN", new Region("EUN"));
-        regions.put("EUW", new Region("EUW"));
-        regions.put("KR", new Region("KR"));
-        regions.put("BR", new Region("BR"));
-        regions.put("JP", new Region("JP"));
-        regions.put("LAN", new Region("LAN"));
-        regions.put("LAS", new Region("LAS"));
-        regions.put("OCE", new Region("OCE"));
-        currentRegion = regions.get("NA");
+        GenerateRegions.generateRegions(this);
     }
 
     @Override
@@ -25,7 +18,7 @@ public class Regions {
         return "Current number of server regions: " + regions.size();
     }
 
-    public void AddRegion(String regionName) {
+    public void addRegion(String regionName) {
         regions.put(regionName, new Region(regionName));
     }
 
