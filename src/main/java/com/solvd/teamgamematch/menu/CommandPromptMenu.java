@@ -18,8 +18,6 @@ import java.util.Set;
  */
 
 public class CommandPromptMenu implements IMenu {
-    private static final Scanner input = new Scanner(System.in);
-
     @Override
     public void displayMenu() {
         Main.getOutput().displayOutput("League of Legends simulator");
@@ -33,6 +31,7 @@ public class CommandPromptMenu implements IMenu {
 
     @Override
     public int getUserChoice() {
+        Scanner input = Main.getInputScanner();
         try {
             int userChoice = input.nextInt();
             if (!isValidChoice(userChoice)) {
@@ -49,6 +48,7 @@ public class CommandPromptMenu implements IMenu {
 
     @Override
     public void performUserChoice(int userChoice, Regions regions) {
+        Scanner input = Main.getInputScanner();
         try {
             switch (userChoice) {
                 case 1:
@@ -79,6 +79,7 @@ public class CommandPromptMenu implements IMenu {
 
     @Override
     public void switchRegion(Regions regions) {
+        Scanner input = Main.getInputScanner();
         Set<String> set = regions.getRegions().keySet();
         String[] regionNames = set.toArray(new String[set.size()]);
         Main.getOutput().displayOutput("Regions:");
@@ -104,6 +105,7 @@ public class CommandPromptMenu implements IMenu {
     }
 
     private void getPlayerMatchHistory(Region region) {
+        Scanner input = Main.getInputScanner();
         Main.getOutput().displayOutput("Enter the player's name:");
         input.nextLine(); // eliminate the \n from previous user input
         String name = input.nextLine().replace("\n", "").trim();

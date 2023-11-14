@@ -6,6 +6,8 @@ import com.solvd.teamgamematch.output.CommandPromptOutput;
 import com.solvd.teamgamematch.output.IOutput;
 import com.solvd.teamgamematch.regions.Regions;
 
+import java.util.Scanner;
+
 /**
  * Main method for the League of Legends match predictor
  *
@@ -18,8 +20,9 @@ public class Main {
         System.setProperty("log4j.configurationFile", "log4j2.xml");
     }
 
-    private static IOutput output;
+    private static final Scanner input = new Scanner(System.in);
     private static final Regions regions = new Regions();
+    private static IOutput output;
 
     public static void main(String[] args) {
         output = new CommandPromptOutput();
@@ -36,5 +39,9 @@ public class Main {
             output = new CommandPromptOutput();
         }
         return output;
+    }
+
+    public static Scanner getInputScanner() {
+        return input;
     }
 }

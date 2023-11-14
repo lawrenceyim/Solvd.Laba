@@ -12,14 +12,8 @@ import java.util.Scanner;
  */
 
 public class WaitForInput {
-    /*
-    Instantiating and closing a new Scanner creates an error with System.in. Making the scanner a
-    static variable eliminates the need to create a new scanner every time, reducing the risks of memory leak.
-    Replace with a better solution when found.
-     */
-    private static final Scanner input = new Scanner(System.in);
-
     public static void waitForAnyUserInput() {
+        Scanner input = Main.getInputScanner();
         Main.getOutput().displayOutput("Press enter to continue...");
         input.nextLine();
     }
