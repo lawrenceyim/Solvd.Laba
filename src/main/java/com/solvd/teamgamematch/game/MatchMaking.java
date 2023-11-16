@@ -25,46 +25,33 @@ import java.util.Random;
  */
 
 public class MatchMaking {
-    public static void matchMake(Region region) throws InvalidRegionException {
+    public static void matchMake(Region region) {
         if (region == null) {
             throw new InvalidRegionException("Matchmaking cannot start with a null region.");
         }
+        // Players and champions will be randomly selected and paired based on their arraylist index
+        // Indices 0-4 will be team one and 5-9 will be team two
+        ArrayList<Player> players = generateRandomTeams(region);
+        ArrayList<String> champions = randomlySelectChampions();
 
-        try {
-            // Players and champions will be randomly selected and paired based on their arraylist index
-            // Indices 0-4 will be team one and 5-9 will be team two
-            ArrayList<Player> players = generateRandomTeams(region);
-            ArrayList<String> champions = randomlySelectChampions();
-
-            printTeams(players, champions);
-            fakeWaiting();
-            boolean teamOneWon = determineResult(players, champions);
-            printResults(teamOneWon);
-            updateStats(players, champions, teamOneWon, region);
-            WaitForInput.waitForAnyUserInput();
-        } catch (InsufficientChampionException e) {
-            Main.getOutput().displayError(e.getMessage());
-        } catch (InsufficientPlayerException e) {
-            Main.getOutput().displayError(e.getMessage());
-        }
+        printTeams(players, champions);
+        fakeWaiting();
+        boolean teamOneWon = determineResult(players, champions);
+        printResults(teamOneWon);
+        updateStats(players, champions, teamOneWon, region);
+        WaitForInput.waitForAnyUserInput();
     }
 
     // Used to populate the statistics with matches on application startup
     // The region object is guaranteed to exist because it is called inside the constructor for the region object
     public static void matchMakeWithNoOutput(Region region) {
-        try {
-            ArrayList<Player> players = generateRandomTeams(region);
-            ArrayList<String> champions = randomlySelectChampions();
-            boolean teamOneWon = determineResult(players, champions);
-            updateStats(players, champions, teamOneWon, region);
-        } catch (InsufficientChampionException e) {
-            Main.getOutput().displayError(e.getMessage());
-        } catch (InsufficientPlayerException e) {
-            Main.getOutput().displayError(e.getMessage());
-        }
+        ArrayList<Player> players = generateRandomTeams(region);
+        ArrayList<String> champions = randomlySelectChampions();
+        boolean teamOneWon = determineResult(players, champions);
+        updateStats(players, champions, teamOneWon, region);
     }
 
-    private static ArrayList<Player> generateRandomTeams(Region region) throws InsufficientPlayerException {
+    private static ArrayList<Player> generateRandomTeams(Region region) {
         ArrayList<Player> players = region.getPlayers().getPlayers();
         if (players.size() < 10) {
             throw new InsufficientPlayerException("Insufficient number of players to start matchmaking");
@@ -86,7 +73,7 @@ public class MatchMaking {
         return selectedPlayers;
     }
 
-    private static ArrayList<String> randomlySelectChampions() throws InsufficientChampionException {
+    private static ArrayList<String> randomlySelectChampions() {
         ArrayList<String> championNames = ChampionManager.getInstance().getChampionNames();
         if (championNames.size() < 10) {
             throw new InsufficientChampionException("Insufficient number of champion of players");
