@@ -3,7 +3,6 @@ package com.solvd.teamgamematch.game.players;
 import com.solvd.teamgamematch.Main;
 import com.solvd.teamgamematch.game.IDisplayStats;
 import com.solvd.teamgamematch.utils.Pair;
-import com.solvd.teamgamematch.utils.WaitForInput;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -62,6 +61,5 @@ public class PlayerStats implements IDisplayStats {
             sb.append(String.format("%-30s %-15d %-15d %-15s%n", userName, stat.getFirst(), stat.getSecond(), winRate));
         }
         Main.getOutput().displayOutput(sb.toString());
-        WaitForInput.waitForAnyUserInput();
     }
 }

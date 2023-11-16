@@ -2,7 +2,6 @@ package com.solvd.teamgamematch.game.players;
 
 import com.solvd.teamgamematch.Main;
 import com.solvd.teamgamematch.utils.Pair;
-import com.solvd.teamgamematch.utils.WaitForInput;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -63,6 +62,5 @@ public class PlayerMatchHistory {
             }
         }
         Main.getOutput().displayOutput(sb.toString());
-        WaitForInput.waitForAnyUserInput();
     }
 }

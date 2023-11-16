@@ -11,7 +11,6 @@ import com.solvd.teamgamematch.game.players.PlayerMatchHistory;
 import com.solvd.teamgamematch.game.players.PlayerStats;
 import com.solvd.teamgamematch.regions.Region;
 import com.solvd.teamgamematch.utils.Sleep;
-import com.solvd.teamgamematch.utils.WaitForInput;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -39,7 +38,6 @@ public class MatchMaking {
         boolean teamOneWon = determineResult(players, champions);
         printResults(teamOneWon);
         updateStats(players, champions, teamOneWon, region);
-        WaitForInput.waitForAnyUserInput();
     }
 
     // Used to populate the statistics with matches on application startup
