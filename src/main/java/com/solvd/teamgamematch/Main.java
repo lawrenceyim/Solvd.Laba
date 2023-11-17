@@ -1,11 +1,13 @@
 package com.solvd.teamgamematch;
 
+import com.solvd.teamgamematch.exceptions.ConfigurationException;
 import com.solvd.teamgamematch.menu.CommandPromptMenu;
 import com.solvd.teamgamematch.menu.IMenu;
 import com.solvd.teamgamematch.output.CommandPromptOutput;
 import com.solvd.teamgamematch.output.IOutput;
 import com.solvd.teamgamematch.regions.Regions;
 
+import java.io.File;
 import java.util.Scanner;
 
 /**
@@ -17,6 +19,10 @@ import java.util.Scanner;
 
 public class Main {
     static {
+        File file = new File("src/main/resources/log4j2.xml");
+        if (!file.exists()) {
+            throw new ConfigurationException("Missing log4j2.xml file");
+        }
         System.setProperty("log4j.configurationFile", "log4j2.xml");
     }
 
