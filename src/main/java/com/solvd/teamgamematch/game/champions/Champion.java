@@ -1,7 +1,5 @@
 package com.solvd.teamgamematch.game.champions;
 
-import com.solvd.teamgamematch.game.abilities.Ability;
-
 /**
  * Champion class that contains the champion name, role, and stats
  *
@@ -18,7 +16,6 @@ public class Champion {
     private int baseMagic;           // Amount of magic points at level 1
     private int baseArmor;           // Amount of armor points at level 1
     private int baseMagicResist;     // Amount of magic resist points at level 1
-    private Ability qAbility;        // Ability cast with the Q button
 
     public Champion(String championName, String mainRole, int baseHealthPoints, int baseManaPoints, int baseDamage,
                     int baseMagic, int baseArmor, int baseMagicResist) {
@@ -100,13 +97,5 @@ public class Champion {
 
     public void setBaseMagicResist(int baseMagicResist) {
         this.baseMagicResist = baseMagicResist;
-    }
-
-    public Ability getqAbility() {
-        return qAbility;
-    }
-
-    public void setqAbility(Ability qAbility) {
-        this.qAbility = qAbility;
     }
 }
