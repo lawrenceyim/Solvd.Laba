@@ -13,8 +13,8 @@ import org.apache.logging.log4j.core.Logger;
 
 
 public class CommandPromptOutput implements IOutput {
-    private static final org.apache.logging.log4j.core.Logger LOGGER = (Logger) LogManager.getRootLogger();
-    private static final org.apache.logging.log4j.core.Logger OUTPUT_LOGGER = (Logger) LogManager.getLogger("Output");
+    private static final Logger LOGGER = (Logger) LogManager.getRootLogger();
+    private static final Logger OUTPUT_LOGGER = (Logger) LogManager.getLogger("Output");
 
     @Override
     public void displayError(String errorMessage) {
