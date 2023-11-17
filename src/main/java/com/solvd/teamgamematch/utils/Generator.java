@@ -1,8 +1,10 @@
 package com.solvd.teamgamematch.utils;
 
+import com.solvd.teamgamematch.game.MatchMaking;
 import com.solvd.teamgamematch.game.champions.Champion;
 import com.solvd.teamgamematch.game.champions.ChampionManager;
 import com.solvd.teamgamematch.game.players.Player;
+import com.solvd.teamgamematch.regions.Region;
 import com.solvd.teamgamematch.regions.Regions;
 
 import java.util.ArrayList;
@@ -69,5 +71,12 @@ public class Generator {
         regions.addRegion("KR");
         regions.addRegion("JP");
         regions.setCurrentRegion("NA");
+    }
+
+    public static void generateMatches(Region region) {
+        // Populate the statistics with matches on instantiation
+        for (int i = 0; i < 10; i++) {
+            MatchMaking.matchMakeWithNoOutput(region);
+        }
     }
 }

@@ -1,10 +1,10 @@
 package com.solvd.teamgamematch.regions;
 
-import com.solvd.teamgamematch.game.MatchMaking;
 import com.solvd.teamgamematch.game.champions.ChampionStats;
 import com.solvd.teamgamematch.game.players.PlayerManager;
 import com.solvd.teamgamematch.game.players.PlayerMatchHistory;
 import com.solvd.teamgamematch.game.players.PlayerStats;
+import com.solvd.teamgamematch.utils.Generator;
 
 public class Region {
     private String regionName;
@@ -19,11 +19,7 @@ public class Region {
         playerMatchHistory = new PlayerMatchHistory(players);
         playerStats = new PlayerStats();
         championStats = new ChampionStats();
-
-        // Populate the statistics with matches on instantiation
-        for (int i = 0; i < 10; i++) {
-            MatchMaking.matchMakeWithNoOutput(this);
-        }
+        Generator.generateMatches(this);
     }
 
     @Override
