@@ -1,6 +1,7 @@
 package com.solvd.teamgamematch.menu;
 
 import com.solvd.teamgamematch.Main;
+import com.solvd.teamgamematch.exceptions.InvalidInputException;
 import com.solvd.teamgamematch.game.MatchMaking;
 import com.solvd.teamgamematch.regions.Region;
 import com.solvd.teamgamematch.regions.Regions;
@@ -64,10 +65,12 @@ public class CommandPromptMenu implements IMenu {
             case 5:
                 switchRegion(regions);
                 break;
-            default:
+            case 6:
                 Main.getOutput().displayOutput("Exiting");
                 input.close();
                 System.exit(0);
+            default:
+                throw new InvalidInputException("Invalid menu selection");
         }
     }
 
