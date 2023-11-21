@@ -3,7 +3,8 @@ package com.solvd.teamgamematch;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 public class ApacheLibrariesMain {
