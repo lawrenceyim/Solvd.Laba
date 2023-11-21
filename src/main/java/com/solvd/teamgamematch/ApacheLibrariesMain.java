@@ -13,23 +13,17 @@ public class ApacheLibrariesMain {
         final String[] wordsToCount = new String[]{"Java", "String", "int"};
         final int[] occurrencesOfWords = new int[wordsToCount.length];
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(readPath))) {
-            String line = reader.readLine();
-            while (line != null) {
-                countOccurrences(line, wordsToCount, occurrencesOfWords);
-                line = reader.readLine();
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
         try {
-            File file = new File(writePath);
+            File readFile = new File(readPath);
+            String fileContent = FileUtils.readFileToString(readFile, StandardCharsets.UTF_8);
+            countOccurrences(fileContent, wordsToCount, occurrencesOfWords);
+
+            File writeFile = new File(writePath);
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < wordsToCount.length; i++) {
                 sb.append(wordsToCount[i] + " = " + occurrencesOfWords[i] + System.lineSeparator());
             }
-            FileUtils.write(file, sb.toString(), StandardCharsets.UTF_8);
+            FileUtils.write(writeFile, sb.toString(), StandardCharsets.UTF_8);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
