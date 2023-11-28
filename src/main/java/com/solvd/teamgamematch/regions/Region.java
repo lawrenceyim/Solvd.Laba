@@ -7,14 +7,14 @@ import com.solvd.teamgamematch.game.players.PlayerStats;
 import com.solvd.teamgamematch.utils.Generator;
 
 public class Region {
-    private String regionName;
+    private RegionName regionName;
     private PlayerManager players;
     private PlayerMatchHistory playerMatchHistory;
     private PlayerStats playerStats;
     private ChampionStats championStats;
 
     public Region(RegionName regionName) {
-        this.regionName = regionName.getName();
+        this.regionName = regionName;
         players = new PlayerManager();
         playerMatchHistory = new PlayerMatchHistory(players);
         playerStats = new PlayerStats();
@@ -29,10 +29,10 @@ public class Region {
     }
 
     public String getRegionName() {
-        return regionName;
+        return regionName.getName();
     }
 
-    public void setRegionName(String regionName) {
+    public void setRegionName(RegionName regionName) {
         this.regionName = regionName;
     }
 
