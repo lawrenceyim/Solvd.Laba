@@ -13,8 +13,8 @@ public class Region {
     private PlayerStats playerStats;
     private ChampionStats championStats;
 
-    public Region(String regionName) {
-        this.regionName = regionName;
+    public Region(RegionName regionName) {
+        this.regionName = regionName.getName();
         players = new PlayerManager();
         playerMatchHistory = new PlayerMatchHistory(players);
         playerStats = new PlayerStats();

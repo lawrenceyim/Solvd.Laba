@@ -5,6 +5,7 @@ import com.solvd.teamgamematch.game.champions.Champion;
 import com.solvd.teamgamematch.game.champions.ChampionManager;
 import com.solvd.teamgamematch.game.players.Player;
 import com.solvd.teamgamematch.regions.Region;
+import com.solvd.teamgamematch.regions.RegionName;
 import com.solvd.teamgamematch.regions.Regions;
 
 import java.util.ArrayList;
@@ -65,12 +66,11 @@ public class Generator {
     }
 
     public static void generateRegions(Regions regions) {
-        regions.addRegion("NA");
-        regions.addRegion("EUN");
-        regions.addRegion("EUW");
-        regions.addRegion("KR");
-        regions.addRegion("JP");
-        regions.setCurrentRegion("NA");
+        regions.addRegion(RegionName.NA);
+        regions.addRegion(RegionName.EU);
+        regions.addRegion(RegionName.KR);
+        regions.addRegion(RegionName.JP);
+        regions.setCurrentRegion(RegionName.NA);
     }
 
     public static void generateMatches(Region region) {

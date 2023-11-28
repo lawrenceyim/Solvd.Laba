@@ -4,6 +4,7 @@ import com.solvd.teamgamematch.Main;
 import com.solvd.teamgamematch.exceptions.InvalidInputException;
 import com.solvd.teamgamematch.game.MatchMaking;
 import com.solvd.teamgamematch.regions.Region;
+import com.solvd.teamgamematch.regions.RegionName;
 import com.solvd.teamgamematch.regions.Regions;
 
 import java.util.InputMismatchException;
@@ -77,11 +78,11 @@ public class CommandPromptMenu implements IMenu {
     @Override
     public void switchRegion(Regions regions) {
         Scanner input = Main.getInputScanner();
-        Set<String> set = regions.getRegions().keySet();
-        String[] regionNames = set.toArray(new String[set.size()]);
+        Set<RegionName> set = regions.getRegions().keySet();
+        RegionName[] regionNames = set.toArray(new RegionName[set.size()]);
         Main.getOutput().displayOutput("Regions:");
         for (int i = 1; i <= regionNames.length; i++) {
-            Main.getOutput().displayOutput(i + ". " + regionNames[i - 1]);
+            Main.getOutput().displayOutput(i + ". " + regionNames[i - 1].getName());
         }
         try {
             int choice = input.nextInt();

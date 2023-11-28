@@ -5,7 +5,7 @@ import com.solvd.teamgamematch.utils.Generator;
 import java.util.HashMap;
 
 public class Regions {
-    private final HashMap<String, Region> regions;
+    private final HashMap<RegionName, Region> regions;
     private Region currentRegion;
 
     public Regions() {
@@ -18,15 +18,15 @@ public class Regions {
         return "Current number of server regions: " + regions.size();
     }
 
-    public void addRegion(String regionName) {
+    public void addRegion(RegionName regionName) {
         regions.put(regionName, new Region(regionName));
     }
 
-    public HashMap<String, Region> getRegions() {
+    public HashMap<RegionName, Region> getRegions() {
         return regions;
     }
 
-    public Region getRegion(String regionName) {
+    public Region getRegion(RegionName regionName) {
         return regions.get(regionName);
     }
 
@@ -34,11 +34,7 @@ public class Regions {
         return currentRegion;
     }
 
-    public void setCurrentRegion(Region newRegion) {
-        this.currentRegion = newRegion;
-    }
-
-    public void setCurrentRegion(String newRegion) {
+    public void setCurrentRegion(RegionName newRegion) {
         this.currentRegion = getRegion(newRegion);
     }
 }
