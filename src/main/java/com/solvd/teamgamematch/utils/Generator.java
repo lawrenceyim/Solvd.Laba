@@ -68,6 +68,8 @@ public class Generator {
     public static void generateRegions(Regions regions) {
         regions.addRegion(RegionName.NA);
         regions.addRegion(RegionName.EU);
+        regions.addRegion(RegionName.SA);
+        regions.addRegion(RegionName.OCE);
         regions.addRegion(RegionName.KR);
         regions.addRegion(RegionName.JP);
         regions.setCurrentRegion(RegionName.NA);
