@@ -1,5 +1,6 @@
 package com.solvd.teamgamematch.menu;
 
+import com.solvd.teamgamematch.person.AccessLevel;
 import com.solvd.teamgamematch.regions.Regions;
 
 /**
@@ -17,5 +18,7 @@ public interface IMenu {
     void performUserChoice(int userChoice, Regions regions);
 
     void switchRegion(Regions regions);
+
+    void switchAccessLevel(AccessLevel accessLevel);
 
 }

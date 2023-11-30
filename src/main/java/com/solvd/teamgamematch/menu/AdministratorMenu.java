@@ -1,8 +1,10 @@
 package com.solvd.teamgamematch.menu;
 
 import com.solvd.teamgamematch.Main;
+import com.solvd.teamgamematch.exceptions.InvalidAccessLevel;
 import com.solvd.teamgamematch.exceptions.InvalidInputException;
 import com.solvd.teamgamematch.game.MatchMaking;
+import com.solvd.teamgamematch.person.AccessLevel;
 import com.solvd.teamgamematch.regions.Region;
 import com.solvd.teamgamematch.regions.RegionName;
 import com.solvd.teamgamematch.regions.Regions;
@@ -11,14 +13,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Set;
 
-/**
- * Main menu for the program when displaying output to a command prompt or terminal
- *
- * @author Lawrence Yim
- * @version 1.0 4 Nov 2023
- */
-
-public class CommandPromptMenu implements IMenu {
+public class AdministratorMenu implements IMenu {
     @Override
     public void displayMenu() {
         Main.getOutput().displayOutput("League of Legends simulator");
@@ -91,6 +86,38 @@ public class CommandPromptMenu implements IMenu {
                 regions.setCurrentRegion(regionNames[choice - 1]);
             } else {
                 Main.getOutput().displayOutput("Invalid region. Returning to main menu");
+            }
+        } catch (InputMismatchException e) {
+            input.nextLine(); // clear input
+            Main.getOutput().displayOutput("Invalid input. Returning to main menu");
+        }
+    }
+
+    @Override
+    public void switchAccessLevel(AccessLevel accessLevel) {
+        Scanner input = Main.getInputScanner();
+        Main.getOutput().displayOutput("Access Levels:" + System.lineSeparator() +
+                "1. Administrator" + System.lineSeparator() +
+                "2. Standard" + System.lineSeparator() +
+                "3. Guest" + System.lineSeparator());
+        try {
+            int choice = input.nextInt();
+            if (choice >= 1 && choice <= 3) {
+                switch (choice) {
+                    case 1:
+                        Main.setAccessLevel(AccessLevel.Administrator);
+                        break;
+                    case 2:
+                        Main.setAccessLevel(AccessLevel.Standard);
+                        break;
+                    case 3:
+                        Main.setAccessLevel(AccessLevel.Guest);
+                        break;
+                    default:
+                        throw new InvalidAccessLevel("Invalid access level provided");
+                }
+            } else {
+                Main.getOutput().displayOutput("Invalid access level. Returning to main menu");
             }
         } catch (InputMismatchException e) {
             input.nextLine(); // clear input
