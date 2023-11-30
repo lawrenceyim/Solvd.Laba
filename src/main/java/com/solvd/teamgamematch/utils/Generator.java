@@ -88,11 +88,11 @@ public class Generator {
     public static ArrayList<Employee> generateEmployees() {
         ArrayList<Employee> employees = new ArrayList<>();
         employees.add(new Employee("Steve Gates",
-                new BigDecimal(10000000.99),
+                new BigDecimal("10000000.99"),
                 "102002594",
                 AccessLevel.Administrator));
         employees.add(new Employee("Mark Elonberg",
-                new BigDecimal(3.50),
+                new BigDecimal("3.50"),
                 "1420125114",
                 AccessLevel.Standard));
         return employees;

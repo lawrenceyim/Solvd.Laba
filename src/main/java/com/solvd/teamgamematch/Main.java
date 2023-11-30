@@ -1,5 +1,6 @@
 package com.solvd.teamgamematch;
 
+import com.solvd.teamgamematch.employees.EmployeeManager;
 import com.solvd.teamgamematch.exceptions.ConfigurationException;
 import com.solvd.teamgamematch.exceptions.InvalidAccessLevel;
 import com.solvd.teamgamematch.menu.AdministratorMenu;
@@ -32,6 +33,7 @@ public class Main {
 
     private static final Scanner input = new Scanner(System.in);
     private static final Regions regions = new Regions();
+    private static final EmployeeManager employeeManager = new EmployeeManager();
     private static IMenu menu;
     private static IOutput output;
     private static AccessLevel currentAccessLevel = AccessLevel.Guest;
@@ -51,6 +53,10 @@ public class Main {
             output = new CommandPromptOutput();
         }
         return output;
+    }
+
+    public static EmployeeManager getEmployeeManager() {
+        return employeeManager;
     }
 
     public static Scanner getInputScanner() {

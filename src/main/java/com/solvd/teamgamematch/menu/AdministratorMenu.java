@@ -1,10 +1,14 @@
 package com.solvd.teamgamematch.menu;
 
 import com.solvd.teamgamematch.Main;
+import com.solvd.teamgamematch.employees.Employee;
+import com.solvd.teamgamematch.employees.EmployeeManager;
 import com.solvd.teamgamematch.exceptions.InvalidInputException;
 import com.solvd.teamgamematch.game.MatchMaking;
 import com.solvd.teamgamematch.regions.Regions;
+import com.solvd.teamgamematch.utils.Pair;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -56,7 +60,7 @@ public class AdministratorMenu extends CommandPromptMenu implements IMenu {
                 getPlayerMatchHistory(regions.getCurrentRegion());
                 break;
             case 5:
-                // TODO: VIEW EMPLOYEE
+                displayEmployees();
                 break;
             case 6:
                 switchRegion(regions);
@@ -75,5 +79,15 @@ public class AdministratorMenu extends CommandPromptMenu implements IMenu {
 
     private boolean isValidChoice(int choice) {
         return (choice >= 1 && choice <= 8);
+    }
+
+    private void displayEmployees() {
+        ArrayList<Employee> employees = Main.getEmployeeManager().getEmployees();
+        StringBuilder sb = new StringBuilder();
+        sb.append("Employees:" + System.lineSeparator());
+        for (Employee employee : employees) {
+            sb.append(employee.toString() + System.lineSeparator());
+        }
+        Main.getOutput().displayOutput(sb.toString());
     }
 }

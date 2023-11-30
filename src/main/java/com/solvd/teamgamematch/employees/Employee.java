@@ -31,9 +31,10 @@ public class Employee extends Person {
 
     @Override
     public String toString() {
-        return "Employee Name: " + getName() +
-                "\nEmployee ID: " + employeeId +
-                "\nSalary: $" + salary;
+        return "Employee Name: " + getName() + System.lineSeparator() +
+                "Employee ID: " + employeeId + System.lineSeparator() +
+                "Salary: $" + salary + System.lineSeparator() +
+                "Access Level: " + getAccessLevel() + System.lineSeparator();
     }
 
     @Override
