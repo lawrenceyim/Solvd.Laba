@@ -13,7 +13,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Set;
 
-public class AdministratorMenu implements IMenu {
+public class AdministratorMenu extends CommandPromptMenu implements IMenu {
     @Override
     public void displayMenu() {
         Main.getOutput().displayOutput("League of Legends simulator");
@@ -21,8 +21,10 @@ public class AdministratorMenu implements IMenu {
         Main.getOutput().displayOutput("2. View Players Stats");
         Main.getOutput().displayOutput("3. View Champion Win Rates");
         Main.getOutput().displayOutput("4. View Player Match History");
-        Main.getOutput().displayOutput("5. Switch Region");
-        Main.getOutput().displayOutput("6. Exit Program");
+        Main.getOutput().displayOutput("5. View Employees");
+        Main.getOutput().displayOutput("6. Switch Region");
+        Main.getOutput().displayOutput("7. Switch Access Level");
+        Main.getOutput().displayOutput("8. Exit Program");
     }
 
     @Override
@@ -59,9 +61,15 @@ public class AdministratorMenu implements IMenu {
                 getPlayerMatchHistory(regions.getCurrentRegion());
                 break;
             case 5:
-                switchRegion(regions);
+                // TODO: VIEW EMPLOYEE
                 break;
             case 6:
+                switchRegion(regions);
+                break;
+            case 7:
+                switchAccessLevel();
+                break;
+            case 8:
                 Main.getOutput().displayOutput("Exiting");
                 input.close();
                 System.exit(0);
@@ -70,70 +78,7 @@ public class AdministratorMenu implements IMenu {
         }
     }
 
-    @Override
-    public void switchRegion(Regions regions) {
-        Scanner input = Main.getInputScanner();
-        Set<RegionName> set = regions.getRegions().keySet();
-        RegionName[] regionNames = set.toArray(new RegionName[set.size()]);
-        Main.getOutput().displayOutput("Regions:");
-        for (int i = 1; i <= regionNames.length; i++) {
-            Main.getOutput().displayOutput(i + ". " + regionNames[i - 1].getName());
-        }
-        try {
-            int choice = input.nextInt();
-            if (choice >= 1 && choice <= regionNames.length) {
-                Main.getOutput().displayOutput("Switching regions to " + regionNames[choice - 1]);
-                regions.setCurrentRegion(regionNames[choice - 1]);
-            } else {
-                Main.getOutput().displayOutput("Invalid region. Returning to main menu");
-            }
-        } catch (InputMismatchException e) {
-            input.nextLine(); // clear input
-            Main.getOutput().displayOutput("Invalid input. Returning to main menu");
-        }
-    }
-
-    @Override
-    public void switchAccessLevel(AccessLevel accessLevel) {
-        Scanner input = Main.getInputScanner();
-        Main.getOutput().displayOutput("Access Levels:" + System.lineSeparator() +
-                "1. Administrator" + System.lineSeparator() +
-                "2. Standard" + System.lineSeparator() +
-                "3. Guest" + System.lineSeparator());
-        try {
-            int choice = input.nextInt();
-            if (choice >= 1 && choice <= 3) {
-                switch (choice) {
-                    case 1:
-                        Main.setAccessLevel(AccessLevel.Administrator);
-                        break;
-                    case 2:
-                        Main.setAccessLevel(AccessLevel.Standard);
-                        break;
-                    case 3:
-                        Main.setAccessLevel(AccessLevel.Guest);
-                        break;
-                    default:
-                        throw new InvalidAccessLevel("Invalid access level provided");
-                }
-            } else {
-                Main.getOutput().displayOutput("Invalid access level. Returning to main menu");
-            }
-        } catch (InputMismatchException e) {
-            input.nextLine(); // clear input
-            Main.getOutput().displayOutput("Invalid input. Returning to main menu");
-        }
-    }
-
     private boolean isValidChoice(int choice) {
-        return (choice >= 1 && choice <= 6);
-    }
-
-    private void getPlayerMatchHistory(Region region) {
-        Scanner input = Main.getInputScanner();
-        Main.getOutput().displayOutput("Enter the player's name:");
-        input.nextLine(); // eliminate the \n from previous user input
-        String name = input.nextLine().replace("\n", "").trim();
-        region.getPlayerMatchHistory().displayPlayerMatchHistory(name);
+        return (choice >= 1 && choice <= 8);
     }
 }

@@ -16,9 +16,4 @@ public interface IMenu {
     int getUserChoice();
 
     void performUserChoice(int userChoice, Regions regions);
-
-    void switchRegion(Regions regions);
-
-    void switchAccessLevel(AccessLevel accessLevel);
-
 }
