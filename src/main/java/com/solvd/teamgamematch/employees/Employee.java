@@ -1,6 +1,7 @@
 package com.solvd.teamgamematch.employees;
 
 import com.solvd.teamgamematch.Main;
+import com.solvd.teamgamematch.person.AccessLevel;
 import com.solvd.teamgamematch.person.Person;
 
 import java.math.BigDecimal;
@@ -17,7 +18,13 @@ public class Employee extends Person {
     private String employeeId;
 
     public Employee(String name, BigDecimal salary, String employeeId) {
-        super(name);
+        super(name, AccessLevel.Standard);
+        this.salary = salary;
+        this.employeeId = employeeId;
+    }
+
+    public Employee(String name, BigDecimal salary, String employeeId, AccessLevel accessLevel) {
+        super(name, accessLevel);
         this.salary = salary;
         this.employeeId = employeeId;
     }

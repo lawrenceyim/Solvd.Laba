@@ -1,6 +1,7 @@
 package com.solvd.teamgamematch.game.players;
 
 import com.solvd.teamgamematch.Main;
+import com.solvd.teamgamematch.person.AccessLevel;
 import com.solvd.teamgamematch.person.Person;
 import com.solvd.teamgamematch.utils.Generator;
 
@@ -18,7 +19,7 @@ public class Player extends Person {
     private HashMap<String, Integer> championMastery;  // Player's skill level for each champion (1 to 10)
 
     public Player(String name, String userName) {
-        super(name);
+        super(name, AccessLevel.Guest);
         this.userName = userName;
         this.championMastery = Generator.generateChampionMastery();
     }
@@ -48,6 +49,4 @@ public class Player extends Person {
     public void setChampionMastery(HashMap<String, Integer> championMastery) {
         this.championMastery = championMastery;
     }
-
-
 }

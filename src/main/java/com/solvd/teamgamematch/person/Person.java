@@ -9,9 +9,16 @@ package com.solvd.teamgamematch.person;
 
 public abstract class Person {
     private String name;
+    private AccessLevel accessLevel;
 
     public Person(String name) {
         this.name = name;
+        accessLevel = AccessLevel.Guest;
+    }
+
+    public Person(String name, AccessLevel accessLevel) {
+        this.name = name;
+        this.accessLevel = accessLevel;
     }
 
     public abstract void personDetail();
@@ -22,5 +29,13 @@ public abstract class Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public AccessLevel getAccessLevel() {
+        return accessLevel;
+    }
+
+    public void setAccessLevel(AccessLevel accessLevel) {
+        this.accessLevel = accessLevel;
     }
 }
