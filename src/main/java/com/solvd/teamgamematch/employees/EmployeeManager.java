@@ -1,5 +1,7 @@
 package com.solvd.teamgamematch.employees;
 
+import com.solvd.teamgamematch.utils.Generator;
+
 import java.util.ArrayList;
 
 /**
@@ -13,10 +15,22 @@ public class EmployeeManager {
     private final ArrayList<Employee> employees;
 
     public EmployeeManager() {
-        this.employees = new ArrayList<>();
+        this.employees = Generator.generateEmployees();
     }
 
     public ArrayList<Employee> getEmployees() {
         return employees;
+    }
+
+    public void removeEmployee(Employee employee) {
+        if (employees.contains(employee)) {
+            employees.remove(employee);
+        }
+    }
+
+    public void addEmployee(Employee employee) {
+        if (!employees.contains(employee)) {
+            employees.add(employee);
+        }
     }
 }

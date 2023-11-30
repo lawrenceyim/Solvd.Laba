@@ -1,13 +1,16 @@
 package com.solvd.teamgamematch.utils;
 
+import com.solvd.teamgamematch.employees.Employee;
 import com.solvd.teamgamematch.game.MatchMaking;
 import com.solvd.teamgamematch.game.champions.Champion;
 import com.solvd.teamgamematch.game.champions.ChampionManager;
 import com.solvd.teamgamematch.game.players.Player;
+import com.solvd.teamgamematch.person.AccessLevel;
 import com.solvd.teamgamematch.regions.Region;
 import com.solvd.teamgamematch.regions.RegionName;
 import com.solvd.teamgamematch.regions.Regions;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -80,5 +83,18 @@ public class Generator {
         for (int i = 0; i < 10; i++) {
             MatchMaking.matchMakeWithNoOutput(region);
         }
+    }
+
+    public static ArrayList<Employee> generateEmployees() {
+        ArrayList<Employee> employees = new ArrayList<>();
+        employees.add(new Employee("Steve Gates",
+                new BigDecimal(10000000.99),
+                "102002594",
+                AccessLevel.Administrator));
+        employees.add(new Employee("Mark Elonberg",
+                new BigDecimal(3.50),
+                "1420125114",
+                AccessLevel.Standard));
+        return employees;
     }
 }

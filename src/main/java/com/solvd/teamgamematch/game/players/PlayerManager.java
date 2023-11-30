@@ -21,4 +21,16 @@ public class PlayerManager {
     public ArrayList<Player> getPlayers() {
         return players;
     }
+
+    public void removePlayer(Player player) {
+        if (players.contains(player)) {
+            players.remove(player);
+        }
+    }
+
+    public void addPlayer(Player player) {
+        if (!players.contains(player)) {
+            players.add(player);
+        }
+    }
 }
