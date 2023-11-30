@@ -1,17 +1,12 @@
 package com.solvd.teamgamematch.menu;
 
 import com.solvd.teamgamematch.Main;
-import com.solvd.teamgamematch.exceptions.InvalidAccessLevel;
 import com.solvd.teamgamematch.exceptions.InvalidInputException;
 import com.solvd.teamgamematch.game.MatchMaking;
-import com.solvd.teamgamematch.person.AccessLevel;
-import com.solvd.teamgamematch.regions.Region;
-import com.solvd.teamgamematch.regions.RegionName;
 import com.solvd.teamgamematch.regions.Regions;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.Set;
 
 public class StandardMenu extends CommandPromptMenu implements IMenu {
     @Override

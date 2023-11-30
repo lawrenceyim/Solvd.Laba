@@ -1,6 +1,5 @@
 package com.solvd.teamgamematch.menu;
 
-import com.solvd.teamgamematch.person.AccessLevel;
 import com.solvd.teamgamematch.regions.Regions;
 
 /**
