@@ -19,9 +19,10 @@ public abstract class CommandPromptMenu {
                 "2. Standard" + System.lineSeparator() +
                 "3. Guest" + System.lineSeparator());
         try {
-            int choice = input.nextInt();
-            if (choice >= 1 && choice <= 3) {
-                switch (choice) {
+            int userChoice = input.nextInt();
+            IIsValidInput checker = (choice) -> choice >= 1 && choice <= 3;
+            if (checker.isValidInput(userChoice)) {
+                switch (userChoice) {
                     case 1:
                         Main.setAccessLevel(AccessLevel.Administrator);
                         break;
