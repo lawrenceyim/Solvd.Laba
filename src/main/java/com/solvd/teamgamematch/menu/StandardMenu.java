@@ -27,7 +27,8 @@ public class StandardMenu extends CommandPromptMenu implements IMenu {
         Scanner input = Main.getInputScanner();
         try {
             int userChoice = input.nextInt();
-            if (!isValidChoice(userChoice)) {
+            IIsValidInput checker = (choice) -> choice >= 1 && choice <= 7;
+            if (!checker.isValidInput(userChoice)) {
                 Main.getOutput().displayOutput("Invalid selection");
                 return -1;
             }
@@ -68,9 +69,5 @@ public class StandardMenu extends CommandPromptMenu implements IMenu {
             default:
                 throw new InvalidInputException("Invalid menu selection");
         }
-    }
-
-    private boolean isValidChoice(int choice) {
-        return (choice >= 1 && choice <= 7);
     }
 }

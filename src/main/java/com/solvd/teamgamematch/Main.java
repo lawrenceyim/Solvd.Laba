@@ -45,6 +45,9 @@ public class Main {
         while (true) {
             menu.displayMenu();
             int userChoice = menu.getUserChoice();
+            if (userChoice == -1) {
+                continue;
+            }
             menu.performUserChoice(userChoice, regions);
         }
     }

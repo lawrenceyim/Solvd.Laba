@@ -2,11 +2,9 @@ package com.solvd.teamgamematch.menu;
 
 import com.solvd.teamgamematch.Main;
 import com.solvd.teamgamematch.employees.Employee;
-import com.solvd.teamgamematch.employees.EmployeeManager;
 import com.solvd.teamgamematch.exceptions.InvalidInputException;
 import com.solvd.teamgamematch.game.MatchMaking;
 import com.solvd.teamgamematch.regions.Regions;
-import com.solvd.teamgamematch.utils.Pair;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -32,7 +30,8 @@ public class AdministratorMenu extends CommandPromptMenu implements IMenu {
         Scanner input = Main.getInputScanner();
         try {
             int userChoice = input.nextInt();
-            if (!isValidChoice(userChoice)) {
+            IIsValidInput checker = (choice) -> choice >= 1 && choice <= 8;
+            if (!checker.isValidInput(userChoice)) {
                 Main.getOutput().displayOutput("Invalid selection");
                 return -1;
             }
@@ -78,16 +77,12 @@ public class AdministratorMenu extends CommandPromptMenu implements IMenu {
         }
     }
 
-    private boolean isValidChoice(int choice) {
-        return (choice >= 1 && choice <= 8);
-    }
-
     private void displayEmployees() {
         ArrayList<Employee> employees = Main.getEmployeeManager().getEmployees();
         StringBuilder sb = new StringBuilder();
-        sb.append("Employees:" + System.lineSeparator());
+        sb.append("Employees:").append(System.lineSeparator());
         for (Employee employee : employees) {
-            sb.append(employee.toString() + System.lineSeparator());
+            sb.append(employee.toString()).append(System.lineSeparator());
         }
         Main.getOutput().displayOutput(sb.toString());
     }
