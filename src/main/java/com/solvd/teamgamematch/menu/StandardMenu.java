@@ -12,6 +12,7 @@ public class StandardMenu extends CommandPromptMenu implements IMenu {
     @Override
     public void displayMenu() {
         Main.getOutput().displayOutput("League of Legends simulator");
+        Main.getOutput().displayOutput("Access Level: Standard");
         Main.getOutput().displayOutput("1. New Match");
         Main.getOutput().displayOutput("2. View Players Stats");
         Main.getOutput().displayOutput("3. View Champion Win Rates");
