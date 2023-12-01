@@ -4,6 +4,7 @@ import com.solvd.teamgamematch.employees.Employee;
 import com.solvd.teamgamematch.game.MatchMaking;
 import com.solvd.teamgamematch.game.champions.Champion;
 import com.solvd.teamgamematch.game.champions.ChampionManager;
+import com.solvd.teamgamematch.game.champions.ChampionRole;
 import com.solvd.teamgamematch.game.players.Player;
 import com.solvd.teamgamematch.person.AccessLevel;
 import com.solvd.teamgamematch.regions.Region;
@@ -18,31 +19,31 @@ import java.util.Random;
 public class Generator {
     public static ArrayList<Champion> generateChampions() {
         ArrayList<Champion> champions = new ArrayList<>();
-        champions.add(new Champion("Aatrox", "Top", 580, 100,
+        champions.add(new Champion("Aatrox", ChampionRole.TOP, 580, 100,
                 60, 0, 38, 32));
-        champions.add(new Champion("Zoe", "Mid", 560, 495,
+        champions.add(new Champion("Zoe", ChampionRole.MID, 560, 495,
                 58, 0, 20, 30));
-        champions.add(new Champion("Jinx", "ADC", 517, 245,
+        champions.add(new Champion("Jinx", ChampionRole.ADC, 517, 245,
                 63, 0, 22, 30));
-        champions.add(new Champion("Thresh", "Support", 560, 273,
+        champions.add(new Champion("Thresh", ChampionRole.SUPP, 560, 273,
                 55, 0, 16, 30));
-        champions.add(new Champion("Lee Sin", "Jungle", 570, 200,
+        champions.add(new Champion("Lee Sin", ChampionRole.JG, 570, 200,
                 65, 0, 36, 32));
-        champions.add(new Champion("Ahri", "Mid", 526, 418,
+        champions.add(new Champion("Ahri", ChampionRole.MID, 526, 418,
                 53, 0, 20, 30));
-        champions.add(new Champion("Caitlyn", "ADC", 481, 313,
+        champions.add(new Champion("Caitlyn", ChampionRole.ADC, 481, 313,
                 63, 0, 22, 30));
-        champions.add(new Champion("Lulu", "Support", 535, 350,
+        champions.add(new Champion("Lulu", ChampionRole.SUPP, 535, 350,
                 47, 0, 19, 30));
-        champions.add(new Champion("Jarvan IV", "Jungle", 571, 302,
+        champions.add(new Champion("Jarvan IV", ChampionRole.JG, 571, 302,
                 64, 0, 33, 32));
-        champions.add(new Champion("Darius", "Top", 582, 263,
+        champions.add(new Champion("Darius", ChampionRole.TOP, 582, 263,
                 64, 0, 39, 32));
-        champions.add(new Champion("Orianna", "Mid", 530, 418,
+        champions.add(new Champion("Orianna", ChampionRole.MID, 530, 418,
                 48, 0, 17, 30));
-        champions.add(new Champion("Ezreal", "ADC", 500, 375,
+        champions.add(new Champion("Ezreal", ChampionRole.ADC, 500, 375,
                 56, 0, 22, 30));
-        champions.add(new Champion("Janna", "Support", 500, 350,
+        champions.add(new Champion("Janna", ChampionRole.SUPP, 500, 350,
                 45, 0, 16, 30));
         return champions;
     }

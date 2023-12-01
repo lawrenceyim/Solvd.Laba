@@ -9,7 +9,7 @@ package com.solvd.teamgamematch.game.champions;
 
 public class Champion {
     private String championName;
-    private String mainRole;         // Primary role of the champion
+    private ChampionRole mainRole;   // Primary role of the champion
     private int baseHealthPoints;    // Amount of health points at level 1
     private int baseManaPoints;      // Amount of mana points at level 1
     private int baseDamage;          // Amount of damage points at level 1
@@ -17,8 +17,8 @@ public class Champion {
     private int baseArmor;           // Amount of armor points at level 1
     private int baseMagicResist;     // Amount of magic resist points at level 1
 
-    public Champion(String championName, String mainRole, int baseHealthPoints, int baseManaPoints, int baseDamage,
-                    int baseMagic, int baseArmor, int baseMagicResist) {
+    public Champion(String championName, ChampionRole mainRole, int baseHealthPoints, int baseManaPoints,
+                    int baseDamage, int baseMagic, int baseArmor, int baseMagicResist) {
         this.championName = championName;
         this.mainRole = mainRole;
         this.baseHealthPoints = baseHealthPoints;
@@ -43,11 +43,11 @@ public class Champion {
         this.championName = championName;
     }
 
-    public String getMainRole() {
+    public ChampionRole getMainRole() {
         return mainRole;
     }
 
-    public void setMainRole(String mainRole) {
+    public void setMainRole(ChampionRole mainRole) {
         this.mainRole = mainRole;
     }
 

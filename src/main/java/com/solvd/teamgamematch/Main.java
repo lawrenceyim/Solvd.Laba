@@ -40,7 +40,8 @@ public class Main {
 
     public static void main(String[] args) {
         output = new CommandPromptOutput();
-        menu = new GuestMenu();
+        setAccessLevel(AccessLevel.Guest);
+        setMenu();
         while (true) {
             menu.displayMenu();
             int userChoice = menu.getUserChoice();
@@ -65,22 +66,21 @@ public class Main {
 
     public static void setAccessLevel(AccessLevel accessLevel) {
         currentAccessLevel = accessLevel;
-        switch (accessLevel) {
+    }
+
+    public static void setMenu() {
+        switch (currentAccessLevel) {
             case Guest:
-                setMenu(new GuestMenu());
+                menu = new GuestMenu();
                 break;
             case Standard:
-                setMenu(new StandardMenu());
+                menu = new StandardMenu();
                 break;
             case Administrator:
-                setMenu(new AdministratorMenu());
+                menu = new AdministratorMenu();
                 break;
             default:
                 throw new InvalidAccessLevel("Invalid access level provided when changing menu");
         }
-    }
-
-    public static void setMenu(IMenu menu) {
-        Main.menu = menu;
     }
 }

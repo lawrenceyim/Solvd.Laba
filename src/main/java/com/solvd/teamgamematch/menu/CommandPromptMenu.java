@@ -34,6 +34,7 @@ public abstract class CommandPromptMenu {
                     default:
                         throw new InvalidAccessLevel("Invalid access level provided");
                 }
+                Main.setMenu();
                 Main.getOutput().displayOutput("Access level changed");
             } else {
                 Main.getOutput().displayOutput("Invalid access level. Returning to main menu");
