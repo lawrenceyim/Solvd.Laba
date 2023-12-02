@@ -6,7 +6,6 @@ import org.apache.commons.lang3.StringUtils;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 import java.util.stream.IntStream;
 
 public class ApacheLibrariesMain {
