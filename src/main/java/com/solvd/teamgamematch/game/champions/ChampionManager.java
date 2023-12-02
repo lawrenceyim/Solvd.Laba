@@ -40,9 +40,7 @@ public class ChampionManager {
 
     public ArrayList<String> getChampionNames() {
         ArrayList<String> names = new ArrayList<>();
-        for (Champion c : champions) {
-            names.add(c.getChampionName());
-        }
+        champions.stream().forEach(champion -> names.add(champion.getChampionName()));
         return names;
     }
 }

@@ -15,6 +15,7 @@ import com.solvd.teamgamematch.utils.Sleep;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
+import java.util.stream.IntStream;
 
 /**
  * Implementation of the match making algorithm to randomly generate two teams of five players and determine the outcome
@@ -65,9 +66,7 @@ public class MatchMaking {
         }
 
         ArrayList<Player> selectedPlayers = new ArrayList<>();
-        for (Integer playerIndex : randomPlayers) {
-            selectedPlayers.add(players.get(playerIndex));
-        }
+        randomPlayers.forEach(i -> selectedPlayers.add(players.get(i)));
 
         return selectedPlayers;
     }
@@ -87,23 +86,14 @@ public class MatchMaking {
         }
 
         ArrayList<String> selectedChampions = new ArrayList<>();
-        for (Integer championIndex : randomChampions) {
-            selectedChampions.add(championNames.get(championIndex));
-        }
+        randomChampions.forEach(i -> selectedChampions.add(championNames.get(i)));
 
         return selectedChampions;
     }
 
     private static boolean determineResult(ArrayList<Player> players, ArrayList<String> champions) {
-        int teamOneScore = 0;
-        int teamTwoScore = 0;
-
-        for (int i = 0; i < 5; i++) {
-            teamOneScore += players.get(i).getChampionMastery(champions.get(i));
-        }
-        for (int i = 5; i < 10; i++) {
-            teamTwoScore += players.get(i).getChampionMastery(champions.get(i));
-        }
+        int teamOneScore = IntStream.rangeClosed(0, 4).map(i -> players.get(i).getChampionMastery(champions.get(i))).sum();
+        int teamTwoScore = IntStream.rangeClosed(5, 9).map(i -> players.get(i).getChampionMastery(champions.get(i))).sum();
 
         return teamOneScore >= teamTwoScore;  // Team one wins if the scores are equal
     }
@@ -111,16 +101,15 @@ public class MatchMaking {
     private static void printTeams(ArrayList<Player> players, ArrayList<String> champions) {
         StringBuilder sb = new StringBuilder();
         sb.append("Team One:\n");
-        for (int i = 0; i < 5; i++) {
-
+        IntStream.rangeClosed(0, 4).forEach(i -> {
             sb.append(players.get(i).getUserName() + " is playing " + champions.get(i) +
                     ". Champion Mastery Level: " + players.get(i).getChampionMastery(champions.get(i)) + "/10\n");
-        }
+        });
+        IntStream.rangeClosed(5, 9).forEach(i -> {
+            sb.append(players.get(i).getUserName() + " is playing " + champions.get(i) +
+                    ". Champion Mastery Level: " + players.get(i).getChampionMastery(champions.get(i)) + "/10\n");
+        });
         sb.append("Team Two:\n");
-        for (int i = 5; i < 10; i++) {
-            sb.append(players.get(i).getUserName() + " is playing " + champions.get(i) +
-                    ". Champion Mastery Level: " + players.get(i).getChampionMastery(champions.get(i)) + "/10\n");
-        }
         Main.getOutput().displayOutput(sb.toString());
     }
 
@@ -138,16 +127,16 @@ public class MatchMaking {
         ChampionStats championStats = region.getChampionStats();
         PlayerStats playerStats = region.getPlayerStats();
 
-        for (int i = 0; i < 5; i++) {
+        IntStream.rangeClosed(0, 4).forEach(i -> {
             matchHistory.addPlayerMatch(players.get(i).getUserName(), champions.get(i), teamOneWon);
             championStats.addNewGame(champions.get(i), teamOneWon);
             playerStats.addNewGame(players.get(i).getUserName(), teamOneWon);
-        }
-        for (int i = 5; i < 10; i++) {
+        });
+        IntStream.rangeClosed(5, 9).forEach(i -> {
             matchHistory.addPlayerMatch(players.get(i).getUserName(), champions.get(i), !teamOneWon);
             championStats.addNewGame(champions.get(i), !teamOneWon);
             playerStats.addNewGame(players.get(i).getUserName(), !teamOneWon);
-        }
+        });
     }
 
     private static void fakeWaiting() {

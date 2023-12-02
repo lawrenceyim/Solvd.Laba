@@ -27,9 +27,7 @@ public class ChampionStats implements IDisplayStats {
     public ChampionStats() {
         gamesWonByChampion = new HashMap<>();
         ArrayList<String> championNames = ChampionManager.getInstance().getChampionNames();
-        for (String championName : championNames) {
-            gamesWonByChampion.put(championName, new Pair<>(0, 0));
-        }
+        championNames.stream().forEach(championName -> gamesWonByChampion.put(championName, new Pair<>(0, 0)));
     }
 
     public void addNewGame(String championName, boolean wonGame) {
@@ -56,7 +54,7 @@ public class ChampionStats implements IDisplayStats {
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("%-30s %-15s %-15s %-25s%n\n", "Champion Name", "Games Played", "Games Won",
                 "Champion Win Rate %"));
-        for (String userName : names) {
+        names.stream().forEach(userName -> {
             Pair<Integer, Integer> stat = gamesWonByChampion.getOrDefault(userName, new Pair<>(0, 0));
             int winRate;
             if (stat.getFirst() == 0) {
@@ -65,7 +63,7 @@ public class ChampionStats implements IDisplayStats {
                 winRate = (int) ((double) stat.getSecond() / stat.getFirst() * 100);
             }
             sb.append(String.format("%-30s %-15d %-15d %-25s%n", userName, stat.getFirst(), stat.getSecond(), winRate));
-        }
+        });
         Main.getOutput().displayOutput(sb.toString());
     }
 }

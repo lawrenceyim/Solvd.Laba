@@ -50,7 +50,7 @@ public class PlayerStats implements IDisplayStats {
         Collections.sort(names);
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("%-30s %-15s %-15s %-15s%n\n", "Player Name", "Games Played", "Games Won", "Win Rate %"));
-        for (String userName : names) {
+        names.stream().forEach(userName -> {
             Pair<Integer, Integer> stat = totalGamesPlayed.getOrDefault(userName, new Pair<>(0, 0));
             int winRate;
             if (stat.getFirst() == 0) {
@@ -59,7 +59,8 @@ public class PlayerStats implements IDisplayStats {
                 winRate = (int) ((double) stat.getSecond() / stat.getFirst() * 100);
             }
             sb.append(String.format("%-30s %-15d %-15d %-15s%n", userName, stat.getFirst(), stat.getSecond(), winRate));
-        }
+
+        });
         Main.getOutput().displayOutput(sb.toString());
     }
 }

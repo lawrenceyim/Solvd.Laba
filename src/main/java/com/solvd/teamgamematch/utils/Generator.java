@@ -14,7 +14,10 @@ import com.solvd.teamgamematch.regions.Regions;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Generator {
     public static ArrayList<Champion> generateChampions() {
@@ -49,13 +52,14 @@ public class Generator {
     }
 
     public static HashMap<String, Integer> generateChampionMastery() {
-        HashMap<String, Integer> championMastery = new HashMap<>();
         Random random = new Random();
         ArrayList<String> championNames = ChampionManager.getInstance().getChampionNames();
-        for (String championName : championNames) {
-            championMastery.put(championName, random.nextInt(10) + 1); // Random number between 1-10
-        }
-        return championMastery;
+        Map<String, Integer> championMastery = championNames.stream()
+                .collect(Collectors.toMap(
+                        championName -> championName,
+                        championName -> random.nextInt(10) + 1 // Random number between 1-10
+                ));
+        return new HashMap<>(championMastery);
     }
 
     public static ArrayList<Player> generatePlayers(int count) {
@@ -63,9 +67,8 @@ public class Generator {
             count = 10;  // Minimum number of players needed to create two teams of 5
         }
         ArrayList<Player> players = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            players.add(new Player("RandomName" + i, "Player " + i));
-        }
+        IntStream.rangeClosed(0, 15)
+                .forEach(i -> players.add(new Player("RandomName" + i, "Player " + i)));
         return players;
     }
 
@@ -81,9 +84,7 @@ public class Generator {
 
     public static void generateMatches(Region region) {
         // Populate the statistics with matches on instantiation
-        for (int i = 0; i < 10; i++) {
-            MatchMaking.matchMakeWithNoOutput(region);
-        }
+        IntStream.rangeClosed(0, 20).forEach(a -> MatchMaking.matchMakeWithNoOutput(region));
     }
 
     public static ArrayList<Employee> generateEmployees() {

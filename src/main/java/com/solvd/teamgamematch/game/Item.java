@@ -26,9 +26,7 @@ public class Item {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Item Name: " + itemName);
-        for (Pair<String, Integer> stat : stats) {
-            sb.append(stat.getFirst() + ": " + stat.getSecond());
-        }
+        stats.stream().forEach(stat -> sb.append(stat.getFirst() + ": " + stat.getSecond()));
         return sb.toString();
     }
 

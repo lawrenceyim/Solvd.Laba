@@ -81,9 +81,7 @@ public class AdministratorMenu extends CommandPromptMenu implements IMenu {
         ArrayList<Employee> employees = Main.getEmployeeManager().getEmployees();
         StringBuilder sb = new StringBuilder();
         sb.append("Employees:").append(System.lineSeparator());
-        for (Employee employee : employees) {
-            sb.append(employee.toString()).append(System.lineSeparator());
-        }
+        employees.stream().forEach(e -> sb.append(e.toString()).append(System.lineSeparator()));
         Main.getOutput().displayOutput(sb.toString());
     }
 }

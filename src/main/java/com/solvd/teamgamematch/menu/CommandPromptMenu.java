@@ -10,6 +10,7 @@ import com.solvd.teamgamematch.regions.Regions;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.stream.IntStream;
 
 public abstract class CommandPromptMenu {
     public void switchAccessLevel() {
@@ -59,9 +60,8 @@ public abstract class CommandPromptMenu {
         Set<RegionName> set = regions.getRegions().keySet();
         RegionName[] regionNames = set.toArray(new RegionName[set.size()]);
         Main.getOutput().displayOutput("Regions:");
-        for (int i = 1; i <= regionNames.length; i++) {
-            Main.getOutput().displayOutput(i + ". " + regionNames[i - 1].getName());
-        }
+        IntStream.rangeClosed(1, regionNames.length).forEach(i ->
+                Main.getOutput().displayOutput(i + ". " + regionNames[i - 1].getName()));
         try {
             int choice = input.nextInt();
             if (choice >= 1 && choice <= regionNames.length) {

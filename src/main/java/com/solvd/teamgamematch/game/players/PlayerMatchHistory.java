@@ -25,13 +25,11 @@ public class PlayerMatchHistory {
     public PlayerMatchHistory(PlayerManager playerManager) {
         playerMatchHistory = new HashMap<>();
         ArrayList<Player> players = playerManager.getPlayers();
-        for (Player player : players) {
-            playerMatchHistory.put(player.getUserName(), new ArrayList<>());
-        }
+        players.stream().forEach(player -> playerMatchHistory.put(player.getUserName(), new ArrayList<>()));
     }
 
     public void addPlayerMatch(String userName, String championName, boolean gameWon) {
-        var temp = playerMatchHistory.getOrDefault(userName, new ArrayList<>());
+        ArrayList<Pair<String, Boolean>> temp = playerMatchHistory.getOrDefault(userName, new ArrayList<>());
         temp.add(new Pair<>(championName, gameWon));
         playerMatchHistory.put(userName, temp);
     }
@@ -54,13 +52,13 @@ public class PlayerMatchHistory {
         StringBuilder sb = new StringBuilder();
         sb.append(userName + "'s match history:\n");
         sb.append(String.format("%-30s %-15s%n", "Champion Name", "Result"));
-        for (Pair<String, Boolean> match : history) {
+        history.stream().forEach(match -> {
             if (match.getSecond()) {
                 sb.append(String.format("%-30s %-15s%n", match.getFirst(), "Victory"));
             } else {
                 sb.append(String.format("%-30s %-15s%n", match.getFirst(), "Defeat"));
             }
-        }
+        });
         Main.getOutput().displayOutput(sb.toString());
     }
 }

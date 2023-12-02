@@ -6,6 +6,8 @@ import org.apache.commons.lang3.StringUtils;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class ApacheLibrariesMain {
     public static void main(String[] args) {
@@ -21,9 +23,8 @@ public class ApacheLibrariesMain {
 
             File writeFile = new File(writePath);
             StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < wordsToCount.length; i++) {
-                sb.append(wordsToCount[i] + " = " + occurrencesOfWords[i] + System.lineSeparator());
-            }
+            IntStream.rangeClosed(0, wordsToCount.length - 1).forEach(i ->
+                    sb.append(wordsToCount[i] + " = " + occurrencesOfWords[i] + System.lineSeparator()));
             FileUtils.write(writeFile, sb.toString(), StandardCharsets.UTF_8);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -31,8 +32,7 @@ public class ApacheLibrariesMain {
     }
 
     private static void countOccurrences(String line, String[] wordsToCount, int[] occurrencesOfWords) {
-        for (int i = 0; i < wordsToCount.length; i++) {
-            occurrencesOfWords[i] += StringUtils.countMatches(line, wordsToCount[i]);
-        }
+        IntStream.rangeClosed(0, wordsToCount.length - 1).forEach(i ->
+                occurrencesOfWords[i] += StringUtils.countMatches(line, wordsToCount[i]));
     }
 }
