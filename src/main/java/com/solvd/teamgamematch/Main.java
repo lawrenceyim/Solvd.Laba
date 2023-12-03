@@ -13,6 +13,7 @@ import com.solvd.teamgamematch.person.AccessLevel;
 import com.solvd.teamgamematch.regions.Regions;
 
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
 
 /**
@@ -39,7 +40,14 @@ public class Main {
     private static AccessLevel currentAccessLevel = AccessLevel.Guest;
 
     public static void main(String[] args) {
-        output = new CommandPromptOutput();
+        try {
+            output = (IOutput) Class.forName("com.solvd.teamgamematch.output.CommandPromptOutput")
+                    .getConstructor().newInstance();
+        } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException |
+                 InvocationTargetException e) {
+            e.printStackTrace();
+        }
+
         setAccessLevel(AccessLevel.Guest);
         setMenu();
         while (true) {
