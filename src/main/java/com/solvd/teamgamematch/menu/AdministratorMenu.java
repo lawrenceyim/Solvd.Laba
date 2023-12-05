@@ -2,6 +2,7 @@ package com.solvd.teamgamematch.menu;
 
 import com.solvd.teamgamematch.Main;
 import com.solvd.teamgamematch.employees.Employee;
+import com.solvd.teamgamematch.employees.EmployeeManager;
 import com.solvd.teamgamematch.exceptions.InvalidInputException;
 import com.solvd.teamgamematch.game.MatchMaking;
 import com.solvd.teamgamematch.input.CurrentInput;
@@ -80,7 +81,7 @@ public class AdministratorMenu extends CommandPromptMenu implements IMenu {
     }
 
     private void displayEmployees() {
-        ArrayList<Employee> employees = Main.getEmployeeManager().getEmployees();
+        ArrayList<Employee> employees = EmployeeManager.getInstance().getEmployees();
         StringBuilder sb = new StringBuilder();
         sb.append("Employees:").append(System.lineSeparator());
         employees.stream().forEach(e -> sb.append(e.toString()).append(System.lineSeparator()));

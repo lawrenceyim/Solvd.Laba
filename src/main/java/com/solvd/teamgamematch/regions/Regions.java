@@ -3,10 +3,15 @@ package com.solvd.teamgamematch.regions;
 import java.util.HashMap;
 
 public class Regions {
+    private static final Regions instance = new Regions();
     private final HashMap<RegionName, Region> regions;
     private Region currentRegion;
 
-    public Regions() {
+    public static Regions getInstance() {
+        return instance;
+    }
+
+    private Regions() {
         regions = new HashMap<>();
     }
 

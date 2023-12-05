@@ -25,31 +25,23 @@ public class Main {
         System.setProperty("log4j.configurationFile", "log4j2.xml");
     }
 
-    private static final Regions regions = new Regions();
-    private static final EmployeeManager employeeManager = new EmployeeManager();
-
     public static void main(String[] args) {
         generateDefaultValues();
-
         while (true) {
             CurrentMenu.getCurrentMenu().displayMenu();
             int userChoice = CurrentMenu.getCurrentMenu().getUserChoice();
             if (userChoice == -1) {
                 continue;
             }
-            CurrentMenu.getCurrentMenu().performUserChoice(userChoice, regions);
+            CurrentMenu.getCurrentMenu().performUserChoice(userChoice, Regions.getInstance());
         }
     }
 
-    public static EmployeeManager getEmployeeManager() {
-        return employeeManager;
-    }
-
     private static void generateDefaultValues() {
-        Generator.generateEmployees(employeeManager.getEmployees());
+        Generator.generateEmployees(EmployeeManager.getInstance().getEmployees());
         Generator.generateChampions(ChampionManager.getInstance().getChampions());
-        Generator.generateRegions(regions);
-        Generator.generatePlayers(regions);
-        Generator.generateMatches(regions);
+        Generator.generateRegions(Regions.getInstance());
+        Generator.generatePlayers(Regions.getInstance());
+        Generator.generateMatches(Regions.getInstance());
     }
 }

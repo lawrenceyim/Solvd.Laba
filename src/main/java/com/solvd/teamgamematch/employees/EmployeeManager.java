@@ -10,10 +10,15 @@ import java.util.ArrayList;
  */
 
 public class EmployeeManager {
+    private static final EmployeeManager instance = new EmployeeManager();
     private final ArrayList<Employee> employees;
 
-    public EmployeeManager() {
+    private EmployeeManager() {
         this.employees = new ArrayList<>();
+    }
+
+    public static EmployeeManager getInstance() {
+        return instance;
     }
 
     public ArrayList<Employee> getEmployees() {
