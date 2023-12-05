@@ -13,7 +13,7 @@ import com.solvd.teamgamematch.regions.Region;
 import com.solvd.teamgamematch.utils.Sleep;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Random;
 import java.util.stream.IntStream;
 
@@ -57,7 +57,7 @@ public class MatchMaking {
             throw new InsufficientPlayerException("Insufficient number of players to start matchmaking");
         }
 
-        HashSet<Integer> randomPlayers = new HashSet<>();
+        LinkedHashSet<Integer> randomPlayers = new LinkedHashSet<>();
         Random random = new Random();
 
         while (randomPlayers.size() < 10) {
@@ -77,7 +77,7 @@ public class MatchMaking {
             throw new InsufficientChampionException("Insufficient number of champion of players");
         }
 
-        HashSet<Integer> randomChampions = new HashSet<>();
+        LinkedHashSet<Integer> randomChampions = new LinkedHashSet<>();
         Random random = new Random();
 
         while (randomChampions.size() < 10) {
@@ -105,11 +105,11 @@ public class MatchMaking {
             sb.append(players.get(i).getUserName() + " is playing " + champions.get(i) +
                     ". Champion Mastery Level: " + players.get(i).getChampionMastery(champions.get(i)) + "/10\n");
         });
+        sb.append("Team Two:\n");
         IntStream.rangeClosed(5, 9).forEach(i -> {
             sb.append(players.get(i).getUserName() + " is playing " + champions.get(i) +
                     ". Champion Mastery Level: " + players.get(i).getChampionMastery(champions.get(i)) + "/10\n");
         });
-        sb.append("Team Two:\n");
         Main.getOutput().displayOutput(sb.toString());
     }
 

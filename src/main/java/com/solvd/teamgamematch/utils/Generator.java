@@ -90,7 +90,7 @@ public class Generator {
                 });
     }
 
-    public static void generateEmployees( ArrayList<Employee> employees) {
+    public static void generateEmployees(ArrayList<Employee> employees) {
         employees.add(new Employee("Steve Gates",
                 new BigDecimal("10000000.99"),
                 "102002594",
