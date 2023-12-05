@@ -20,7 +20,7 @@ public class ChampionManager {
     }
 
     private ChampionManager() {
-        champions = Generator.generateChampions();
+        champions = new ArrayList<>();
     }
 
     public static ChampionManager getInstance() {

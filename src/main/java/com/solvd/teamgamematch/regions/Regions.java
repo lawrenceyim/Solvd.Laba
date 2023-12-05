@@ -10,7 +10,6 @@ public class Regions {
 
     public Regions() {
         regions = new HashMap<>();
-        Generator.generateRegions(this);
     }
 
     @Override

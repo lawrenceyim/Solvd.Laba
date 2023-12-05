@@ -3,6 +3,8 @@ package com.solvd.teamgamematch;
 import com.solvd.teamgamematch.employees.EmployeeManager;
 import com.solvd.teamgamematch.exceptions.ConfigurationException;
 import com.solvd.teamgamematch.exceptions.InvalidAccessLevel;
+import com.solvd.teamgamematch.game.champions.Champion;
+import com.solvd.teamgamematch.game.champions.ChampionManager;
 import com.solvd.teamgamematch.menu.AdministratorMenu;
 import com.solvd.teamgamematch.menu.GuestMenu;
 import com.solvd.teamgamematch.menu.IMenu;
@@ -11,6 +13,7 @@ import com.solvd.teamgamematch.output.CommandPromptOutput;
 import com.solvd.teamgamematch.output.IOutput;
 import com.solvd.teamgamematch.person.AccessLevel;
 import com.solvd.teamgamematch.regions.Regions;
+import com.solvd.teamgamematch.utils.Generator;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
@@ -40,6 +43,8 @@ public class Main {
     private static AccessLevel currentAccessLevel = AccessLevel.Guest;
 
     public static void main(String[] args) {
+        generateDefaultValues();
+
         try {
             output = (IOutput) Class.forName("com.solvd.teamgamematch.output.CommandPromptOutput")
                     .getConstructor().newInstance();
@@ -93,5 +98,13 @@ public class Main {
             default:
                 throw new InvalidAccessLevel("Invalid access level provided when changing menu");
         }
+    }
+
+    private static void generateDefaultValues() {
+        Generator.generateEmployees(employeeManager.getEmployees());
+        Generator.generateChampions(ChampionManager.getInstance().getChampions());
+        Generator.generateRegions(regions);
+        Generator.generatePlayers(regions);
+        Generator.generateMatches(regions);
     }
 }

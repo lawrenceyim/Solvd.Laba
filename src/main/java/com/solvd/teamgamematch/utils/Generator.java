@@ -20,8 +20,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Generator {
-    public static ArrayList<Champion> generateChampions() {
-        ArrayList<Champion> champions = new ArrayList<>();
+    public static void generateChampions(ArrayList<Champion> champions) {
         champions.add(new Champion("Aatrox", ChampionRole.TOP, 580, 100,
                 60, 0, 38, 32));
         champions.add(new Champion("Zoe", ChampionRole.MID, 560, 495,
@@ -48,7 +47,6 @@ public class Generator {
                 56, 0, 22, 30));
         champions.add(new Champion("Janna", ChampionRole.SUPP, 500, 350,
                 45, 0, 16, 30));
-        return champions;
     }
 
     public static HashMap<String, Integer> generateChampionMastery() {
@@ -62,14 +60,16 @@ public class Generator {
         return new HashMap<>(championMastery);
     }
 
-    public static ArrayList<Player> generatePlayers(int count) {
-        if (count < 10) {
-            count = 10;  // Minimum number of players needed to create two teams of 5
-        }
-        ArrayList<Player> players = new ArrayList<>();
+    public static void generatePlayers(Regions regions) {
+        regions.getRegions().keySet().stream()
+                .forEach(key -> {
+                    generatePlayers(regions.getRegion(key).getPlayerManager().getPlayers());
+                });
+    }
+
+    public static void generatePlayers(ArrayList<Player> players) {
         IntStream.rangeClosed(0, 15)
                 .forEach(i -> players.add(new Player("RandomName" + i, "Player " + i)));
-        return players;
     }
 
     public static void generateRegions(Regions regions) {
@@ -82,13 +82,15 @@ public class Generator {
         regions.setCurrentRegion(RegionName.NA);
     }
 
-    public static void generateMatches(Region region) {
-        // Populate the statistics with matches on instantiation
-        IntStream.rangeClosed(0, 20).forEach(a -> MatchMaking.matchMakeWithNoOutput(region));
+    public static void generateMatches(Regions regions) {
+        regions.getRegions().keySet().stream()
+                .forEach(key -> {
+                    IntStream.rangeClosed(0, 20).forEach(a ->
+                            MatchMaking.matchMakeWithNoOutput(regions.getRegion(key)));
+                });
     }
 
-    public static ArrayList<Employee> generateEmployees() {
-        ArrayList<Employee> employees = new ArrayList<>();
+    public static void generateEmployees( ArrayList<Employee> employees) {
         employees.add(new Employee("Steve Gates",
                 new BigDecimal("10000000.99"),
                 "102002594",
@@ -97,6 +99,5 @@ public class Generator {
                 new BigDecimal("3.50"),
                 "1420125114",
                 AccessLevel.Standard));
-        return employees;
     }
 }

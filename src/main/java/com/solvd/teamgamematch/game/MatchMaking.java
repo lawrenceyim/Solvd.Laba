@@ -52,7 +52,7 @@ public class MatchMaking {
     }
 
     private static ArrayList<Player> generateRandomTeams(Region region) {
-        ArrayList<Player> players = region.getPlayers().getPlayers();
+        ArrayList<Player> players = region.getPlayerManager().getPlayers();
         if (players.size() < 10) {
             throw new InsufficientPlayerException("Insufficient number of players to start matchmaking");
         }

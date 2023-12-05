@@ -8,24 +8,23 @@ import com.solvd.teamgamematch.utils.Generator;
 
 public class Region {
     private RegionName regionName;
-    private PlayerManager players;
+    private PlayerManager playerManager;
     private PlayerMatchHistory playerMatchHistory;
     private PlayerStats playerStats;
     private ChampionStats championStats;
 
     public Region(RegionName regionName) {
         this.regionName = regionName;
-        players = new PlayerManager();
-        playerMatchHistory = new PlayerMatchHistory(players);
+        playerManager = new PlayerManager();
+        playerMatchHistory = new PlayerMatchHistory();
         playerStats = new PlayerStats();
         championStats = new ChampionStats();
-        Generator.generateMatches(this);
     }
 
     @Override
     public String toString() {
         return "Region Name: " + regionName +
-                "\nPlayer Count: " + players.getPlayers().size();
+                "\nPlayer Count: " + playerManager.getPlayers().size();
     }
 
     public String getRegionName() {
@@ -36,12 +35,12 @@ public class Region {
         this.regionName = regionName;
     }
 
-    public PlayerManager getPlayers() {
-        return players;
+    public PlayerManager getPlayerManager() {
+        return playerManager;
     }
 
-    public void setPlayers(PlayerManager players) {
-        this.players = players;
+    public void setPlayerManager(PlayerManager playerManager) {
+        this.playerManager = playerManager;
     }
 
     public PlayerMatchHistory getPlayerMatchHistory() {

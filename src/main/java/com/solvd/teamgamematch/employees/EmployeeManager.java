@@ -15,7 +15,7 @@ public class EmployeeManager {
     private final ArrayList<Employee> employees;
 
     public EmployeeManager() {
-        this.employees = Generator.generateEmployees();
+        this.employees = new ArrayList<>();
     }
 
     public ArrayList<Employee> getEmployees() {

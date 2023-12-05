@@ -22,10 +22,8 @@ public class PlayerMatchHistory {
      */
     private final HashMap<String, ArrayList<Pair<String, Boolean>>> playerMatchHistory;
 
-    public PlayerMatchHistory(PlayerManager playerManager) {
+    public PlayerMatchHistory() {
         playerMatchHistory = new HashMap<>();
-        ArrayList<Player> players = playerManager.getPlayers();
-        players.stream().forEach(player -> playerMatchHistory.put(player.getUserName(), new ArrayList<>()));
     }
 
     public void addPlayerMatch(String userName, String championName, boolean gameWon) {

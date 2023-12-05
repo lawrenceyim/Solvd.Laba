@@ -15,7 +15,7 @@ public class PlayerManager {
     ArrayList<Player> players;
 
     public PlayerManager() {
-        players = Generator.generatePlayers(15);
+        players = new ArrayList<>();
     }
 
     public ArrayList<Player> getPlayers() {
