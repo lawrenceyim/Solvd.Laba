@@ -44,17 +44,16 @@ public class Main {
 
     public static void main(String[] args) {
         generateDefaultValues();
-
+        output = new CommandPromptOutput();
+        setAccessLevel(AccessLevel.Guest);
         try {
-            output = (IOutput) Class.forName("com.solvd.teamgamematch.output.CommandPromptOutput")
+            menu = (IMenu) Class.forName("com.solvd.teamgamematch.menu.GuestMenu")
                     .getConstructor().newInstance();
         } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException |
                  InvocationTargetException e) {
-            e.printStackTrace();
+            output.displayError(e.toString());
         }
 
-        setAccessLevel(AccessLevel.Guest);
-        setMenu();
         while (true) {
             menu.displayMenu();
             int userChoice = menu.getUserChoice();
