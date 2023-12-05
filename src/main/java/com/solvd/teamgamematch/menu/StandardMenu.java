@@ -1,8 +1,9 @@
 package com.solvd.teamgamematch.menu;
 
-import com.solvd.teamgamematch.Main;
 import com.solvd.teamgamematch.exceptions.InvalidInputException;
 import com.solvd.teamgamematch.game.MatchMaking;
+import com.solvd.teamgamematch.input.CurrentInput;
+import com.solvd.teamgamematch.output.CurrentOutput;
 import com.solvd.teamgamematch.regions.Regions;
 
 import java.util.InputMismatchException;
@@ -11,38 +12,38 @@ import java.util.Scanner;
 public class StandardMenu extends CommandPromptMenu implements IMenu {
     @Override
     public void displayMenu() {
-        Main.getOutput().displayOutput("League of Legends simulator");
-        Main.getOutput().displayOutput("Access Level: Standard");
-        Main.getOutput().displayOutput("1. New Match");
-        Main.getOutput().displayOutput("2. View Players Stats");
-        Main.getOutput().displayOutput("3. View Champion Win Rates");
-        Main.getOutput().displayOutput("4. View Player Match History");
-        Main.getOutput().displayOutput("5. Switch Region");
-        Main.getOutput().displayOutput("6. Switch Access Level");
-        Main.getOutput().displayOutput("7. Exit Program");
+        CurrentOutput.getCurrentOutput().displayOutput("League of Legends simulator");
+        CurrentOutput.getCurrentOutput().displayOutput("Access Level: Standard");
+        CurrentOutput.getCurrentOutput().displayOutput("1. New Match");
+        CurrentOutput.getCurrentOutput().displayOutput("2. View Players Stats");
+        CurrentOutput.getCurrentOutput().displayOutput("3. View Champion Win Rates");
+        CurrentOutput.getCurrentOutput().displayOutput("4. View Player Match History");
+        CurrentOutput.getCurrentOutput().displayOutput("5. Switch Region");
+        CurrentOutput.getCurrentOutput().displayOutput("6. Switch Access Level");
+        CurrentOutput.getCurrentOutput().displayOutput("7. Exit Program");
     }
 
     @Override
     public int getUserChoice() {
-        Scanner input = Main.getInputScanner();
+        Scanner input = CurrentInput.getCurrentInput();
         try {
             int userChoice = input.nextInt();
             IIsValidInput checker = (choice) -> choice >= 1 && choice <= 7;
             if (!checker.isValidInput(userChoice)) {
-                Main.getOutput().displayOutput("Invalid selection");
+                CurrentOutput.getCurrentOutput().displayOutput("Invalid selection");
                 return -1;
             }
             return userChoice;
         } catch (InputMismatchException e) {
             input.nextLine(); // clear input
-            Main.getOutput().displayOutput("Invalid input");
+            CurrentOutput.getCurrentOutput().displayOutput("Invalid input");
             return -1;
         }
     }
 
     @Override
     public void performUserChoice(int userChoice, Regions regions) {
-        Scanner input = Main.getInputScanner();
+        Scanner input = CurrentInput.getCurrentInput();
         switch (userChoice) {
             case 1:
                 MatchMaking.matchMake(regions.getCurrentRegion());
@@ -63,7 +64,7 @@ public class StandardMenu extends CommandPromptMenu implements IMenu {
                 switchAccessLevel();
                 break;
             case 7:
-                Main.getOutput().displayOutput("Exiting");
+                CurrentOutput.getCurrentOutput().displayOutput("Exiting");
                 input.close();
                 System.exit(0);
             default:

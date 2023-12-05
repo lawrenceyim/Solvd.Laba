@@ -1,6 +1,6 @@
 package com.solvd.teamgamematch.game.players;
 
-import com.solvd.teamgamematch.Main;
+import com.solvd.teamgamematch.output.CurrentOutput;
 import com.solvd.teamgamematch.person.AccessLevel;
 import com.solvd.teamgamematch.person.Person;
 import com.solvd.teamgamematch.utils.Generator;
@@ -31,7 +31,7 @@ public class Player extends Person {
 
     @Override
     public void personDetail() {
-        Main.getOutput().displayOutput(getName() + " is a player");
+        CurrentOutput.getCurrentOutput().displayOutput(getName() + " is a player");
     }
 
     public String getUserName() {

@@ -1,6 +1,6 @@
 package com.solvd.teamgamematch.game.players;
 
-import com.solvd.teamgamematch.Main;
+import com.solvd.teamgamematch.output.CurrentOutput;
 import com.solvd.teamgamematch.utils.Pair;
 
 import java.util.ArrayList;
@@ -38,13 +38,13 @@ public class PlayerMatchHistory {
 
     public void displayPlayerMatchHistory(String userName) {
         if (!playerMatchHistory.containsKey(userName)) {
-            Main.getOutput().displayOutput("Player does not exist");
+            CurrentOutput.getCurrentOutput().displayOutput("Player does not exist");
             return;
         }
 
         ArrayList<Pair<String, Boolean>> history = playerMatchHistory.get(userName);
         if (history.isEmpty()) {
-            Main.getOutput().displayOutput("Player has no matches");
+            CurrentOutput.getCurrentOutput().displayOutput("Player has no matches");
             return;
         }
         StringBuilder sb = new StringBuilder();
@@ -57,6 +57,6 @@ public class PlayerMatchHistory {
                 sb.append(String.format("%-30s %-15s%n", match.getFirst(), "Defeat"));
             }
         });
-        Main.getOutput().displayOutput(sb.toString());
+        CurrentOutput.getCurrentOutput().displayOutput(sb.toString());
     }
 }

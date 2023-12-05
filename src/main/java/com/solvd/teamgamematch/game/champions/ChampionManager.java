@@ -1,7 +1,5 @@
 package com.solvd.teamgamematch.game.champions;
 
-import com.solvd.teamgamematch.utils.Generator;
-
 import java.util.ArrayList;
 
 /**

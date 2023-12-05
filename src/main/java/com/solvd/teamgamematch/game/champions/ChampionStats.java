@@ -1,7 +1,7 @@
 package com.solvd.teamgamematch.game.champions;
 
-import com.solvd.teamgamematch.Main;
 import com.solvd.teamgamematch.game.IDisplayStats;
+import com.solvd.teamgamematch.output.CurrentOutput;
 import com.solvd.teamgamematch.utils.Pair;
 
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ public class ChampionStats implements IDisplayStats {
     @Override
     public void displayStats() {
         if (gamesWonByChampion.isEmpty()) {
-            Main.getOutput().displayOutput("No player stats available");
+            CurrentOutput.getCurrentOutput().displayOutput("No player stats available");
             return;
         }
         List<String> names = new ArrayList<>(gamesWonByChampion.keySet());
@@ -64,6 +64,6 @@ public class ChampionStats implements IDisplayStats {
             }
             sb.append(String.format("%-30s %-15d %-15d %-25s%n", userName, stat.getFirst(), stat.getSecond(), winRate));
         });
-        Main.getOutput().displayOutput(sb.toString());
+        CurrentOutput.getCurrentOutput().displayOutput(sb.toString());
     }
 }

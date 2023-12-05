@@ -1,6 +1,6 @@
 package com.solvd.teamgamematch.employees;
 
-import com.solvd.teamgamematch.Main;
+import com.solvd.teamgamematch.output.CurrentOutput;
 import com.solvd.teamgamematch.person.AccessLevel;
 import com.solvd.teamgamematch.person.Person;
 
@@ -39,7 +39,7 @@ public class Employee extends Person {
 
     @Override
     public void personDetail() {
-        Main.getOutput().displayOutput(getName() + " is an employee");
+        CurrentOutput.getCurrentOutput().displayOutput(getName() + " is an employee");
     }
 
     public BigDecimal getSalary() {

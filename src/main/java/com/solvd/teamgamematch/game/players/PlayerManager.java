@@ -7,8 +7,6 @@ package com.solvd.teamgamematch.game.players;
  * @author Lawrence Yim
  */
 
-import com.solvd.teamgamematch.utils.Generator;
-
 import java.util.ArrayList;
 
 public class PlayerManager {

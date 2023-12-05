@@ -4,7 +4,6 @@ import com.solvd.teamgamematch.game.champions.ChampionStats;
 import com.solvd.teamgamematch.game.players.PlayerManager;
 import com.solvd.teamgamematch.game.players.PlayerMatchHistory;
 import com.solvd.teamgamematch.game.players.PlayerStats;
-import com.solvd.teamgamematch.utils.Generator;
 
 public class Region {
     private RegionName regionName;

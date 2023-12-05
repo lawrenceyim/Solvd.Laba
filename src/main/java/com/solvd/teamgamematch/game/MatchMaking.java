@@ -1,6 +1,5 @@
 package com.solvd.teamgamematch.game;
 
-import com.solvd.teamgamematch.Main;
 import com.solvd.teamgamematch.exceptions.InsufficientChampionException;
 import com.solvd.teamgamematch.exceptions.InsufficientPlayerException;
 import com.solvd.teamgamematch.exceptions.InvalidRegionException;
@@ -9,6 +8,7 @@ import com.solvd.teamgamematch.game.champions.ChampionStats;
 import com.solvd.teamgamematch.game.players.Player;
 import com.solvd.teamgamematch.game.players.PlayerMatchHistory;
 import com.solvd.teamgamematch.game.players.PlayerStats;
+import com.solvd.teamgamematch.output.CurrentOutput;
 import com.solvd.teamgamematch.regions.Region;
 import com.solvd.teamgamematch.utils.Sleep;
 
@@ -110,14 +110,14 @@ public class MatchMaking {
             sb.append(players.get(i).getUserName() + " is playing " + champions.get(i) +
                     ". Champion Mastery Level: " + players.get(i).getChampionMastery(champions.get(i)) + "/10\n");
         });
-        Main.getOutput().displayOutput(sb.toString());
+        CurrentOutput.getCurrentOutput().displayOutput(sb.toString());
     }
 
     private static void printResults(boolean teamOneWon) {
         if (teamOneWon) {
-            Main.getOutput().displayOutput("Team One wins!");
+            CurrentOutput.getCurrentOutput().displayOutput("Team One wins!");
         } else {
-            Main.getOutput().displayOutput("Team Two wins!");
+            CurrentOutput.getCurrentOutput().displayOutput("Team Two wins!");
         }
     }
 
@@ -140,13 +140,13 @@ public class MatchMaking {
     }
 
     private static void fakeWaiting() {
-        Main.getOutput().displayOutput("Match in progress.");
+        CurrentOutput.getCurrentOutput().displayOutput("Match in progress.");
         Sleep.sleepForOneSecond();
 
-        Main.getOutput().displayOutput("Match in progress..");
+        CurrentOutput.getCurrentOutput().displayOutput("Match in progress..");
         Sleep.sleepForOneSecond();
 
-        Main.getOutput().displayOutput("Match in progress...");
+        CurrentOutput.getCurrentOutput().displayOutput("Match in progress...");
         Sleep.sleepForOneSecond();
     }
 }

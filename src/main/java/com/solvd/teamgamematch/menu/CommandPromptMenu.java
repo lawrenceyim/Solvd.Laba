@@ -1,7 +1,8 @@
 package com.solvd.teamgamematch.menu;
 
-import com.solvd.teamgamematch.Main;
 import com.solvd.teamgamematch.exceptions.InvalidAccessLevel;
+import com.solvd.teamgamematch.input.CurrentInput;
+import com.solvd.teamgamematch.output.CurrentOutput;
 import com.solvd.teamgamematch.person.AccessLevel;
 import com.solvd.teamgamematch.regions.Region;
 import com.solvd.teamgamematch.regions.RegionName;
@@ -15,8 +16,8 @@ import java.util.stream.IntStream;
 
 public abstract class CommandPromptMenu {
     public void switchAccessLevel() {
-        Scanner input = Main.getInputScanner();
-        Main.getOutput().displayOutput("Access Levels:" + System.lineSeparator() +
+        Scanner input = CurrentInput.getCurrentInput();
+        CurrentOutput.getCurrentOutput().displayOutput("Access Levels:" + System.lineSeparator() +
                 "1. Administrator" + System.lineSeparator() +
                 "2. Standard" + System.lineSeparator() +
                 "3. Guest" + System.lineSeparator());
@@ -37,43 +38,43 @@ public abstract class CommandPromptMenu {
                     default:
                         throw new InvalidAccessLevel("Invalid access level provided");
                 }
-                Main.setMenu();
-                Main.getOutput().displayOutput("Access level changed");
+                CurrentMenu.setMenu();
+                CurrentOutput.getCurrentOutput().displayOutput("Access level changed");
             } else {
-                Main.getOutput().displayOutput("Invalid access level. Returning to main menu");
+                CurrentOutput.getCurrentOutput().displayOutput("Invalid access level. Returning to main menu");
             }
         } catch (InputMismatchException e) {
             input.nextLine(); // clear input
-            Main.getOutput().displayOutput("Invalid input. Returning to main menu");
+            CurrentOutput.getCurrentOutput().displayOutput("Invalid input. Returning to main menu");
         }
     }
 
     protected void getPlayerMatchHistory(Region region) {
-        Scanner input = Main.getInputScanner();
-        Main.getOutput().displayOutput("Enter the player's name:");
+        Scanner input = CurrentInput.getCurrentInput();
+        CurrentOutput.getCurrentOutput().displayOutput("Enter the player's name:");
         input.nextLine(); // eliminate the \n from previous user input
         String name = input.nextLine().replace("\n", "").trim();
         region.getPlayerMatchHistory().displayPlayerMatchHistory(name);
     }
 
     protected void switchRegion(Regions regions) {
-        Scanner input = Main.getInputScanner();
+        Scanner input = CurrentInput.getCurrentInput();
         Set<RegionName> set = regions.getRegions().keySet();
         RegionName[] regionNames = set.toArray(new RegionName[set.size()]);
-        Main.getOutput().displayOutput("Regions:");
+        CurrentOutput.getCurrentOutput().displayOutput("Regions:");
         IntStream.rangeClosed(1, regionNames.length).forEach(i ->
-                Main.getOutput().displayOutput(i + ". " + regionNames[i - 1].getName()));
+                CurrentOutput.getCurrentOutput().displayOutput(i + ". " + regionNames[i - 1].getName()));
         try {
             int choice = input.nextInt();
             if (choice >= 1 && choice <= regionNames.length) {
-                Main.getOutput().displayOutput("Switching regions to " + regionNames[choice - 1]);
+                CurrentOutput.getCurrentOutput().displayOutput("Switching regions to " + regionNames[choice - 1]);
                 regions.setCurrentRegion(regionNames[choice - 1]);
             } else {
-                Main.getOutput().displayOutput("Invalid region. Returning to main menu");
+                CurrentOutput.getCurrentOutput().displayOutput("Invalid region. Returning to main menu");
             }
         } catch (InputMismatchException e) {
             input.nextLine(); // clear input
-            Main.getOutput().displayOutput("Invalid input. Returning to main menu");
+            CurrentOutput.getCurrentOutput().displayOutput("Invalid input. Returning to main menu");
         }
     }
 }

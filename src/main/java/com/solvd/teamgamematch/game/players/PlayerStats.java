@@ -1,7 +1,7 @@
 package com.solvd.teamgamematch.game.players;
 
-import com.solvd.teamgamematch.Main;
 import com.solvd.teamgamematch.game.IDisplayStats;
+import com.solvd.teamgamematch.output.CurrentOutput;
 import com.solvd.teamgamematch.utils.Pair;
 
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ public class PlayerStats implements IDisplayStats {
     @Override
     public void displayStats() {
         if (totalGamesPlayed.isEmpty()) {
-            Main.getOutput().displayOutput("No player stats available");
+            CurrentOutput.getCurrentOutput().displayOutput("No player stats available");
             return;
         }
         List<String> names = new ArrayList<>(totalGamesPlayed.keySet());
@@ -61,6 +61,6 @@ public class PlayerStats implements IDisplayStats {
             sb.append(String.format("%-30s %-15d %-15d %-15s%n", userName, stat.getFirst(), stat.getSecond(), winRate));
 
         });
-        Main.getOutput().displayOutput(sb.toString());
+        CurrentOutput.getCurrentOutput().displayOutput(sb.toString());
     }
 }

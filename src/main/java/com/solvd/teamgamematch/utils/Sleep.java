@@ -1,6 +1,6 @@
 package com.solvd.teamgamematch.utils;
 
-import com.solvd.teamgamematch.Main;
+import com.solvd.teamgamematch.output.CurrentOutput;
 
 /**
  * Utility class for putting the Java program to sleep
@@ -13,7 +13,7 @@ public class Sleep {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
-            Main.getOutput().displayError(e.getMessage());
+            CurrentOutput.getCurrentOutput().displayError(e.getMessage());
         }
     }
 }

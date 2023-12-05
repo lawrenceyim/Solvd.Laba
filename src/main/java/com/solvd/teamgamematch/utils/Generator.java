@@ -7,7 +7,6 @@ import com.solvd.teamgamematch.game.champions.ChampionManager;
 import com.solvd.teamgamematch.game.champions.ChampionRole;
 import com.solvd.teamgamematch.game.players.Player;
 import com.solvd.teamgamematch.person.AccessLevel;
-import com.solvd.teamgamematch.regions.Region;
 import com.solvd.teamgamematch.regions.RegionName;
 import com.solvd.teamgamematch.regions.Regions;
 

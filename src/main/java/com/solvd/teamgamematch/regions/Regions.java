@@ -1,7 +1,5 @@
 package com.solvd.teamgamematch.regions;
 
-import com.solvd.teamgamematch.utils.Generator;
-
 import java.util.HashMap;
 
 public class Regions {
