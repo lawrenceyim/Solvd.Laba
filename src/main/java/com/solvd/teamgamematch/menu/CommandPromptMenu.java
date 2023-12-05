@@ -6,6 +6,7 @@ import com.solvd.teamgamematch.person.AccessLevel;
 import com.solvd.teamgamematch.regions.Region;
 import com.solvd.teamgamematch.regions.RegionName;
 import com.solvd.teamgamematch.regions.Regions;
+import com.solvd.teamgamematch.user.CurrentUser;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -25,13 +26,13 @@ public abstract class CommandPromptMenu {
             if (checker.isValidInput(userChoice)) {
                 switch (userChoice) {
                     case 1:
-                        Main.setAccessLevel(AccessLevel.Administrator);
+                        CurrentUser.setAccessLevel(AccessLevel.Administrator);
                         break;
                     case 2:
-                        Main.setAccessLevel(AccessLevel.Standard);
+                        CurrentUser.setAccessLevel(AccessLevel.Standard);
                         break;
                     case 3:
-                        Main.setAccessLevel(AccessLevel.Guest);
+                        CurrentUser.setAccessLevel(AccessLevel.Guest);
                         break;
                     default:
                         throw new InvalidAccessLevel("Invalid access level provided");

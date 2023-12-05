@@ -13,6 +13,7 @@ import com.solvd.teamgamematch.output.CommandPromptOutput;
 import com.solvd.teamgamematch.output.IOutput;
 import com.solvd.teamgamematch.person.AccessLevel;
 import com.solvd.teamgamematch.regions.Regions;
+import com.solvd.teamgamematch.user.CurrentUser;
 import com.solvd.teamgamematch.utils.Generator;
 
 import java.io.File;
@@ -40,12 +41,10 @@ public class Main {
     private static final EmployeeManager employeeManager = new EmployeeManager();
     private static IMenu menu;
     private static IOutput output;
-    private static AccessLevel currentAccessLevel = AccessLevel.Guest;
 
     public static void main(String[] args) {
         generateDefaultValues();
         output = new CommandPromptOutput();
-        setAccessLevel(AccessLevel.Guest);
         try {
             menu = (IMenu) Class.forName("com.solvd.teamgamematch.menu.GuestMenu")
                     .getConstructor().newInstance();
@@ -79,11 +78,8 @@ public class Main {
         return input;
     }
 
-    public static void setAccessLevel(AccessLevel accessLevel) {
-        currentAccessLevel = accessLevel;
-    }
-
     public static void setMenu() {
+        AccessLevel currentAccessLevel = CurrentUser.getAccessLevel();
         switch (currentAccessLevel) {
             case Guest:
                 menu = new GuestMenu();
