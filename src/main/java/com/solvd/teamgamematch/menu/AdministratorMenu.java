@@ -1,6 +1,5 @@
 package com.solvd.teamgamematch.menu;
 
-import com.solvd.teamgamematch.Main;
 import com.solvd.teamgamematch.employees.Employee;
 import com.solvd.teamgamematch.employees.EmployeeManager;
 import com.solvd.teamgamematch.exceptions.InvalidInputException;

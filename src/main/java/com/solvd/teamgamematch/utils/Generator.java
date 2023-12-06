@@ -6,10 +6,12 @@ import com.solvd.teamgamematch.game.champions.Champion;
 import com.solvd.teamgamematch.game.champions.ChampionManager;
 import com.solvd.teamgamematch.game.champions.ChampionRole;
 import com.solvd.teamgamematch.game.players.Player;
+import com.solvd.teamgamematch.output.CurrentOutput;
 import com.solvd.teamgamematch.person.AccessLevel;
 import com.solvd.teamgamematch.regions.RegionName;
 import com.solvd.teamgamematch.regions.Regions;
 
+import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -98,5 +100,14 @@ public class Generator {
                 new BigDecimal("3.50"),
                 "1420125114",
                 AccessLevel.Standard));
+
+        try {
+            employees.add((Employee) Class.forName("com.solvd.teamgamematch.employees.Employee")
+                    .getDeclaredConstructor(String.class, BigDecimal.class, String.class)
+                    .newInstance("Spiderman", new BigDecimal("7.50"), "12344567"));
+        } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException |
+                 InvocationTargetException e) {
+            CurrentOutput.getCurrentOutput().displayError(e.toString());
+        }
     }
 }
