@@ -15,7 +15,7 @@ import java.util.Set;
 import java.util.stream.IntStream;
 
 public abstract class CommandPromptMenu {
-    public void switchAccessLevel() {
+    public final void switchAccessLevel() {
         Scanner input = CurrentInput.getCurrentInput();
         CurrentOutput.getCurrentOutput().displayOutput("Access Levels:" + System.lineSeparator() +
                 "1. Administrator" + System.lineSeparator() +
@@ -49,7 +49,7 @@ public abstract class CommandPromptMenu {
         }
     }
 
-    protected void getPlayerMatchHistory(Region region) {
+    protected final void getPlayerMatchHistory(Region region) {
         Scanner input = CurrentInput.getCurrentInput();
         CurrentOutput.getCurrentOutput().displayOutput("Enter the player's name:");
         input.nextLine(); // eliminate the \n from previous user input
@@ -57,7 +57,7 @@ public abstract class CommandPromptMenu {
         region.getPlayerMatchHistory().displayPlayerMatchHistory(name);
     }
 
-    protected void switchRegion(Regions regions) {
+    protected final void switchRegion(Regions regions) {
         Scanner input = CurrentInput.getCurrentInput();
         Set<RegionName> set = regions.getRegions().keySet();
         RegionName[] regionNames = set.toArray(new RegionName[set.size()]);
