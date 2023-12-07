@@ -1,19 +1,20 @@
 package com.solvd.teamgamematch.connection;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.IntStream;
 
 public class ConnectionPool {
     private final int MAX_CONNECTIONS = 5;
     private static ConnectionPool instance = null;
-    private List<Connection> connections = new ArrayList<>();
+    private volatile CopyOnWriteArrayList<Connection> occupiedConnections = new CopyOnWriteArrayList<>();
+    private volatile ConcurrentLinkedQueue<Connection> freeConnections = new ConcurrentLinkedQueue<>();
 
     private ConnectionPool() {
-        IntStream.rangeClosed(1,5).forEach(i -> {
+        IntStream.rangeClosed(1, MAX_CONNECTIONS).forEach(i -> {
             Connection connection = new Connection();
             connection.setName("Connection " + i);
-            connections.add(connection);
+            freeConnections.add(connection);
         });
     }
 
@@ -25,11 +26,16 @@ public class ConnectionPool {
     }
 
     public synchronized Connection getConnection() {
-
-        return null;
+        if (freeConnections.isEmpty()) {
+            return null;
+        }
+        Connection connection = freeConnections.remove();
+        occupiedConnections.add(connection);
+        return connection;
     }
 
     public synchronized void releaseConnection(Connection connection) {
-
+        occupiedConnections.remove(connection);
+        freeConnections.add(connection);
     }
 }
